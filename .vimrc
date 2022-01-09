@@ -1,6 +1,6 @@
 syntax on             " syntax highlighting
 set number            " line numbers
-set clipboard=unnamedplus      " use system clipboard
+set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
 
@@ -9,25 +9,20 @@ set expandtab         " use spaces instead of tabs
 set tabstop=4         " set   tab width to 4 spaces
 set shiftwidth=4      " set shift width to 4 spaces
 
-set mouse=a           " enable mouse
+set mouse=            " disable mouse(enable: mouse=a)
 set belloff=all       " disable bell sound
+set noshowmode        " mode is shown in status manually
 set nowrap            " do not wrap lines
 set splitright        " new window on the right      (:vsplit <file>)
 set splitbelow        " new window below the current (:split  <file>)
 set cursorline        " highlight active line
 set hlsearch          " highlight found text
 set incsearch         " highlight found on typing 
+set laststatus=2      " always show statusline
 
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Setting statusline begin
-
-" Always show statusline
-set laststatus=2
-
-" Don't show the mode,
-" mode is shown in status manually
-set noshowmode
 
 let g:currentmode={
        \ 'n'  : 'NORMAL ',
@@ -54,7 +49,7 @@ set statusline+=%=
 " position: 'line:column percentage'
 set statusline+=%l:%c\ %p%%
 
-" Statusline with airline plugin
+" statusline with airline plugin
 " let g:airline_section_z='%l:%c %p%%'
 
 " Setting statusline end
