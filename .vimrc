@@ -57,7 +57,6 @@ set statusline+=%l:%c\ %p%%
 call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
-colorscheme onedark
 
 Plug 'preservim/nerdtree'             " File Tree
 " Open file tree with Ctrl + N
@@ -77,3 +76,6 @@ set omnifunc=syntaxcomplete#Complete
 " let g:airline_section_z='%l:%c %p%%'
 
 call plug#end()
+
+" Enable theme
+colorscheme onedark
