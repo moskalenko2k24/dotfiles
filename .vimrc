@@ -1,3 +1,6 @@
+" Complete .vimrc with plugins,
+" uses vim-plug (https://github.com/junegunn/vim-plug)
+
 syntax on             " syntax highlighting
 set number            " line numbers
 set clipboard=unnamedplus      " use system clipboard (Linux)
@@ -16,11 +19,10 @@ set nowrap            " do not wrap lines
 set splitright        " new window on the right      (:vsplit <file>)
 set splitbelow        " new window below the current (:split  <file>)
 set cursorline        " highlight active line
+set laststatus=2      " always show statusline
+" Search settings
 set hlsearch          " highlight found text
 set incsearch         " highlight found on typing 
-set laststatus=2      " always show statusline
-
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Setting statusline begin
 
@@ -34,13 +36,13 @@ let g:currentmode={
        \ 'Rv' : 'V·Replace ',
        \ 'c'  : 'Command ',
        \}
+
 " clear statusline
 set statusline=
 " mode (insert, normal etc.)
 set statusline+=\ %{toupper(g:currentmode[mode()])}
 " filename[modified flag]
-set statusline+=%f
-set statusline+=%m
+set statusline+=%f%m
 " encoding[line ending format]
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
@@ -49,28 +51,29 @@ set statusline+=%=
 " position: 'line:column percentage'
 set statusline+=%l:%c\ %p%%
 
-" statusline with airline plugin
-" let g:airline_section_z='%l:%c %p%%'
-
 " Setting statusline end
-
-" Enable color scheme
-packadd! onedark.vim
-colorscheme onedark
-
-" Open compiled (La)TeX file in Zathura
-let g:vimtex_view_method = 'zathura'
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'preservim/nerdtree'             " File Tree
-Plug 'lervag/vimtex'                  " TeX / LaTeX
-Plug 'editorconfig/editorconfig-vim'  " EditorConfig
-Plug 'OmniSharp/omnisharp-vim'        " .NET
-" Plug 'vim-airline/vim-airline'      " Better statusline
-call plug#end()
 
-" Open file tree on Ctrl + N
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
+colorscheme onedark
+
+Plug 'preservim/nerdtree'             " File Tree
+" Open file tree with Ctrl + N
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+Plug 'editorconfig/editorconfig-vim'  " EditorConfig
+
+Plug 'lervag/vimtex'                  " TeX / LaTeX
+" Open compiled (La)TeX file in Zathura
+let g:vimtex_view_method = 'zathura'
+
+Plug 'OmniSharp/omnisharp-vim'        " .NET
 set omnifunc=syntaxcomplete#Complete
+
+" Some unused plugins
+" Plug 'vim-airline/vim-airline'      " Better statusline
+" let g:airline_section_z='%l:%c %p%%'
+
+call plug#end()
