@@ -58,6 +58,20 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 
+" Automatic keyboard layout switching 
+Plug 'lyokha/vim-xkbswitch'
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
+" Use this on Fedora + GNOME
+" git clone https://github.com/lyokha/g3kb-switch
+" cd g3kb-switch
+" mkdir build && cd build
+" cmake -DCMAKE_BUILD_TYPE=Release -DG3KBSWITCH_WITH_GNOME_SHELL_EXTENSION=ON ..
+" make
+" sudo make install
+" sudo dnf install gnome-extensions-app (GUI app!),
+" then enable G3kbSwitch in Extensions app (restart can be required before)
+
 Plug 'preservim/nerdtree'             " File Tree
 " Open file tree with Ctrl + N
 nnoremap <C-n> :NERDTreeToggle<CR>
