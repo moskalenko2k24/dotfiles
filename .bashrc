@@ -21,3 +21,8 @@ alias vim="vimx"
 function mkcd {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
+
+# Command to show uptime
+function up {
+    uptime -p
+}
