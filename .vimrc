@@ -72,9 +72,15 @@ let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 " sudo dnf install gnome-extensions-app (GUI app!),
 " then enable G3kbSwitch in Extensions app (restart can be required before)
 
+" Auto Pairs (remove / insert brackets)
+Plug 'jiangmiao/auto-pairs'
+
 Plug 'preservim/nerdtree'             " File Tree
 " Open file tree with Ctrl + N
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" File Navigation plugin
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'editorconfig/editorconfig-vim'  " EditorConfig
 
