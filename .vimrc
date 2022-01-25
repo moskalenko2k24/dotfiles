@@ -72,26 +72,44 @@ let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 " sudo dnf install gnome-extensions-app (GUI app!),
 " then enable G3kbSwitch in Extensions app (restart can be required before)
 
-" Auto Pairs (remove / insert brackets)
+" Auto Pairs (auto insert brackets)
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'preservim/nerdtree'             " File Tree
+" File tree
+Plug 'preservim/nerdtree'
 " Open file tree with Ctrl + N
 nnoremap <C-n> :NERDTreeToggle<CR>
 
-" File Navigation plugin
+" File navigation plugin
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'editorconfig/editorconfig-vim'  " EditorConfig
+" Another file navigation plugin
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
+" EditorConfig
+Plug 'editorconfig/editorconfig-vim'
+
+" TeX / LaTeX
 Plug 'lervag/vimtex'                  " TeX / LaTeX
 " Open compiled (La)TeX file in Zathura
 let g:vimtex_view_method = 'zathura'
 
-Plug 'OmniSharp/omnisharp-vim'        " .NET
-set omnifunc=syntaxcomplete#Complete
+" JSX highlighting
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Some unused plugins
+
+" .NET autocomplete
+" Plug 'OmniSharp/omnisharp-vim'
+" set omnifunc=syntaxcomplete#Complete
+
+
+" Autocomplete for pupular languages
+" Plug 'ycm-core/YouCompleteMe'
+
 " Plug 'vim-airline/vim-airline'      " Better statusline
 " let g:airline_section_z='%l:%c %p%%'
 
