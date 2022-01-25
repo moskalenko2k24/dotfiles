@@ -26,3 +26,9 @@ function mkcd {
 function up {
     uptime -p
 }
+
+# Disable bell
+bind 'set bell-style none'
+
+# Custom prompt
+# PS1="\H \w "
