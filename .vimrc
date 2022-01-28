@@ -1,17 +1,24 @@
 " Complete .vimrc with plugins,
 " uses vim-plug (https://github.com/junegunn/vim-plug)
 
-syntax on             " syntax highlighting
-set number            " line numbers
+" Main settings
+syntax on                      " syntax highlighting
+set number                     " line numbers
 set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
 
+" Indent settings
 set autoindent        " autoindent
 set expandtab         " use spaces instead of tabs
 set tabstop=4         " set   tab width to 4 spaces
 set shiftwidth=4      " set shift width to 4 spaces
 
+" Search settings
+set hlsearch          " highlight found text
+set incsearch         " highlight found on typing 
+
+" Appearance
 set mouse=            " disable mouse(enable: mouse=a)
 set belloff=all       " disable bell sound
 set noshowmode        " mode is shown in status manually
@@ -20,9 +27,6 @@ set splitright        " new window on the right      (:vsplit <file>)
 set splitbelow        " new window below the current (:split  <file>)
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
-" Search settings
-set hlsearch          " highlight found text
-set incsearch         " highlight found on typing 
 
 " Setting statusline begin
 
@@ -91,8 +95,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 " TeX / LaTeX
-Plug 'lervag/vimtex'                  " TeX / LaTeX
-" Open compiled (La)TeX file in Zathura
+Plug 'lervag/vimtex'
+" Open compiled file in Zathura
 let g:vimtex_view_method = 'zathura'
 
 " JSX highlighting
@@ -101,7 +105,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Markdown
+" Preview in browser (requires yarn)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+" Preview in vim (requires MichaelMure/mdr)
 Plug 'skanehira/preview-markdown.vim'
 
 " Some unused plugins
@@ -110,11 +116,11 @@ Plug 'skanehira/preview-markdown.vim'
 " Plug 'OmniSharp/omnisharp-vim'
 " set omnifunc=syntaxcomplete#Complete
 
-
 " Autocomplete for pupular languages
 " Plug 'ycm-core/YouCompleteMe'
 
-" Plug 'vim-airline/vim-airline'      " Better statusline
+" Better statusline
+" Plug 'vim-airline/vim-airline'
 " let g:airline_section_z='%l:%c %p%%'
 
 call plug#end()
