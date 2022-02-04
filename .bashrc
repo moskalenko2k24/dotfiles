@@ -17,6 +17,9 @@ export NVM_DIR="$HOME/.nvm"
 # (vim with clipboard support)
 alias vim="vimx"
 
+# Move up
+alias ..="cd .."
+
 # Command to create directory and go there
 function mkcd {
   mkdir -p -- "$1" && cd -P -- "$1"
