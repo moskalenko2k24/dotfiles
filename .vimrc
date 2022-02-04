@@ -79,10 +79,19 @@ let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 " Auto Pairs (auto insert brackets)
 Plug 'jiangmiao/auto-pairs'
 
+" Easily delete, change and add surroundings
+Plug 'tpope/vim-surround'
+
+" Simple commenting
+" comment - gcc, uncomment - gcc
+Plug 'tyru/caw.vim'
+
 " File tree
 Plug 'preservim/nerdtree'
 " Open file tree with Ctrl + N
 nnoremap <C-n> :NERDTreeToggle<CR>
+" Ingore some directories
+let g:NERDTreeIgnore = ['^node_modules$']
 
 " File navigation plugin
 Plug 'ctrlpvim/ctrlp.vim'
@@ -99,7 +108,7 @@ Plug 'lervag/vimtex'
 " Open compiled file in Zathura
 let g:vimtex_view_method = 'zathura'
 
-" JSX highlighting
+" JS / TS (JSX highlighting)
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -107,21 +116,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Markdown
 " Preview in browser (requires yarn)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-" Preview in vim (requires MichaelMure/mdr)
-Plug 'skanehira/preview-markdown.vim'
-
-" Some unused plugins
-
-" .NET autocomplete
-" Plug 'OmniSharp/omnisharp-vim'
-" set omnifunc=syntaxcomplete#Complete
-
-" Autocomplete for pupular languages
-" Plug 'ycm-core/YouCompleteMe'
-
-" Better statusline
-" Plug 'vim-airline/vim-airline'
-" let g:airline_section_z='%l:%c %p%%'
+let g:mkdp_page_title = '${name}.md'
 
 call plug#end()
 
