@@ -1,5 +1,7 @@
-" Complete .vimrc with plugins,
-" uses vim-plug (https://github.com/junegunn/vim-plug)
+" This .vimrc uses junegunn/vim-plug 
+" Installing vim-plug:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " Main settings
 syntax on                      " syntax highlighting
@@ -59,6 +61,12 @@ set statusline+=%l:%c\ %p%%
 
 " Setting statusline end
 
+" Hot reload
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -68,13 +76,16 @@ Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'lyokha/vim-xkbswitch'
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
-" Use this on Fedora + GNOME
+" Use this on GNOME
+" sudo dnf install glib2-devel
 " git clone https://github.com/lyokha/g3kb-switch
 " cd g3kb-switch
 " mkdir build && cd build
 " cmake -DCMAKE_BUILD_TYPE=Release -DG3KBSWITCH_WITH_GNOME_SHELL_EXTENSION=ON ..
 " make
 " sudo make install
+" cd ../extension
+" make install  # no sudo requred!
 " sudo dnf install gnome-extensions-app (GUI app!),
 " then enable G3kbSwitch in Extensions app (restart can be required before)
 
