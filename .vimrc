@@ -18,13 +18,15 @@ set shiftwidth=4      " set shift width to 4 spaces
 set hlsearch          " highlight found text
 set incsearch         " highlight found on typing 
 
-" Appearance
+" Split settings
+set splitright        " new window on the right      (:vsplit file)
+set splitbelow        " new window below the current (:split  file)
+ 
+" Other
 set mouse=            " disable mouse(enable: mouse=a)
 set belloff=all       " disable bell sound
 set noshowmode        " mode is shown in status manually
 set nowrap            " do not wrap lines
-set splitright        " new window on the right      (:vsplit <file>)
-set splitbelow        " new window below the current (:split  <file>)
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
 
@@ -83,7 +85,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
 " Simple commenting
-" comment - gcc, uncomment - gcc
+" (un)comment - gcc
 Plug 'tyru/caw.vim'
 
 " File tree
