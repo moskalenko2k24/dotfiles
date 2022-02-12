@@ -99,6 +99,10 @@ Plug 'tpope/vim-surround'
 " (un)comment - gcc
 Plug 'tyru/caw.vim'
 
+" Pasting with with indentation
+" adjusted to destination context
+Plug 'sickill/vim-pasta'
+
 " File tree
 Plug 'preservim/nerdtree'
 " Open file tree with Ctrl + N
