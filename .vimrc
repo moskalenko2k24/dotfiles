@@ -135,6 +135,10 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 let g:mkdp_page_title = '${name}.md'
 
+" Formatting tables automatically
+" use '\tm' to enter table mode
+Plug 'dhruvasagar/vim-table-mode'
+
 call plug#end()
 
 " Enable theme
