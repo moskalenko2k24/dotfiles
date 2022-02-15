@@ -1,0 +1,7 @@
+set selection-clipboard clipboard
+
+map [normal] = zoom in
+map [fullscreen] = zoom in
+
+map [normal] f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
