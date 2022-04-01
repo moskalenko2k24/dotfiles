@@ -6,6 +6,7 @@
 " Main settings
 syntax on                      " syntax highlighting
 set number                     " line numbers
+set relativenumber             " show relative numbers
 set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
@@ -31,6 +32,22 @@ set noshowmode        " mode is shown in status manually
 set nowrap            " do not wrap lines
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
+
+" move line down
+:map - ddp
+" move line up
+:map _ ddkP
+
+" Ctrl + S for saving
+:imap <c-s> <Esc>:w<CR>a
+" Ctrl + X for exit
+:imap <c-x> <Esc>:q<CR>
+" Ctrl + Z for undo
+:imap <c-z> <Esc>u<CR>a
+" Ctrl + V for pasting
+:imap <c-v> <Esc>pa
+" Ctrl + U for uppering word
+:imap <c-u> <Esc>viwUi
 
 " Setting statusline begin
 
@@ -112,6 +129,19 @@ let g:NERDTreeIgnore = ['^node_modules$']
 
 " File navigation plugin
 Plug 'ctrlpvim/ctrlp.vim'
+
+" Status line
+" Plug 'itchyny/lightline.vim'
+" let g:lightline = {
+"    \ 'colorscheme': 'wombat',
+"    \ 'active': {
+"    \   'left': [ [ 'mode' ], 
+"    \             [ 'filename', 'modified' ],
+"    \             [ 'fileencoding', 'fileformat' ] ],
+"    \   'right': [ [ 'percent' ], [ 'lineinfo' ] ]
+"    \ }
+"\}
+" MODE, filename[modified] encoding[line ending]          x:y percent
 
 " Another file navigation plugin
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
