@@ -33,21 +33,44 @@ set nowrap            " do not wrap lines
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
 
-" move line down
-:map - ddp
-" move line up
-:map _ ddkP
+" My mappings
 
-" Ctrl + S for saving
-:imap <c-s> <Esc>:w<CR>a
-" Ctrl + X for exit
-:imap <c-x> <Esc>:q<CR>
-" Ctrl + Z for undo
-:imap <c-z> <Esc>u<CR>a
-" Ctrl + V for pasting
-:imap <c-v> <Esc>pa
-" Ctrl + U for uppering word
-:imap <c-u> <Esc>viwUi
+" Ctrl + Z, undo
+inoremap <C-z> <Esc>ua
+" Ctrl + X, cut
+vnoremap <C-x> d<Esc>i
+" Ctrl + C, copy
+vnoremap <C-c> y<Esc>i
+" Ctrl + V, paste
+inoremap <C-v> <Esc>pa
+" Ctrl + S, save
+inoremap <C-s> <Esc>:w<CR>a
+" Ctrl + X, exit
+inoremap <c-x> <Esc>:q<CR>
+" Shift + Arrow, selection
+nnoremap <S-Up> v<Up>
+nnoremap <S-Down> v<Down>
+nnoremap <S-Left> v<Left>
+nnoremap <S-Right> v<Right>
+vnoremap <S-Up> <Up>
+vnoremap <S-Down> <Down>
+vnoremap <S-Left> <Left>
+vnoremap <S-Right> <Right>
+inoremap <S-Up> <Esc>v<Up>
+inoremap <S-Down> <Esc>v<Down>
+inoremap <S-Left> <Right><Esc>v<Left>
+inoremap <S-Right> <Right><Esc>v<Right>
+
+" Ctrl + U, uppering word
+" inoremap <C-u> <Esc>lviwUi
+" move to start of line
+" nnoremap H 0
+" move to end of line
+" nnoremap L $
+" move line down
+" nnoremap - ddp
+" move line up
+" nnoremap _ ddkP
 
 " Setting statusline begin
 
