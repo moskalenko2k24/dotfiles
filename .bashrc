@@ -20,6 +20,16 @@ alias vim="vimx"
 # Move up
 alias ..="cd .."
 
+# Show all files
+alias lsa="ls -A"
+
+# Make & run
+alias mr="make && make run"
+
+# Clear & run program
+alias cmr="clear && make && make run"
+
+
 # Command to create directory and go there
 function mkcd {
   mkdir -p -- "$1" && cd -P -- "$1"
