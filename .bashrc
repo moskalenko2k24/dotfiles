@@ -23,25 +23,58 @@ alias ..="cd .."
 # Show all files
 alias lsa="ls -A"
 
+# Copy recursive
+alias cpr="cp -r"
+
 # Make & run
 alias mr="make && make run"
 
 # Clear & run program
 alias cmr="clear && make && make run"
 
+# Show uptime (hours & minutes)
+alias up="uptime -p"
+
+# Open .bashrc
+alias open-bashrc="vim ~/.bashrc"
+
+# Reload .bashrc
+alias reload-bashrc="source ~/.bashrc"
+
+alias gits="git status"
+
+alias gita="git add"
+
+alias gitc="git commit"
+
+alias gitp="git push"
 
 # Command to create directory and go there
 function mkcd {
-  mkdir -p -- "$1" && cd -P -- "$1"
+    mkdir -p -- "$1" && cd -P -- "$1"
 }
 
-# Command to show uptime
-function up {
-    uptime -p
+function new-project {
+    if [[ "$1" == "c" ]]
+    then
+        cp -r ~/Templates/C/ "$2"
+    elif [[ "$1" == "cpp" ]]
+    then
+        cp -r ~/Templates/C++/ "$2"
+    elif [[ "$1" == "java" ]]
+    then
+        cp -r ~/Templates/Java/ "$2"
+    elif [[ "$1" == "winapi" ]]
+    then
+        cp -r ~/Templates/WinAPI "$2"
+    else
+        echo "Unknown project type"
+    fi
 }
 
 # Disable bell
 bind 'set bell-style none'
 
 # Custom prompt
-# PS1="\H \w "
+# [user@host dir]$ 
+PS1="[\u@\H \W]$ "
