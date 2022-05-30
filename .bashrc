@@ -19,6 +19,7 @@ alias vim="vimx"
 
 # Move up
 alias ..="cd .."
+alias ...="cd ../.."
 
 # Show all files
 alias lsa="ls -A"
@@ -72,9 +73,18 @@ function new-project {
     fi
 }
 
+# Copy file path to clipboard
+function cp-path {
+    realpath "${1}" | xclip -sel clip
+}
+
 # Disable bell
 bind 'set bell-style none'
 
 # Custom prompt
 # [user@host dir]$ 
 PS1="[\u@\H \W]$ "
+
+# Add PATH
+# tg
+export PATH="/home/andrey/.local/bin:$PATH"
