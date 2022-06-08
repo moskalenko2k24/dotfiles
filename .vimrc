@@ -6,7 +6,7 @@
 " Main settings
 syntax on                      " syntax highlighting
 set number                     " line numbers
-set relativenumber             " show relative numbers
+" set relativenumber             " show relative numbers
 set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
@@ -32,48 +32,28 @@ set noshowmode        " mode is shown in status manually
 set nowrap            " do not wrap lines
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
-
+set whichwrap=<,>,[,],h,l " go to next line after last character
 " My mappings
 
+" jk = normal mode
+" inoremap jk <Esc>
 " Ctrl + Z, undo
 inoremap <C-z> <Esc>ua
-" Ctrl + X, cut
-vnoremap <C-x> d<Esc>i
-" Ctrl + C, copy
-vnoremap <C-c> y<Esc>i
 " Ctrl + V, paste
 inoremap <C-v> <Esc>pa
 " Ctrl + S, save
 inoremap <C-s> <Esc>:w<CR>a
-" Ctrl + X, exit
-inoremap <c-x> <Esc>:q<CR>
-" Shift + Arrow, selection
-nnoremap <S-Up> v<Up>
-nnoremap <S-Down> v<Down>
-nnoremap <S-Left> v<Left>
-nnoremap <S-Right> v<Right>
-vnoremap <S-Up> <Up>
-vnoremap <S-Down> <Down>
-vnoremap <S-Left> <Left>
-vnoremap <S-Right> <Right>
-inoremap <S-Up> <Esc>v<Up>
-inoremap <S-Down> <Esc>v<Down>
-inoremap <S-Left> <Right><Esc>v<Left>
-inoremap <S-Right> <Right><Esc>v<Right>
-
-" Ctrl + U, uppering word
-" inoremap <C-u> <Esc>lviwUi
-" move to start of line
-" nnoremap H 0
-" move to end of line
-" nnoremap L $
-" move line down
-" nnoremap - ddp
-" move line up
-" nnoremap _ ddkP
+nnoremap <C-s> :w<CR>
+" Alt + H, remove highlighting
+nnoremap <M-h> :noh<CR>
+inoremap <M-h> <Esc>:noh<CR>a
+" Ctrl + Q, exit
+inoremap <C-q> <Esc>:q<CR>
+nnoremap <C-q> :q<CR>
+" Alt + N, go to normal mode
+inoremap <C-.> <Esc>
 
 " Setting statusline begin
-
 let g:currentmode={
        \ 'n'  : 'NORMAL ',
        \ 'v'  : 'VISUAL ',
@@ -106,6 +86,9 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+" Russian language
+" set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -191,6 +174,9 @@ let g:mkdp_page_title = '${name}.md'
 " Formatting tables automatically
 " use '\tm' to enter table mode
 Plug 'dhruvasagar/vim-table-mode'
+
+" LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 

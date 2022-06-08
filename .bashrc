@@ -36,8 +36,14 @@ alias cmr="clear && make && make run"
 # Show uptime (hours & minutes)
 alias up="uptime -p"
 
+# Clear console
+alias cls="clear"
+
+# Open .vimrc
+alias opvimrc="vim ~/.vimrc"
+
 # Open .bashrc
-alias open-bashrc="vim ~/.bashrc"
+alias opbashrc="vim ~/.bashrc"
 
 # Reload .bashrc
 alias reload-bashrc="source ~/.bashrc"
@@ -55,6 +61,24 @@ function mkcd {
     mkdir -p -- "$1" && cd -P -- "$1"
 }
 
+# Add directory to zip
+function zip-dir {
+    file="$1"
+    [[ "${file}" == */ ]] && file="${file: : -1}"
+    zip -r "${file}.zip" "${file}"
+}
+
+function new-file {
+    case "$1" in
+        *.c) cp ~/Templates/C/main.c "$1" ;;
+        *.cpp) cp ~/Templates/C++/main.cpp "$1" ;;
+        *.pas) cp ~/Templates/Free_Pascal/program.pas "$1" ;;
+        *.js) cp ~/Templates/JavaScript/index.js "$1" ;;
+        *.py) cp ~/Templates/Python/main.py "$1" ;;
+        *) echo "Unknown project type" ;;
+    esac
+}
+
 function new-project {
     if [[ "$1" == "c" ]]
     then
@@ -62,6 +86,9 @@ function new-project {
     elif [[ "$1" == "cpp" ]]
     then
         cp -r ~/Templates/C++/ "$2"
+    elif [[ "$1" == "fpc" ]]
+    then
+        cp -r ~/Templates/Free_Pascal "$2"
     elif [[ "$1" == "java" ]]
     then
         cp -r ~/Templates/Java/ "$2"
@@ -71,6 +98,26 @@ function new-project {
     else
         echo "Unknown project type"
     fi
+}
+
+function run {
+    file=$1
+    out="${file%.*}"
+    # out=$(date +'%Y%m%d%H%M%S')
+    flags="-Wall -Wextra"
+    gcc="gcc ${flags} -std=c11 ${file} -o ${out}"
+    gpp="g++ ${flags} -std=c++17 ${file} -o ${out}"
+    start="./${out} && rm ${out}"
+    case "$1" in
+        *.c) cmd="${gcc} && ${start}" ;;
+        *.cpp) cmd="${gpp} && ${start}" ;;
+        *.pas) cmd="fpc -l- -v0 ${file} && ${start} *.o" ;;
+        *.js) cmd="node $1" ;;
+        *.py) cmd="python $1" ;;
+        *) echo "Unknown project type" ;;
+    esac
+    echo $cmd
+    eval $cmd
 }
 
 # Copy file path to clipboard
@@ -88,3 +135,5 @@ PS1="[\u@\H \W]$ "
 # Add PATH
 # tg
 export PATH="/home/andrey/.local/bin:$PATH"
+
+HISTTIMEFORMAT="%Y-%m-%d %T "

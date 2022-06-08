@@ -1,0 +1,126 @@
+! ~~~~~ References ~~~~~
+! 1. https://www.x.org/releases/X11R6.7.0/doc/xterm.1.html
+! 2. https://jlk.fjfi.cvut.cz/arch/manpages/man/xterm.1
+! 3. https://wiki.archlinux.org/index.php/Xterm
+! 4. http://www.futurile.net/2016/06/14/xterm-setup-and-truetype-font-configuration/
+! 5. http://www.futurile.net/2016/06/15/xterm-256color-themes-molokai-terminal-theme/
+! 6. https://unix.stackexchange.com/questions/216723/xterm-or-xterm-in-configuration-file
+! 7. https://github.com/gotbletu/shownotes/blob/master/xterm_xresources.md
+
+!~~~~~~~~~~ Syntax specifics and XTerm vs xterm ~~~~~~~~~~~
+! In general Class names begin with capital letter whereas 
+! Instance names begin with lowercase one.
+! Therefore XTerm and xterm describe the same application but the capital
+! one describes the class (all cases of instances) whereas the lowrcase 
+! a particular instance of the class.
+! Two of the available application classes are XTerm and UXTerm.
+! In practice (daily usage) we would like all xterm instances to launch with
+! the same properties and therefore we can set the properties of XTerm class
+! instead of xterm instance. That's why the XTerm is used below. 
+! X11 resources have a name which consists of a series of components 
+! separated by a dot or asterisk: 
+!    application.widget.property or application*widget.property
+! e.g. XTerm.vt100.geometry 
+! defines the geometry property of vt100 widget which belongs to XTerm class
+! the use of asterisk (*) wildcard as seperator makes the resource settings work 
+! for either the application or widget:
+! e.g. XTerm*vt100.geometry
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+! Save this file as .Xresources in your home directory !
+
+! ## Enable a color supported XTerm ##
+XTerm.termName: xterm-256color
+
+! ## Set xterm window size ##
+XTerm*VT100.geometry: 80x24
+
+! ## Set font and fontsize ##
+XTerm*faceName: Monospace
+XTerm*faceSize: 12
+
+! VT Font Menu: Unreadable
+XTerm*faceSize1: 8
+! VT Font Menu: Tiny
+XTerm*faceSize2: 10
+! VT Font Menu: Small
+XTerm*faceSize3: 12
+! VT Font Menu: Medium
+XTerm*faceSize4: 16
+! VT Font Menu: Large
+XTerm*faceSize5: 22
+! VT Font Menu: Huge
+XTerm*faceSize6: 24
+
+! ## Scrollbar ##
+XTerm*vt100.scrollBar: false
+
+! Do not scroll when there is new input
+XTerm*scrollTtyOutput: false
+
+! Scrolling by using Shift-PageUp / Shift-PageDown or mousewheel by default ##
+! Lines of output you can scroll back over
+XTerm*saveLines: 15000
+
+! Enable copy/paste hotkeyes (mouse highlight = copy ,  shift+Insert = paste)
+XTerm*selectToClipboard: true
+
+! ## Select text ##
+XTerm*highlightSelection: true
+! Remove trailing spaces
+XTerm*trimSelection: true
+
+! ## Keybindings ##
+XTerm*vt100.translations: #override \n\
+  Ctrl <Key>-: smaller-vt-font() \n\
+  Ctrl <Key>+: larger-vt-font() \n\
+  Ctrl <Key>0: set-vt-font(d) \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+! ~~~~~~~~~~~~~~~~~~
+! ## Color Themes ## 
+! ~~~~~~~~~~~~~~~~~~
+!
+! based on snazzy color theme
+! https://github.com/olstenlarck/urxvt-xterm-snazzy/blob/7c34009a19ade65271e26ef065c678b0fa2abd0d/.Xdefaults
+!
+XTerm*title: XTerminal
+XTerm*background: #000000
+XTerm*foreground: #ffffff
+
+! original #86a2b0
+XTerm*colorUL: #eff0eb
+XTerm*underlineColor: #eff0eb
+
+! ! black
+XTerm*color0  : #171421
+XTerm*color8  : #171421
+!
+! ! red
+XTerm*color1  : #c01c28
+XTerm*color9  : #c01c28
+!
+! ! green
+XTerm*color2  : #26a269
+XTerm*color10 : #26a269
+!
+! ! yellow
+XTerm*color3  : #a2734c
+XTerm*color11 : #a2734c
+!
+! ! blue
+XTerm*color4  : #12488b
+XTerm*color12 : #12488b
+!
+! ! magenta
+XTerm*color5  : #a347ba
+XTerm*color13 : #a347ba
+!
+! ! cyan
+XTerm*color6  : #2aa1b3
+XTerm*color14 : #2aa1b3
+!
+! ! white
+XTerm*color7  : #d0cfcc
+XTerm*color15 : #d0cfcc
