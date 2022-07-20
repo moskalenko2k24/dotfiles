@@ -19,7 +19,7 @@ set softwrap     # spread overlong lines over multiple screen lines
 set atblanks     # if soft line wrapping is enabled, wrap lines at blanks
 
 ## Appearance (bars, help shortcuts)
-set nohelp       # don't display shortcut lists at the bottom
+#set nohelp       # don't display shortcut lists at the bottom
 set minibar      # show file name and editor state at the bottom
 set constantshow # display the cursor position in the status bar / minibar
 

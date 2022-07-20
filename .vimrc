@@ -6,10 +6,10 @@
 " Main settings
 syntax on                      " syntax highlighting
 set number                     " line numbers
-" set relativenumber             " show relative numbers
 set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
+" set relativenumber           " show relative numbers
 
 " Indent settings
 set autoindent        " autoindent
@@ -26,15 +26,31 @@ set splitright        " new window on the right      (:vsplit file)
 set splitbelow        " new window below the current (:split  file)
  
 " Other
-set mouse=            " disable mouse(enable: mouse=a)
+set mouse=a           " enable mouse(disable: mouse=)
 set belloff=all       " disable bell sound
 set noshowmode        " mode is shown in status manually
 set nowrap            " do not wrap lines
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
 set whichwrap=<,>,[,],h,l " go to next line after last character
+
+let g:markdown_fenced_languages = [
+            \ 'html', 'css', 'javascript',
+            \ 'c', 'cpp', 'cs', 'python']
+
+autocmd BufNewFile *.c 0r ~/Templates/C/main.c
+autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
+autocmd BufNewFile *.pas 0r ~/Templates/Free_Pascal/program.pas
+autocmd BufNewFile *.java 0r ~/Templates/Java/Program.java
+autocmd BufNewFile *.py 0r ~/Templates/Python/main.py
+autocmd BufNewFile *.js 0r ~/Templates/JavaScript/index.js
+autocmd BufNewFile *.html 0r ~/Templates/index.html
+
+autocmd BufRead,BufNewFile *.pas set tabstop=2 shiftwidth=2
+
 " My mappings
 
+let mapleader = ","
 " jk = normal mode
 " inoremap jk <Esc>
 " Ctrl + Z, undo
@@ -47,11 +63,11 @@ nnoremap <C-s> :w<CR>
 " Alt + H, remove highlighting
 nnoremap <M-h> :noh<CR>
 inoremap <M-h> <Esc>:noh<CR>a
+"   , + H, remove highlighting
+nnoremap <Leader>h :noh<CR>
 " Ctrl + Q, exit
 inoremap <C-q> <Esc>:q<CR>
 nnoremap <C-q> :q<CR>
-" Alt + N, go to normal mode
-inoremap <C-.> <Esc>
 
 " Setting statusline begin
 let g:currentmode={
@@ -128,8 +144,10 @@ Plug 'sickill/vim-pasta'
 
 " File tree
 Plug 'preservim/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 " Open file tree with Ctrl + N
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
+" nnoremap <C-n> :NERDTreeToggle<CR>
 " Ingore some directories
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -176,7 +194,7 @@ let g:mkdp_page_title = '${name}.md'
 Plug 'dhruvasagar/vim-table-mode'
 
 " LSP
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
