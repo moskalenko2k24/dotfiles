@@ -21,8 +21,22 @@ alias vim="vimx"
 alias ..="cd .."
 alias ...="cd ../.."
 
+# My cd aliases
+alias cd-projects="cd ~/Projects"
+alias cd-labs="cd ~/Labs"
+alias cd-notes="cd ~/Notes"
+alias cd-notesprivate="cd ~/NotesPrivate"
+alias cd-giftbox="cd ~/Projects/giftbox"
+alias cd-giftboxfront="cd ~/Projects/giftbox-front"
+alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
+
+# Open Nautilus (current dir)
+alias nau="nautilus . &"
+
 # Show all files
 alias lsa="ls -A"
+
+alias lsl="ls -l"
 
 # Copy recursive
 alias cpr="cp -r"
@@ -45,8 +59,18 @@ alias opvimrc="vim ~/.vimrc"
 # Open .bashrc
 alias opbashrc="vim ~/.bashrc"
 
+# Open XTerm config
+alias opxterm="vim ~/XTerm"
+
+# Open Tmux config
+alias optmux="vim ~/.tmux.conf"
+
 # Reload .bashrc
 alias reload-bashrc="source ~/.bashrc"
+
+# Aliases for soft
+alias ff="firefox"
+alias tg="telegram-desktop"
 
 alias gits="git status"
 
@@ -58,7 +82,21 @@ alias gitp="git push"
 
 # Command to create directory and go there
 function mkcd {
-    mkdir -p -- "$1" && cd -P -- "$1"
+    newdir=$(date '+%Y-%m-%d')
+    # if there is no param
+    # create directory 'yyyy-mm-dd'
+    if [ $# -eq 0 ]
+    then
+        mkdir -p "${newdir}" && cd "${newdir}"
+    else
+        mkdir -p -- "$1" && cd -P -- "$1"
+    fi
+}
+
+# Go to dir with name yyyy-mm-dd
+function cd-date {
+    dir=$(date '+%Y-%m-%d')
+    cd "${dir}"
 }
 
 # Add directory to zip
@@ -105,19 +143,32 @@ function run {
     out="${file%.*}"
     # out=$(date +'%Y%m%d%H%M%S')
     flags="-Wall -Wextra"
-    gcc="gcc ${flags} -std=c11 ${file} -o ${out}"
-    gpp="g++ ${flags} -std=c++17 ${file} -o ${out}"
-    start="./${out} && rm ${out}"
+    rem=""
     case "$1" in
-        *.c) cmd="${gcc} && ${start}" ;;
-        *.cpp) cmd="${gpp} && ${start}" ;;
-        *.pas) cmd="fpc -l- -v0 ${file} && ${start} *.o" ;;
+        *.c)
+            cmd="gcc ${flags} -std=c11 ${file} -o ${out} && ./${out}"
+            rem="rm ${out}"
+            ;;
+        *.cpp)
+            cmd="g++ ${flags} -std=c++17 ${file} -o ${out} && ./${out}"
+            rem="rm ${out}"
+            ;;
+        *.pas)
+            cmd="fpc -l- -v0 ${file} && ./${out}"
+            rem="rm ${out} *.o"
+            ;;
         *.js) cmd="node $1" ;;
         *.py) cmd="python $1" ;;
+        *.java)
+            cmd="javac ${file}" ;;
         *) echo "Unknown project type" ;;
     esac
     echo $cmd
-    eval $cmd
+    eval "${cmd};${rem}"
+}
+
+function cr {
+    clear && run $1
 }
 
 # Copy file path to clipboard
@@ -131,9 +182,7 @@ bind 'set bell-style none'
 # Custom prompt
 # [user@host dir]$ 
 PS1="[\u@\H \W]$ "
-
-# Add PATH
-# tg
-export PATH="/home/andrey/.local/bin:$PATH"
+# full path\n
+# PS1="\w\n$ "
 
 HISTTIMEFORMAT="%Y-%m-%d %T "
