@@ -65,9 +65,15 @@ nnoremap <M-h> :noh<CR>
 inoremap <M-h> <Esc>:noh<CR>a
 "   , + H, remove highlighting
 nnoremap <Leader>h :noh<CR>
+"   , + S, split lines
+nnoremap <Leader>s i<CR><Esc>
 " Ctrl + Q, exit
 inoremap <C-q> <Esc>:q<CR>
 nnoremap <C-q> :q<CR>
+
+" Go to definition in js files
+" using gd command
+autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
 
 " Setting statusline begin
 let g:currentmode={
@@ -194,7 +200,7 @@ let g:mkdp_page_title = '${name}.md'
 Plug 'dhruvasagar/vim-table-mode'
 
 " LSP
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
