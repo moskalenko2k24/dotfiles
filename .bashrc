@@ -33,18 +33,16 @@ alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
 # Open Nautilus (current dir)
 alias nau="nautilus . &"
 
-# Show all files
+# ls aliases
+alias ls="ls --color --group-directories-first"
+alias ll="ls -l"
 alias lsa="ls -A"
-
-alias lsl="ls -l"
 
 # Copy recursive
 alias cpr="cp -r"
 
-# Make & run
+# (Clear &) make & run program
 alias mr="make && make run"
-
-# Clear & run program
 alias cmr="clear && make && make run"
 
 # Show uptime (hours & minutes)
@@ -53,16 +51,10 @@ alias up="uptime -p"
 # Clear console
 alias cls="clear"
 
-# Open .vimrc
-alias opvimrc="vim ~/.vimrc"
-
-# Open .bashrc
-alias opbashrc="vim ~/.bashrc"
-
-# Open XTerm config
+# Opening configs
 alias opxterm="vim ~/XTerm"
-
-# Open Tmux config
+alias opvimrc="vim ~/.vimrc"
+alias opbashrc="vim ~/.bashrc"
 alias optmux="vim ~/.tmux.conf"
 
 # Reload .bashrc
@@ -72,12 +64,10 @@ alias reload-bashrc="source ~/.bashrc"
 alias ff="firefox"
 alias tg="telegram-desktop"
 
+# Aliases for git
 alias gits="git status"
-
 alias gita="git add"
-
 alias gitc="git commit"
-
 alias gitp="git push"
 
 # Command to create directory and go there
@@ -182,7 +172,10 @@ bind 'set bell-style none'
 # Custom prompt
 # [user@host dir]$ 
 PS1="[\u@\H \W]$ "
+
+# Alternative prompt
 # full path\n
 # PS1="\w\n$ "
 
+# Show date / time in history
 HISTTIMEFORMAT="%Y-%m-%d %T "
