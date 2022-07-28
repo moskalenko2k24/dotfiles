@@ -49,33 +49,37 @@ autocmd BufNewFile *.html 0r ~/Templates/index.html
 autocmd BufRead,BufNewFile *.pas set tabstop=2 shiftwidth=2
 
 " My mappings
-
 let mapleader = ","
-" jk = normal mode
-" inoremap jk <Esc>
-" Ctrl + Z, undo
+" Ctrl + Z = undo
 inoremap <C-z> <Esc>ua
-" Ctrl + V, paste
+" Ctrl + V = paste
 inoremap <C-v> <Esc>pa
-" Ctrl + S, save
+" Ctrl + S = save
 inoremap <C-s> <Esc>:w<CR>a
 nnoremap <C-s> :w<CR>
-" Alt + H, remove highlighting
-nnoremap <M-h> :noh<CR>
-inoremap <M-h> <Esc>:noh<CR>a
-"   , + H, remove highlighting
+"    , + H = remove search highlighting
 nnoremap <Leader>h :noh<CR>
-"   , + S, split lines
+"    , + S = split across two lines
 nnoremap <Leader>s i<CR><Esc>
-" Ctrl + Q, exit
+" Ctrl + Q = exit
 inoremap <C-q> <Esc>:q<CR>
 nnoremap <C-q> :q<CR>
+" Ctrl + h / l = left / right window
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+" Ctrl + Arrow = prev / next tab
+nnoremap <C-Left> gT
+nnoremap <C-Right> gt
 
-" Go to definition in js files
-" using gd command
-autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
+" Go to definition in js files using gd
+autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
+" Simpler way to it (but not perfect)
+" autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
+" Open file in new tab
+" autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5l<C-w>gf
 
-" Setting statusline begin
+" STATUSLINE begin
+" MODE filename[modified] encoding[line ending], line:column percentage
 let g:currentmode={
        \ 'n'  : 'NORMAL ',
        \ 'v'  : 'VISUAL ',
@@ -86,7 +90,6 @@ let g:currentmode={
        \ 'Rv' : 'V·Replace ',
        \ 'c'  : 'Command ',
        \}
-
 " clear statusline
 set statusline=
 " mode (insert, normal etc.)
@@ -100,17 +103,17 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=%=
 " position: 'line:column percentage'
 set statusline+=%l:%c\ %p%%
+" STATUSLINE end
 
-" Setting statusline end
-
-" Hot reload
+" Hot reload of .vimrc config
+" (load new config on save)
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
 " Russian language
-" set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -138,6 +141,8 @@ let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
 Plug 'jiangmiao/auto-pairs'
 
 " Easily delete, change and add surroundings
+" cs'" = 'text' -> "text"
+"   S) =   text -> (text)
 Plug 'tpope/vim-surround'
 
 " Simple commenting
@@ -196,7 +201,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 let g:mkdp_page_title = '${name}.md'
 
 " Formatting tables automatically
-" use '\tm' to enter table mode
+" use '<Leader>tm' to enter table mode
 Plug 'dhruvasagar/vim-table-mode'
 
 " LSP
