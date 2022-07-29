@@ -70,9 +70,14 @@ nnoremap <C-h> <C-w>h
 " Ctrl + Arrow = prev / next tab
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
+" Ctrl + PgUp   = prev tab
+nnoremap <PageUp> gT
+" Ctrl + PgDown = next tab
+nnoremap <PageDown> gt
 
 " Go to definition in js files using gd
 autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
+autocmd FileType javascript nnoremap пв m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " Simpler way to it (but not perfect)
 " autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
 " Open file in new tab
@@ -153,34 +158,17 @@ Plug 'tyru/caw.vim'
 " adjusted to destination context
 Plug 'sickill/vim-pasta'
 
-" File tree
+" File tree plugin, Ctrl + N
 Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-" Open file tree with Ctrl + N
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
-" nnoremap <C-n> :NERDTreeToggle<CR>
 " Ingore some directories
 let g:NERDTreeIgnore = ['^node_modules$']
 
-" File navigation plugin
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Status line
-" Plug 'itchyny/lightline.vim'
-" let g:lightline = {
-"    \ 'colorscheme': 'wombat',
-"    \ 'active': {
-"    \   'left': [ [ 'mode' ], 
-"    \             [ 'filename', 'modified' ],
-"    \             [ 'fileencoding', 'fileformat' ] ],
-"    \   'right': [ [ 'percent' ], [ 'lineinfo' ] ]
-"    \ }
-"\}
-" MODE, filename[modified] encoding[line ending]          x:y percent
-
-" Another file navigation plugin
+" File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+nnoremap <C-p> :GFiles<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
