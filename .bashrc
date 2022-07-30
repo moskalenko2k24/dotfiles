@@ -26,8 +26,8 @@ alias cd-projects="cd ~/Projects"
 alias cd-labs="cd ~/Labs"
 alias cd-notes="cd ~/Notes"
 alias cd-notesprivate="cd ~/NotesPrivate"
-alias cd-giftbox="cd ~/Projects/giftbox"
-alias cd-giftboxfront="cd ~/Projects/giftbox-front"
+alias cd-giftbox="cd ~/Projects/Giftbox"
+alias cd-giftboxfront="cd ~/Projects/Giftbox/ClientApp"
 alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
 
 # Open Nautilus (current dir)
