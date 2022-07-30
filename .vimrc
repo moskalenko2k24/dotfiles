@@ -34,9 +34,13 @@ set cursorline        " highlight active line
 set laststatus=2      " always show statusline
 set whichwrap=<,>,[,],h,l " go to next line after last character
 
+" Show syntax highlighting
+" in markdown code blocs
+" c = C, cpp = C++, cs = C#
 let g:markdown_fenced_languages = [
-            \ 'html', 'css', 'javascript',
-            \ 'c', 'cpp', 'cs', 'python']
+            \ 'html', 'css', 
+            \ 'c', 'cpp', 'cs',
+            \ 'javascript', 'python']
 
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
@@ -76,8 +80,9 @@ nnoremap <PageUp> gT
 nnoremap <PageDown> gt
 
 " Go to definition in js files using gd
-autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
-autocmd FileType javascript nnoremap пв m':keepjumps normal!gd$Blgf<CR> :noh<CR>
+autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR> :noh<CR>
+" autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
+" autocmd FileType javascript nnoremap пв m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " Simpler way to it (but not perfect)
 " autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
 " Open file in new tab
@@ -164,6 +169,9 @@ Plug 'jistr/vim-nerdtree-tabs'
 nnoremap <C-n> :NERDTreeTabsToggle<CR>
 " Ingore some directories
 let g:NERDTreeIgnore = ['^node_modules$']
+" Don't run on startup
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_open_on_console_startup = 0
 
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -193,7 +201,7 @@ let g:mkdp_page_title = '${name}.md'
 Plug 'dhruvasagar/vim-table-mode'
 
 " LSP
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
