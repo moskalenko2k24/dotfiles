@@ -32,7 +32,21 @@ set noshowmode        " mode is shown in status manually
 set nowrap            " do not wrap lines
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
-set whichwrap=<,>,[,],h,l " go to next line after last character
+
+" Wrap settings
+" go to next line after last character
+set whichwrap=<,>,[,],h,l
+" Wrap long lines
+" (doesn't insert line break character)
+set wrap
+" on up / down move to visual
+" not logical line
+nnoremap k gk
+nnoremap j gj
+nnoremap <Up> gk
+nnoremap <Down> gj
+inoremap <Up> <Esc>gka
+inoremap <Down> <Esc>gja
 
 " Show syntax highlighting
 " in markdown code blocs
@@ -80,7 +94,7 @@ nnoremap <PageUp> gT
 nnoremap <PageDown> gt
 
 " Go to definition in js files using gd
-autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR> :noh<CR>
+autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5l<C-w>gf<CR> :noh<CR>
 " autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " autocmd FileType javascript nnoremap пв m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " Simpler way to it (but not perfect)
@@ -123,6 +137,7 @@ augroup myvimrc
 augroup END
 
 " Russian language
+set langremap
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " Plugins
@@ -173,10 +188,30 @@ let g:NERDTreeIgnore = ['^node_modules$']
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 
+" Plugin which finds project root
+Plug 'airblade/vim-rooter'
+let g:rooter_manual_only = 0
+let g:rooter_change_directory_for_non_project_files = ''
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
+
+" function! MyFunc()
+"     echo 'MyFunc() begin'
+"     let status = system("git status")
+"     if v:shell_error
+"         echo 'v:shell_error cmd'
+"         execute "normal! :Files<CR>"
+"     else
+"         echo 'else cmd'
+"         execute "normal! :GFiles<CR>"
+"     endif
+"     echo 'MyFunc() end'
+" endfunction
+
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :GFiles<CR>
+" nnoremap <C-p> :call MyFunc()<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
