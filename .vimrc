@@ -93,6 +93,15 @@ nnoremap <PageUp> gT
 " Ctrl + PgDown = next tab
 nnoremap <PageDown> gt
 
+" Autocompletion on Ctrl-Space as in typical IDE
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ? "\<lt>C-n>" :
+                        \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+                        \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+                        \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
+inoremap <Down> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>
+inoremap <Up> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>
+
 " Go to definition in js files using gd
 autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5l<C-w>gf<CR> :noh<CR>
 " autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
@@ -174,7 +183,7 @@ Plug 'tpope/vim-surround'
 " (un)comment - gcc
 Plug 'tyru/caw.vim'
 
-" Pasting with with indentation
+" Pasting with indentation
 " adjusted to destination context
 Plug 'sickill/vim-pasta'
 
@@ -207,6 +216,7 @@ endfunction
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :call ListFiles()<CR>
+inoremap <C-p> <Esc>:call ListFiles()<CR> 
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
