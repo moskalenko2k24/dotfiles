@@ -194,24 +194,19 @@ let g:rooter_manual_only = 0
 let g:rooter_change_directory_for_non_project_files = ''
 let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
 
-" function! MyFunc()
-"     echo 'MyFunc() begin'
-"     let status = system("git status")
-"     if v:shell_error
-"         echo 'v:shell_error cmd'
-"         execute "normal! :Files<CR>"
-"     else
-"         echo 'else cmd'
-"         execute "normal! :GFiles<CR>"
-"     endif
-"     echo 'MyFunc() end'
-" endfunction
+function! ListFiles()
+    let status = system("git status")
+    if v:shell_error
+        Files
+    else
+        GFiles
+    endif
+endfunction
 
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-nnoremap <C-p> :GFiles<CR>
-" nnoremap <C-p> :call MyFunc()<CR>
+nnoremap <C-p> :call ListFiles()<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
