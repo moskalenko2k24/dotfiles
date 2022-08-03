@@ -1,3 +1,6 @@
+set window-height 3000
+set window-width 3000
+
 set selection-clipboard clipboard
 
 map [normal] = zoom in
@@ -5,3 +8,7 @@ map [fullscreen] = zoom in
 
 map [normal] f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
+map [normal] а toggle_fullscreen
+map [fullscreen] а toggle_fullscreen
+
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
