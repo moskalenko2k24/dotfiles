@@ -6,6 +6,7 @@
 " Main settings
 syntax on                      " syntax highlighting
 set number                     " line numbers
+set hidden                     " opening a new file when the current has unsaved changes
 set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
@@ -72,6 +73,8 @@ let mapleader = ","
 inoremap <C-z> <Esc>ua
 " Ctrl + V = paste
 inoremap <C-v> <Esc>pa
+" Ctrl + F = find
+inoremap <C-f> <Esc>/
 " Ctrl + S = save
 inoremap <C-s> <Esc>:w<CR>a
 nnoremap <C-s> :w<CR>
@@ -101,6 +104,8 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ? "\<lt>C-n>" :
 imap <C-@> <C-Space>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>
 inoremap <Up> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>
+
+nnoremap <Leader>v :vsplit<CR>
 
 " Go to definition in js files using gd
 autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5l<C-w>gf<CR> :noh<CR>
@@ -153,6 +158,7 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLM
 call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
+Plug 'mkitt/tabline.vim'
 
 " Automatic keyboard layout switching 
 Plug 'lyokha/vim-xkbswitch'
@@ -182,26 +188,30 @@ Plug 'tpope/vim-surround'
 " Simple commenting
 " (un)comment - gcc
 Plug 'tyru/caw.vim'
+inoremap <C-/> <Esc>gcc<Esc>a
 
 " Pasting with indentation
 " adjusted to destination context
 Plug 'sickill/vim-pasta'
 
 " File tree plugin, Ctrl + N
-Plug 'preservim/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-nnoremap <C-n> :NERDTreeTabsToggle<CR>
+" Plug 'preservim/nerdtree'
+" Plug 'jistr/vim-nerdtree-tabs'
+" nnoremap <C-n> :NERDTreeTabsToggle<CR>
 " Ingore some directories
-let g:NERDTreeIgnore = ['^node_modules$']
+" let g:NERDTreeIgnore = ['^node_modules$']
 " Don't run on startup
-let g:nerdtree_tabs_open_on_gui_startup = 0
-let g:nerdtree_tabs_open_on_console_startup = 0
+" let g:nerdtree_tabs_open_on_gui_startup = 0
+" let g:nerdtree_tabs_open_on_console_startup = 0
+
+" Show as file tree
+" let g:netrw_liststyle = 3
 
 " Plugin which finds project root
-Plug 'airblade/vim-rooter'
-let g:rooter_manual_only = 0
-let g:rooter_change_directory_for_non_project_files = ''
-let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
+" Plug 'airblade/vim-rooter'
+" let g:rooter_manual_only = 0
+" let g:rooter_change_directory_for_non_project_files = ''
+" let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
 
 function! ListFiles()
     let status = system("git status")
@@ -217,14 +227,17 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :call ListFiles()<CR>
 inoremap <C-p> <Esc>:call ListFiles()<CR> 
+nnoremap <Leader>/ :Rg<Space>
+nnoremap <Leader>f :call ListFiles()<CR>
+nnoremap <Leader>b :Buffers<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
 " TeX / LaTeX
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 " Open compiled file in Zathura
-let g:vimtex_view_method = 'zathura'
+" let g:vimtex_view_method = 'zathura'
 
 " JS / TS (JSX highlighting)
 Plug 'yuezk/vim-js'
@@ -242,6 +255,7 @@ Plug 'dhruvasagar/vim-table-mode'
 
 " LSP
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 
