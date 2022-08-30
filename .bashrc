@@ -10,6 +10,12 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="~/.local/bin:$PATH"
+export PYTHONPATH=$PYTHONPATH:"~/Labs/2022-08-08/snake"
+
+# flyctl => fly.io
+export FLYCTL_INSTALL="/home/andrey/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # My own commands and aliases
 
@@ -22,20 +28,24 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # My cd aliases
+alias cd-music="cd ~/Music"
+alias cd-downloads="cd ~/Downloads"
+alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
 alias cd-projects="cd ~/Projects"
 alias cd-labs="cd ~/Labs"
 alias cd-notes="cd ~/Notes"
 alias cd-notesprivate="cd ~/NotesPrivate"
+alias cd-books="cd ~/Books/"
+alias cd-booksnew="cd ~/BooksNew/"
 alias cd-giftbox="cd ~/Projects/Giftbox"
 alias cd-giftboxfront="cd ~/Projects/Giftbox/ClientApp"
-alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
 
 # Open Nautilus (current dir)
 alias nau="nautilus . &"
 
 # ls aliases
 alias ls="ls --color --group-directories-first"
-alias ll="ls -l"
+alias ll="ls -lA"
 alias lsa="ls -A"
 
 # Copy recursive
@@ -53,9 +63,11 @@ alias cls="clear"
 
 # Opening configs
 alias opxterm="vim ~/XTerm"
+alias opnautiterm="vim ~/.config/nautiterm.yml"
 alias opvimrc="vim ~/.vimrc"
 alias opbashrc="vim ~/.bashrc"
 alias optmux="vim ~/.tmux.conf"
+alias opzathurarc="vim ~/.config/zathura/zathurarc"
 
 # Reload .bashrc
 alias reload-bashrc="source ~/.bashrc"
