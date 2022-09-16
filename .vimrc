@@ -1,4 +1,4 @@
-" This .vimrc uses junegunn/vim-plug 
+" This .vimrc uses junegunn/vim-plug
 " Installing vim-plug:
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -20,12 +20,12 @@ set shiftwidth=4      " set shift width to 4 spaces
 
 " Search settings
 set hlsearch          " highlight found text
-set incsearch         " highlight found on typing 
+set incsearch         " highlight found on typing
 
 " Split settings
 set splitright        " new window on the right      (:vsplit file)
 set splitbelow        " new window below the current (:split  file)
- 
+
 " Other
 set mouse=a           " enable mouse(disable: mouse=)
 set belloff=all       " disable bell sound
@@ -49,13 +49,18 @@ nnoremap <Down> gj
 inoremap <Up> <Esc>gka
 inoremap <Down> <Esc>gja
 
+" Go to first non-space character
+" nnoremap 0 ^
+" Go to first character
+" nnoremap 00 0
+
 " Show syntax highlighting
 " in markdown code blocs
 " c = C, cpp = C++, cs = C#
 let g:markdown_fenced_languages = [
-            \ 'html', 'css', 
+            \ 'html', 'css',
             \ 'c', 'cpp', 'cs',
-            \ 'javascript', 'python']
+            \ 'javascript', 'python', 'bash']
 
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
@@ -80,11 +85,17 @@ inoremap <C-s> <Esc>:w<CR>a
 nnoremap <C-s> :w<CR>
 "    , + H = remove search highlighting
 nnoremap <Leader>h :noh<CR>
+"    , + T = create tab
+nnoremap <Leader>t :tabe %<CR>
+"  Alt + H = remove search highlighting
+nnoremap <M-h> :noh<CR>
 "    , + S = split across two lines
 nnoremap <Leader>s i<CR><Esc>
 " Ctrl + Q = exit
 inoremap <C-q> <Esc>:q<CR>
 nnoremap <C-q> :q<CR>
+" Ctrl + Backspace = remove word
+inoremap <C-BS> <C-W>
 " Ctrl + h / l = left / right window
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
@@ -108,7 +119,7 @@ inoremap <Up> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>
 nnoremap <Leader>v :vsplit<CR>
 
 " Go to definition in js files using gd
-autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5l<C-w>gf<CR> :noh<CR>
+autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR> :noh<CR>
 " autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " autocmd FileType javascript nnoremap пв m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " Simpler way to it (but not perfect)
@@ -160,7 +171,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'mkitt/tabline.vim'
 
-" Automatic keyboard layout switching 
+" let g:better_escape_shortcut = ['jk', 'jj', 'kj']
+" Use jk to go to normal mode
+Plug 'nvim-zh/better-escape.vim'
+
+" Automatic keyboard layout switching
 Plug 'lyokha/vim-xkbswitch'
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/local/lib/libg3kbswitch.so'
@@ -184,6 +199,11 @@ Plug 'jiangmiao/auto-pairs'
 " cs'" = 'text' -> "text"
 "   S) =   text -> (text)
 Plug 'tpope/vim-surround'
+
+" Auto-closing tags
+" Plug 'alvan/vim-closetag'
+" let g:closetag_filenames = '*.html,*.jsx,*.tsx,*.js,*.ts'
+" let g:closetag_shortcut = '</'
 
 " Simple commenting
 " (un)comment - gcc
@@ -226,10 +246,12 @@ endfunction
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :call ListFiles()<CR>
-inoremap <C-p> <Esc>:call ListFiles()<CR> 
+inoremap <C-p> <Esc>:call ListFiles()<CR>
 nnoremap <Leader>/ :Rg<Space>
+nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>f :call ListFiles()<CR>
 nnoremap <Leader>b :Buffers<CR>
+inoremap <C-S-t> <Esc>:tabnew<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
