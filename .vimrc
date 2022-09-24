@@ -10,6 +10,7 @@ set hidden                     " opening a new file when the current has unsaved
 set clipboard=unnamedplus      " use system clipboard (Linux)
 set encoding=utf-8             " default encoding
 set fileencodings=utf-8,cp1251 " automatically detected encodings
+set directory=~/.vim/swapfiles//
 " set relativenumber           " show relative numbers
 
 " Indent settings
@@ -30,29 +31,23 @@ set splitbelow        " new window below the current (:split  file)
 set mouse=a           " enable mouse(disable: mouse=)
 set belloff=all       " disable bell sound
 set noshowmode        " mode is shown in status manually
-set nowrap            " do not wrap lines
+set wrap              " wrap long lines
 set cursorline        " highlight active line
 set laststatus=2      " always show statusline
 
 " Wrap settings
 " go to next line after last character
 set whichwrap=<,>,[,],h,l
-" Wrap long lines
+
 " (doesn't insert line break character)
-set wrap
 " on up / down move to visual
 " not logical line
 nnoremap k gk
 nnoremap j gj
 nnoremap <Up> gk
 nnoremap <Down> gj
-inoremap <Up> <Esc>gka
-inoremap <Down> <Esc>gja
-
-" Go to first non-space character
-" nnoremap 0 ^
-" Go to first character
-" nnoremap 00 0
+" inoremap <Up> <Esc>gka
+" inoremap <Down> <Esc>gja
 
 " Show syntax highlighting
 " in markdown code blocs
@@ -73,50 +68,52 @@ autocmd BufNewFile *.html 0r ~/Templates/index.html
 autocmd BufRead,BufNewFile *.pas set tabstop=2 shiftwidth=2
 
 " My mappings
-let mapleader = ","
-" Ctrl + Z = undo
+"
+" standard mappings
+" Ctrl + z, s, v, f
+" (undo, save, paste, find)
+" for insert mode, and Ctrl + q = quit
 inoremap <C-z> <Esc>ua
-" Ctrl + V = paste
 inoremap <C-v> <Esc>pa
-" Ctrl + F = find
 inoremap <C-f> <Esc>/
-" Ctrl + S = save
 inoremap <C-s> <Esc>:w<CR>a
-nnoremap <C-s> :w<CR>
-"    , + H = remove search highlighting
-nnoremap <Leader>h :noh<CR>
-"    , + T = create tab
-nnoremap <Leader>t :tabe %<CR>
-"  Alt + H = remove search highlighting
-nnoremap <M-h> :noh<CR>
-"    , + S = split across two lines
-nnoremap <Leader>s i<CR><Esc>
-" Ctrl + Q = exit
 inoremap <C-q> <Esc>:q<CR>
+
+" Type : without shift
+nnoremap ; :
+" <Leader> key
+let mapleader = ","
+nnoremap <F3> :e ~/.vimrc<CR>
+" Ctrl + s, q
+" (save, quit) for normal mode
+nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
-" Ctrl + Backspace = remove word
-inoremap <C-BS> <C-W>
-" Ctrl + h / l = left / right window
+"    , + h = remove search highlighting
+nnoremap <Leader>h :nohlsearch<CR>
+"    , + s = split across two lines
+nnoremap <Leader>s i<CR><Esc>
+
+" Tabs and windows
+" Create vertical split (open same file)
+nnoremap <Leader>v :vsplit<CR>
+" Create tab (open same file)
+nnoremap <Leader>t :tabe %<CR>
+" Ctrl + h / l = go left / right window
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
-" Ctrl + Arrow = prev / next tab
+" Ctrl + Left / Right = go prev / next tab
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
-" Ctrl + PgUp   = prev tab
-nnoremap <PageUp> gT
-" Ctrl + PgDown = next tab
-nnoremap <PageDown> gt
 
 " Autocompletion on Ctrl-Space as in typical IDE
+" inoremap <C-Space> <C-n>
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ? "\<lt>C-n>" :
-                        \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-                        \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-                        \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+                       \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+                       \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+                       \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 inoremap <Down> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>
 inoremap <Up> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>
-
-nnoremap <Leader>v :vsplit<CR>
 
 " Go to definition in js files using gd
 autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR> :noh<CR>
@@ -156,10 +153,7 @@ set statusline+=%l:%c\ %p%%
 
 " Hot reload of .vimrc config
 " (load new config on save)
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+au BufWritePost  ~/.vimrc :source ~/.vimrc
 
 " Russian language
 set langremap
@@ -199,6 +193,9 @@ Plug 'jiangmiao/auto-pairs'
 " cs'" = 'text' -> "text"
 "   S) =   text -> (text)
 Plug 'tpope/vim-surround'
+
+" Showing marks
+Plug 'kshenoy/vim-signature'
 
 " Auto-closing tags
 " Plug 'alvan/vim-closetag'
@@ -245,13 +242,12 @@ endfunction
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-nnoremap <C-p> :call ListFiles()<CR>
-inoremap <C-p> <Esc>:call ListFiles()<CR>
-nnoremap <Leader>/ :Rg<Space>
+inoremap <C-p> <Esc>:Files<CR>
+nnoremap <Leader>/ :Rg<CR>
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>f :call ListFiles()<CR>
+nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
-inoremap <C-S-t> <Esc>:tabnew<CR>
+" nnoremap <Leader>f :call ListFiles()<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
