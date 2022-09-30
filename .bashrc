@@ -26,6 +26,7 @@ bind 'set bell-style none'   # disable bell
 HISTTIMEFORMAT="%Y-%m-%d %T "
 
 # Aliases for basic commands
+alias wh="which"                       # which
 alias cls="clear"                      # clear screen
 alias up="uptime -p"                   # show uptime(hours, minutes)
 alias ls="ls --color --g"              # color ls with --group-directories-first
