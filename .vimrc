@@ -90,10 +90,11 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 "    , + h = remove search highlighting
 nnoremap <Leader>h :nohlsearch<CR>
-"    , + s = split across two lines
-nnoremap <Leader>s i<CR><Esc>
 
 " Tabs and windows
+
+" Create horizontal split (open same file)
+nnoremap <Leader>s :split<CR>
 " Create vertical split (open same file)
 nnoremap <Leader>v :vsplit<CR>
 " Create tab (open same file)
@@ -242,12 +243,11 @@ endfunction
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-inoremap <C-p> <Esc>:Files<CR>
+inoremap <C-p> <Esc>:call ListFiles()<CR>
 nnoremap <Leader>/ :Rg<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
-" nnoremap <Leader>f :call ListFiles()<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
