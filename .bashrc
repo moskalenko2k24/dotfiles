@@ -5,88 +5,74 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# NVM - Node Version Manager
-# Don't change (code was added automatically)
+# Node Version Manager
+# (code was added automatically)
+# Load nvm & load nvm bash_completion
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 export PATH="~/.local/bin:$PATH"
-export PYTHONPATH=$PYTHONPATH:"~/Labs/2022-08-08/snake"
 
 # flyctl => fly.io
 export FLYCTL_INSTALL="/home/andrey/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-# My own commands and aliases
+# PS1="\w\n$ "               # custom prompt = "full path\n"
+PS1="[\u@\H \W]$ "           # custom prompt = "[user@host dir]$ "
+bind 'set bell-style none'   # disable bell
 
-# Use vimx on Fedora
-# (vim with clipboard support)
-alias vim="vimx"
+# Show date / time in history
+HISTTIMEFORMAT="%Y-%m-%d %T "
 
-# Move up
+# Aliases for basic commands
+alias cls="clear"                      # clear screen
+alias up="uptime -p"                   # show uptime(hours, minutes)
+alias ls="ls --color --g"              # color ls with --group-directories-first
+alias ll="ls -lA"                      # show all files, one file per row
+alias lsa="ls -A"                      # show all files
+alias cpr="cp -r"                      # copy directory
+alias mkdir="mkdir -p"                 # create nested directories
+alias nau="nautilus . &"               # open Nautilus in current dir
+alias vim="vimx"                       # use vim with clipboard support
+alias reload-bashrc="source ~/.bashrc" # reload .bashrc
+alias mr="make && make run"            # make + run
+alias cmr="clear && make && make run"  # clear + make + run
+
+# Aliases for git commands
+alias gits="git status"
+alias gita="git add"
+alias gitc="git commit"
+alias gitp="git push"
+
+# Own aliases for cd
 alias ..="cd .."
 alias ...="cd ../.."
-
-# My cd aliases
 alias cd-music="cd ~/Music"
 alias cd-downloads="cd ~/Downloads"
 alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
 alias cd-projects="cd ~/Projects"
 alias cd-labs="cd ~/Labs"
 alias cd-notes="cd ~/Notes"
-alias cd-notesprivate="cd ~/NotesPrivate"
+alias cd-notes-private="cd ~/NotesPrivate"
 alias cd-books="cd ~/Books/"
-alias cd-booksnew="cd ~/BooksNew/"
+alias cd-books-new="cd ~/BooksNew/"
 alias cd-giftbox="cd ~/Projects/Giftbox"
-alias cd-giftboxfront="cd ~/Projects/Giftbox/ClientApp"
+alias cd-giftbox-client="cd ~/Projects/Giftbox/ClientApp/src"
 
-# Open Nautilus (current dir)
-alias nau="nautilus . &"
-
-# ls aliases
-alias ls="ls --color --group-directories-first"
-alias ll="ls -lA"
-alias lsa="ls -A"
-
-# Copy recursive
-alias cpr="cp -r"
-
-# (Clear &) make & run program
-alias mr="make && make run"
-alias cmr="clear && make && make run"
-
-# Show uptime (hours & minutes)
-alias up="uptime -p"
-
-# Clear console
-alias cls="clear"
-
-# Opening configs
+# Aliases for opening configs
 alias opxterm="vim ~/XTerm"
 alias opnautiterm="vim ~/.config/nautiterm.yml"
 alias opvimrc="vim ~/.vimrc"
 alias opbashrc="vim ~/.bashrc"
+alias opinputrc="vim ~/.inputrc"
 alias optmux="vim ~/.tmux.conf"
 alias opzathurarc="vim ~/.config/zathura/zathurarc"
 
-# Reload .bashrc
-alias reload-bashrc="source ~/.bashrc"
-
-# Aliases for soft
-alias ff="firefox"
-alias tg="telegram-desktop"
-
-# Aliases for git
-alias gits="git status"
-alias gita="git add"
-alias gitc="git commit"
-alias gitp="git push"
-
-# Command to create directory and go there
+# Create directory and go there or
+# Create yyyy-mm-dd directory (if no params)
 function mkcd {
     newdir=$(date '+%Y-%m-%d')
-    # if there is no param
-    # create directory 'yyyy-mm-dd'
     if [ $# -eq 0 ]
     then
         mkdir -p "${newdir}" && cd "${newdir}"
@@ -108,6 +94,12 @@ function zip-dir {
     zip -r "${file}.zip" "${file}"
 }
 
+# Copy file path to clipboard
+function cp-path {
+    realpath "${1}" | xclip -sel clip
+}
+
+# Create file with template
 function new-file {
     case "$1" in
         *.c) cp ~/Templates/C/main.c "$1" ;;
@@ -119,6 +111,7 @@ function new-file {
     esac
 }
 
+# Create project (directory) with template
 function new-project {
     if [[ "$1" == "c" ]]
     then
@@ -140,6 +133,7 @@ function new-project {
     fi
 }
 
+# Run one-file project
 function run {
     file=$1
     out="${file%.*}"
@@ -148,11 +142,11 @@ function run {
     rem=""
     case "$1" in
         *.c)
-            cmd="gcc ${flags} -std=c11 ${file} -o ${out} && ./${out}"
+            cmd="gcc ${flags} -std=c11 ${file} -o ${out} -lm && ./${out}"
             rem="rm ${out}"
             ;;
         *.cpp)
-            cmd="g++ ${flags} -std=c++17 ${file} -o ${out} && ./${out}"
+            cmd="g++ ${flags} -std=c++17 ${file} -o ${out} -lm && ./${out}"
             rem="rm ${out}"
             ;;
         *.pas)
@@ -169,25 +163,8 @@ function run {
     eval "${cmd};${rem}"
 }
 
+# Clear screen and
+# run one-file project
 function cr {
     clear && run $1
 }
-
-# Copy file path to clipboard
-function cp-path {
-    realpath "${1}" | xclip -sel clip
-}
-
-# Disable bell
-bind 'set bell-style none'
-
-# Custom prompt
-# [user@host dir]$ 
-PS1="[\u@\H \W]$ "
-
-# Alternative prompt
-# full path\n
-# PS1="\w\n$ "
-
-# Show date / time in history
-HISTTIMEFORMAT="%Y-%m-%d %T "
