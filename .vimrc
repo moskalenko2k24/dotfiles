@@ -4,14 +4,15 @@
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " Main settings
-syntax on                      " syntax highlighting
-set number                     " line numbers
-set hidden                     " opening a new file when the current has unsaved changes
-set clipboard=unnamedplus      " use system clipboard (Linux)
-set encoding=utf-8             " default encoding
-set fileencodings=utf-8,cp1251 " automatically detected encodings
-set directory=~/.vim/swapfiles//
-" set relativenumber           " show relative numbers
+syntax on                        " syntax highlighting
+set number                       " line numbers
+set hidden                       " opening a new file when the current has unsaved changes
+set clipboard=unnamedplus        " use system clipboard (Linux)
+set encoding=utf-8               " default encoding
+set fileencodings=utf-8,cp1251   " automatically detected encodings
+set swapfile                     " enable saving swap files(backup if editor crashes)
+set directory=~/.vim/swapfiles// " path for swap files
+set relativenumber               " show relative numbers
 
 " Indent settings
 set autoindent        " autoindent
@@ -90,6 +91,8 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 "    , + h = remove search highlighting
 nnoremap <Leader>h :nohlsearch<CR>
+"    , + l = add spaces without leaving normal mode
+nnoremap <Leader>l i<Space><Esc>
 
 " Tabs and windows
 
@@ -270,6 +273,8 @@ let g:mkdp_page_title = '${name}.md'
 " Formatting tables automatically
 " use '<Leader>tm' to enter table mode
 Plug 'dhruvasagar/vim-table-mode'
+
+Plug 'mg979/vim-visual-multi'
 
 " LSP
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
