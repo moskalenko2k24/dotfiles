@@ -32,6 +32,7 @@ alias up="uptime -p"                   # show uptime(hours, minutes)
 alias ls="ls --color --g"              # color ls with --group-directories-first
 alias ll="ls -lA"                      # show all files, one file per row
 alias lsa="ls -A"                      # show all files
+alias du="du -sh"                      # disk usage: summary + human readable
 alias cpr="cp -r"                      # copy directory
 alias mkdir="mkdir -p"                 # create nested directories
 alias nau="nautilus . &"               # open Nautilus in current dir
@@ -169,3 +170,5 @@ function run {
 function cr {
     clear && run $1
 }
+
+# cd && clear && echo 'My tmux sessions' && ls -1 *.sh
