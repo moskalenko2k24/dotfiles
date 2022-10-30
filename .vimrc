@@ -3,7 +3,7 @@
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-" Main settings
+" MAIN SETTINGS
 syntax on                        " syntax highlighting
 set number                       " line numbers
 set hidden                       " opening a new file when the current has unsaved changes
@@ -14,88 +14,82 @@ set swapfile                     " enable saving swap files(backup if editor cra
 set directory=~/.vim/swapfiles// " path for swap files
 set relativenumber               " show relative numbers
 
-" Indent settings
-set autoindent        " autoindent
-set expandtab         " use spaces instead of tabs
-set tabstop=4         " set   tab width to 4 spaces
-set shiftwidth=4      " set shift width to 4 spaces
+" INDENT SETTINGS
+set autoindent                   " autoindent
+set expandtab                    " use spaces instead of tabs
+set tabstop=4                    " set   tab width to 4 spaces
+set shiftwidth=4                 " set shift width to 4 spaces
 
-" Search settings
-set hlsearch          " highlight found text
-set incsearch         " highlight found on typing
+" SEARCH SETTINGS
+set hlsearch                     " highlight found text
+set incsearch                    " highlight found on typing
 
-" Split settings
-set splitright        " new window on the right      (:vsplit file)
-set splitbelow        " new window below the current (:split  file)
+" SPLIT SETTINGS
+set splitright                   " new window on the right      (:vsplit file)
+set splitbelow                   " new window below the current (:split  file)
 
-" Other
-set mouse=a           " enable mouse(disable: mouse=)
-set belloff=all       " disable bell sound
-set noshowmode        " mode is shown in status manually
-set wrap              " wrap long lines
-set cursorline        " highlight active line
-set laststatus=2      " always show statusline
+" OTHER SETTINGS
+set mouse=a                      " enable mouse(disable: mouse=)
+set belloff=all                  " disable bell sound
+set noshowmode                   " mode is shown in status manually
+set cursorline                   " highlight active line
+set laststatus=2                 " always show statusline
 
-" Wrap settings
-" go to next line after last character
-set whichwrap=<,>,[,],h,l
+" WRAP SETTINGS
+set wrap                         " show 1 long line as 2 or more lines
+set whichwrap=<,>,[,],h,l        " cycle lines (when press <Right> on last char, go to 1st char of next line)
 
-" (doesn't insert line break character)
-" on up / down move to visual
-" not logical line
-nnoremap k gk
-nnoremap j gj
-nnoremap <Up> gk
-nnoremap <Down> gj
-" inoremap <Up> <Esc>gka
-" inoremap <Down> <Esc>gja
-
-" Show syntax highlighting
-" in markdown code blocs
-" c = C, cpp = C++, cs = C#
+" CODE SYNTAX HIGHLIGHTING IN MARKDOWN
+" HTML, CSS, C, C++, C#, JavaScript, Python, Bash
 let g:markdown_fenced_languages = [
             \ 'html', 'css',
             \ 'c', 'cpp', 'cs',
             \ 'javascript', 'python', 'bash']
 
-autocmd BufNewFile *.c 0r ~/Templates/C/main.c
-autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
-autocmd BufNewFile *.pas 0r ~/Templates/Free_Pascal/program.pas
-autocmd BufNewFile *.java 0r ~/Templates/Java/Program.java
-autocmd BufNewFile *.py 0r ~/Templates/Python/main.py
-autocmd BufNewFile *.js 0r ~/Templates/JavaScript/index.js
-autocmd BufNewFile *.html 0r ~/Templates/index.html
+" HOT RELOAD OF .vimrc CONFIG
+" (load new config on save)
+au BufWritePost  ~/.vimrc :source ~/.vimrc
 
-autocmd BufRead,BufNewFile *.pas set tabstop=2 shiftwidth=2
+" GO TO NORMAL MODE MAPPINGS
+inoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>
 
-" My mappings
-"
-" standard mappings
-" Ctrl + z, s, v, f
-" (undo, save, paste, find)
-" for insert mode, and Ctrl + q = quit
+" IMPORTANT INSERT MODE MAPPINGS
+" Ctrl + z, s, v, f, q
+" (undo, save, paste, find, quit)
 inoremap <C-z> <Esc>ua
 inoremap <C-v> <Esc>pa
 inoremap <C-f> <Esc>/
 inoremap <C-s> <Esc>:w<CR>a
 inoremap <C-q> <Esc>:q<CR>
+" Autocompletion on Ctrl-Space
+inoremap <C-Space> <C-p>
 
+" IMPORTANT NORMAL MODE MAPPINGS
 " Type : without shift
 nnoremap ; :
-" <Leader> key
+" <Leader> key = ,
 let mapleader = ","
-nnoremap <F3> :e ~/.vimrc<CR>
-" Ctrl + s, q
-" (save, quit) for normal mode
+" Ctrl + s(ave), q(uit)
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 "    , + h = remove search highlighting
 nnoremap <Leader>h :nohlsearch<CR>
-"    , + l = add spaces without leaving normal mode
+"    , + l = add space without leaving normal mode
 nnoremap <Leader>l i<Space><Esc>
+"    , + BS = add empty line
+nnoremap <Leader><BS> i<CR><Esc>
+" Quickly open Vim config
+nnoremap <F2> :e ~/.vimrc<CR>
+" on up / down move to visual, not logical line
+nnoremap k gk
+nnoremap j gj
+nnoremap <Up> gk
+nnoremap <Down> gj
+inoremap <Up> <Esc>gka
+inoremap <Down> <Esc>gja
 
-" Tabs and windows
-
+" WORK WITH TABS AND WINDOWS
 " Create horizontal split (open same file)
 nnoremap <Leader>s :split<CR>
 " Create vertical split (open same file)
@@ -109,26 +103,30 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
-" Autocompletion on Ctrl-Space as in typical IDE
-" inoremap <C-Space> <C-n>
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ? "\<lt>C-n>" :
-                       \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-                       \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-                       \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
-inoremap <Down> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>
-inoremap <Up> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>
+" inoremap <C-j> <Down>
+" inoremap <C-k> <Up>
+" inoremap <C-h> <Left>
+" inoremap <C-l> <Right>
+
+autocmd BufNewFile *.c 0r ~/Templates/C/main.c
+autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
+autocmd BufNewFile *.pas 0r ~/Templates/Free_Pascal/program.pas
+autocmd BufNewFile *.java 0r ~/Templates/Java/Program.java
+autocmd BufNewFile *.py 0r ~/Templates/Python/main.py
+autocmd BufNewFile *.js 0r ~/Templates/JavaScript/index.js
+autocmd BufNewFile *.html 0r ~/Templates/index.html
+
+autocmd BufRead,BufNewFile *.pas set tabstop=2 shiftwidth=2
 
 " Go to definition in js files using gd
-autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR> :noh<CR>
+autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR>:noh<CR>
 " autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
-" autocmd FileType javascript nnoremap пв m':keepjumps normal!gd$Blgf<CR> :noh<CR>
 " Simpler way to it (but not perfect)
 " autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
 " Open file in new tab
 " autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5l<C-w>gf
 
-" STATUSLINE begin
+" STATUSLINE
 " MODE filename[modified] encoding[line ending], line:column percentage
 let g:currentmode={
        \ 'n'  : 'NORMAL ',
@@ -153,25 +151,16 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=%=
 " position: 'line:column percentage'
 set statusline+=%l:%c\ %p%%
-" STATUSLINE end
 
-" Hot reload of .vimrc config
-" (load new config on save)
-au BufWritePost  ~/.vimrc :source ~/.vimrc
-
-" Russian language
+" RUSSIAN LANGUAGE
 set langremap
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-" Plugins
+" PLUGINS
 call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'mkitt/tabline.vim'
-
-" let g:better_escape_shortcut = ['jk', 'jj', 'kj']
-" Use jk to go to normal mode
-Plug 'nvim-zh/better-escape.vim'
 
 " Automatic keyboard layout switching
 Plug 'lyokha/vim-xkbswitch'
@@ -210,6 +199,7 @@ Plug 'kshenoy/vim-signature'
 " (un)comment - gcc
 Plug 'tyru/caw.vim'
 inoremap <C-/> <Esc>gcc<Esc>a
+" noremap ж ;
 
 " Pasting with indentation
 " adjusted to destination context
@@ -246,11 +236,15 @@ endfunction
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-inoremap <C-p> <Esc>:call ListFiles()<CR>
+" inoremap <C-p> <Esc>:call ListFiles()<CR>
 nnoremap <Leader>/ :Rg<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
+nnoremap б. :Rg<CR>
+nnoremap ба :Files<CR>
+nnoremap бпа :GFiles<CR>
+nnoremap би :Buffers<CR>
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
@@ -269,18 +263,18 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Preview in browser (requires yarn)
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 let g:mkdp_page_title = '${name}.md'
+nnoremap <Leader>m :MarkdownPreview<CR>
 
 " Formatting tables automatically
 " use '<Leader>tm' to enter table mode
 Plug 'dhruvasagar/vim-table-mode'
 
-Plug 'mg979/vim-visual-multi'
-
 " LSP
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'OmniSharp/omnisharp-vim'
+" nmap <Leader>rn <Plug>(coc-rename)
+" Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 
-" Enable theme
+" ENABLE THEME
 colorscheme onedark
