@@ -5,6 +5,7 @@
 
 " MAIN SETTINGS
 syntax on                        " syntax highlighting
+set nocompatible                 " no compatible with Vi
 set number                       " line numbers
 set hidden                       " opening a new file when the current has unsaved changes
 set clipboard=unnamedplus        " use system clipboard (Linux)
