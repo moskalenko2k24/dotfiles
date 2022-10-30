@@ -25,6 +25,9 @@ bind 'set bell-style none'   # disable bell
 # Show date / time in history
 HISTTIMEFORMAT="%Y-%m-%d %T "
 
+# Use Vim as default editor
+export EDITOR="vimx"
+
 # Aliases for basic commands
 alias wh="which"                       # which
 alias cls="clear"                      # clear screen
@@ -53,6 +56,7 @@ alias ...="cd ../.."
 alias cd-music="cd ~/Music"
 alias cd-downloads="cd ~/Downloads"
 alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
+alias cd-test-dir="cd ~/TestingDir/"
 alias cd-projects="cd ~/Projects"
 alias cd-labs="cd ~/Labs"
 alias cd-notes="cd ~/Notes"
@@ -98,7 +102,7 @@ function zip-dir {
 
 # Copy file path to clipboard
 function cp-path {
-    realpath "${1}" | xclip -sel clip
+    (echo -n "file://"; realpath "${1}") | xclip -sel clip
 }
 
 # Create file with template
