@@ -93,6 +93,11 @@ function cd-date {
     cd "${dir}"
 }
 
+# Print first line of --version
+function ver {
+    $1 --version | head -1
+}
+
 # Add directory to zip
 function zip-dir {
     file="$1"
