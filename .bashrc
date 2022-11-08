@@ -107,7 +107,8 @@ function zip-dir {
 
 # Copy file path to clipboard
 function cp-path {
-    (echo -n "file://"; realpath "${1}") | xclip -sel clip
+    path=$(realpath $1)
+    (echo -n "file://$path/") | xclip -sel clip
 }
 
 # Create file with template
