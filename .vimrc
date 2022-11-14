@@ -6,17 +6,18 @@
 " MAIN SETTINGS
 syntax on                        " syntax highlighting
 set nocompatible                 " no compatible with Vi
-set number                       " line numbers
-set hidden                       " opening a new file when the current has unsaved changes
+set number                       " show line numbers
+set relativenumber               " show relative numbers
+set hidden                       " enable closing buffers with unsaved changes
 set clipboard=unnamedplus        " use system clipboard (Linux)
 set encoding=utf-8               " default encoding
 set fileencodings=utf-8,cp1251   " automatically detected encodings
-set swapfile                     " enable saving swap files(backup if editor crashes)
+set swapfile                     " enable saving swap files (backup if editor crashes)
 set directory=~/.vim/swapfiles// " path for swap files
-set relativenumber               " show relative numbers
 
 " INDENT SETTINGS
 set autoindent                   " autoindent
+set smartindent
 set expandtab                    " use spaces instead of tabs
 set tabstop=4                    " set   tab width to 4 spaces
 set shiftwidth=4                 " set shift width to 4 spaces
@@ -24,6 +25,8 @@ set shiftwidth=4                 " set shift width to 4 spaces
 " SEARCH SETTINGS
 set hlsearch                     " highlight found text
 set incsearch                    " highlight found on typing
+set ignorecase                   " if a pattern contains an uppercase letter,
+set smartcase                    " search is case sensitive, otherwise, it is not
 
 " SPLIT SETTINGS
 set splitright                   " new window on the right      (:vsplit file)
@@ -52,6 +55,7 @@ let g:markdown_fenced_languages = [
 au BufWritePost  ~/.vimrc :source ~/.vimrc
 
 " GO TO NORMAL MODE MAPPINGS
+inoremap <C-i> <Tab>
 inoremap <Tab> <Esc>
 vnoremap <Tab> <Esc>
 
@@ -67,10 +71,11 @@ inoremap <C-q> <Esc>:q<CR>
 inoremap <C-Space> <C-p>
 
 " IMPORTANT NORMAL MODE MAPPINGS
-" Type : without shift
-nnoremap ; :
 " <Leader> key = ,
 let mapleader = ","
+" Type : without shift
+nnoremap ; :
+nnoremap Y y$
 " Ctrl + s(ave), q(uit)
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
@@ -82,6 +87,7 @@ nnoremap <Leader>l i<Space><Esc>
 nnoremap <Leader><BS> i<CR><Esc>
 " Quickly open Vim config
 nnoremap <F2> :e ~/.vimrc<CR>
+nnoremap <F3> :e ~/.config/nvim/init.lua<CR>
 " on up / down move to visual, not logical line
 nnoremap k gk
 nnoremap j gj
@@ -91,23 +97,30 @@ inoremap <Up> <Esc>gka
 inoremap <Down> <Esc>gja
 
 " WORK WITH TABS AND WINDOWS
-" Create horizontal split (open same file)
+" , + s = make horizontal split (with same file)
 nnoremap <Leader>s :split<CR>
-" Create vertical split (open same file)
+" , + v = make vertical split (with same file)
 nnoremap <Leader>v :vsplit<CR>
-" Create tab (open same file)
+" , + t = make tab (with same file)
 nnoremap <Leader>t :tabe %<CR>
 " Ctrl + h / l = go left / right window
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+" Ctrl + j / k = go down / up window
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 " Ctrl + Left / Right = go prev / next tab
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
+" nnoremap 0 ^
+" nnoremap 00 0
+" nnoremap <expr> 0 <sid>is_start_of_line() ? '0' : '^'
+
 " inoremap <C-j> <Down>
 " inoremap <C-k> <Up>
 " inoremap <C-h> <Left>
-" inoremap <C-l> <Right>
+inoremap <C-l> <Right>
 
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
@@ -162,6 +175,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'mkitt/tabline.vim'
+
+Plug 'tpope/vim-afterimage'
 
 " Automatic keyboard layout switching
 Plug 'lyokha/vim-xkbswitch'
