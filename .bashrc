@@ -91,8 +91,7 @@ function mkcd {
 
 # Go to dir with name yyyy-mm-dd
 function cd-date {
-    dir=$(date '+%Y-%m-%d')
-    cd "${dir}"
+    cd "$(date '+%Y-%m-%d')"
 }
 
 # Print first line of --version
@@ -109,8 +108,12 @@ function zip-dir {
 
 # Copy file path to clipboard
 function cp-path {
-    path=$(realpath $1)
-    (echo -n "file://$path/") | xclip -sel clip
+    (echo -n "file://$(realpath $1)/") | xclip -sel clip
+}
+
+# Copy file to clipboard
+function cp-file {
+    echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
 }
 
 # Create file with template
@@ -183,7 +186,4 @@ function cr {
     clear && run $1
 }
 
-function fcp {
-    echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
-}
 # cd && clear && echo 'My tmux sessions' && ls -1 *.sh
