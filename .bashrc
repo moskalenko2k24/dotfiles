@@ -31,6 +31,7 @@ export EDITOR="vimx"
 # Aliases for basic commands
 alias wh="which"                       # which
 alias cls="clear"                      # clear screen
+alias nf="neofetch"                    # neofetch
 alias up="uptime -p"                   # show uptime(hours, minutes)
 alias ls="ls --color --g"              # color ls with --group-directories-first
 alias ll="ls -lA"                      # show all files, one file per row
@@ -54,6 +55,7 @@ alias gitp="git push"
 alias ..="cd .."
 alias ...="cd ../.."
 alias cd-music="cd ~/Music"
+alias cd-dotfiles="cd ~/dotfiles/"
 alias cd-downloads="cd ~/Downloads"
 alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
 alias cd-test-dir="cd ~/TestingDir/"
@@ -181,4 +183,7 @@ function cr {
     clear && run $1
 }
 
+function fcp {
+    echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
+}
 # cd && clear && echo 'My tmux sessions' && ls -1 *.sh
