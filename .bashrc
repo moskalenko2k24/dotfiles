@@ -45,6 +45,10 @@ alias reload-bashrc="source ~/.bashrc" # reload .bashrc
 alias mr="make && make run"            # make + run
 alias cmr="clear && make && make run"  # clear + make + run
 
+# Aliases for update
+alias dnf-up="sudo dnf update --refresh" # Fedora
+alias flat-up="flatpak update"           # Flatpak
+
 # Aliases for git commands
 alias gits="git status"
 alias gita="git add"
