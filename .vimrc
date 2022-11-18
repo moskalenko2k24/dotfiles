@@ -14,6 +14,7 @@ set encoding=utf-8               " default encoding
 set fileencodings=utf-8,cp1251   " automatically detected encodings
 set swapfile                     " enable saving swap files (backup if editor crashes)
 set directory=~/.vim/swapfiles// " path for swap files
+set termguicolors                " enable 24-bit colors(some plugins need)
 
 " INDENT SETTINGS
 set autoindent                   " autoindent
@@ -268,7 +269,7 @@ nnoremap би :Buffers<CR>
 Plug 'editorconfig/editorconfig-vim'
 
 " TeX / LaTeX
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Open compiled file in Zathura
 " let g:vimtex_view_method = 'zathura'
 
@@ -276,6 +277,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
+
+" Show colors(in CSS) like in VS Code
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Markdown
 " Preview in browser (requires yarn)
