@@ -92,6 +92,7 @@ map('n', '<F3>', ':e ~/.vimrc<CR>');
 map('n', '<Leader>s', ':split<CR>')       -- , + s = make horizontal split (with same file)
 map('n', '<Leader>v', ':vsplit<CR>')      -- , + v = make vertical split (with same file)
 map('n', '<Leader>t', ':tabe %<CR>')      -- , + t = make tab (with same file)
+map('n', '<Leader>q', ':q<CR>')           -- , + q = close tab / window
 map('n', '<C-l>', '<C-w>l')               -- Ctrl + l = go right window
 map('n', '<C-h>', '<C-w>h')               -- Ctrl + h = go left window
 map('n', '<C-j>', '<C-w>j')               -- Ctrl + j = go down window

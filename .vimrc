@@ -103,6 +103,8 @@ nnoremap <Leader>s :split<CR>
 nnoremap <Leader>v :vsplit<CR>
 " , + t = make tab (with same file)
 nnoremap <Leader>t :tabe %<CR>
+" , + q = close tab / window
+nnoremap <Leader>q :q<CR>
 " Ctrl + h / l = go left / right window
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
