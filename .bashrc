@@ -73,13 +73,13 @@ alias cd-giftbox="cd ~/Projects/Giftbox"
 alias cd-giftbox-client="cd ~/Projects/Giftbox/ClientApp/src"
 
 # Aliases for opening configs
-alias opxterm="vim ~/XTerm"
-alias opnautiterm="vim ~/.config/nautiterm.yml"
-alias opvimrc="vim ~/.vimrc"
-alias opbashrc="vim ~/.bashrc"
-alias opinputrc="vim ~/.inputrc"
-alias optmux="vim ~/.tmux.conf"
-alias opzathurarc="vim ~/.config/zathura/zathurarc"
+alias opxterm="$EDITOR ~/XTerm"
+alias opnautiterm="$EDITOR ~/.config/nautiterm.yml"
+alias opvimrc="$EDITOR ~/.vimrc"
+alias opbashrc="$EDITOR ~/.bashrc"
+alias opinputrc="$EDITOR ~/.inputrc"
+alias optmux="$EDITOR ~/.tmux.conf"
+alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
 
 # Create directory and go there or
 # Create yyyy-mm-dd directory (if no params)
@@ -117,8 +117,13 @@ function cp-path {
 
 # Copy file to clipboard
 function cp-file {
-    echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
+    echo "file://$(readlink -f $1)" | xclip -sel clip -t text/uri-list
 }
+
+# Copy file to clipboard
+# function cp-file {
+#     echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
+# }
 
 # Create file with template
 function new-file {
