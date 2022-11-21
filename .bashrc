@@ -18,9 +18,12 @@ export PATH="~/.local/bin:$PATH"
 export FLYCTL_INSTALL="/home/andrey/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-# PS1="\w\n$ "               # custom prompt = "full path\n"
-PS1="[\u@\H \W]$ "           # custom prompt = "[user@host dir]$ "
-bind 'set bell-style none'   # disable bell
+# PS1="\w\n$ "                           # custom prompt = "full path\n"
+PS1="[\u@\H \W]$ "                       # custom prompt = "[user@host dir]$ "
+
+# .inputrc
+bind 'set bell-style none'               # disable bell
+bind 'set completion-ignore-case on'     # ignore case for completion
 
 # Show date / time in history
 HISTTIMEFORMAT="%Y-%m-%d %T "
@@ -29,21 +32,21 @@ HISTTIMEFORMAT="%Y-%m-%d %T "
 export EDITOR="vimx"
 
 # Aliases for basic commands
-alias wh="which"                       # which
-alias cls="clear"                      # clear screen
-alias nf="neofetch"                    # neofetch
-alias up="uptime -p"                   # show uptime(hours, minutes)
-alias ls="ls --color --g"              # color ls with --group-directories-first
-alias ll="ls -lA"                      # show all files, one file per row
-alias lsa="ls -A"                      # show all files
-alias du="du -sh"                      # disk usage: summary + human readable
-alias cpr="cp -r"                      # copy directory
-alias mkdir="mkdir -p"                 # create nested directories
-alias nau="nautilus . &"               # open Nautilus in current dir
-alias vim="vimx"                       # use vim with clipboard support
-alias reload-bashrc="source ~/.bashrc" # reload .bashrc
-alias mr="make && make run"            # make + run
-alias cmr="clear && make && make run"  # clear + make + run
+alias wh="which"                         # which
+alias cls="clear"                        # clear screen
+alias nf="neofetch"                      # neofetch
+alias up="uptime -p"                     # show uptime(hours, minutes)
+alias ls="ls --color --g"                # color ls with --group-directories-first
+alias ll="ls -lA"                        # show all files, one file per row
+alias lsa="ls -A"                        # show all files
+alias du="du -sh"                        # disk usage: summary + human readable
+alias cpr="cp -r"                        # copy directory
+alias mkdir="mkdir -p"                   # create nested directories
+alias nau="nautilus . &"                 # open Nautilus in current dir
+alias vim="vimx"                         # use vim with clipboard support
+alias reload-bashrc="source ~/.bashrc"   # reload .bashrc
+alias mr="make && make run"              # make + run
+alias cmr="clear && make && make run"    # clear + make + run
 
 # Aliases for update
 alias dnf-up="sudo dnf update --refresh" # Fedora
@@ -77,7 +80,6 @@ alias opxterm="$EDITOR ~/XTerm"
 alias opnautiterm="$EDITOR ~/.config/nautiterm.yml"
 alias opvimrc="$EDITOR ~/.vimrc"
 alias opbashrc="$EDITOR ~/.bashrc"
-alias opinputrc="$EDITOR ~/.inputrc"
 alias optmux="$EDITOR ~/.tmux.conf"
 alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
 
