@@ -7,7 +7,6 @@
 syntax on                        " syntax highlighting
 set nocompatible                 " no compatible with Vi
 set number                       " show line numbers
-set relativenumber               " show relative numbers
 set hidden                       " enable closing buffers with unsaved changes
 set clipboard=unnamedplus        " use system clipboard (Linux)
 set encoding=utf-8               " default encoding
@@ -15,6 +14,12 @@ set fileencodings=utf-8,cp1251   " automatically detected encodings
 set swapfile                     " enable saving swap files (backup if editor crashes)
 set directory=~/.vim/swapfiles// " path for swap files
 set termguicolors                " enable 24-bit colors(some plugins need)
+
+" GUI SETTINGS
+if has("gui_running")
+    set guioptions -=T           " hide toolbar in gvim
+    set guioptions -=m           " hide menu in gvim
+endif
 
 " INDENT SETTINGS
 set autoindent                   " autoindent
@@ -86,6 +91,7 @@ nnoremap <Leader>h :nohlsearch<CR>
 nnoremap <Leader>l i<Space><Esc>
 "    , + BS = add empty line
 nnoremap <Leader><BS> i<CR><Esc>
+nnoremap <Leader>r i<CR><Esc>
 " Quickly open Vim config
 nnoremap <F2> :e ~/.vimrc<CR>
 nnoremap <F3> :e ~/.config/nvim/init.lua<CR>
@@ -217,8 +223,7 @@ Plug 'kshenoy/vim-signature'
 " Simple commenting
 " (un)comment - gcc
 Plug 'tyru/caw.vim'
-inoremap <C-/> <Esc>gcc<Esc>a
-" noremap ж ;
+" inoremap <C-/> <Esc>gcc<Esc>a
 
 " Pasting with indentation
 " adjusted to destination context
@@ -279,6 +284,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Show colors(in CSS) like in VS Code
+" Golang must be installed, sudo dnf install golang
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Markdown
