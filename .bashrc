@@ -49,8 +49,17 @@ alias mr="make && make run"              # make + run
 alias cmr="clear && make && make run"    # clear + make + run
 
 # Aliases for update
-alias dnf-up="sudo dnf update --refresh" # Fedora
-alias flat-up="flatpak update"           # Flatpak
+# Fedora
+function dnfup {
+    echo "sudo dnf update --refresh"
+    sudo dnf update --refresh
+}
+
+# Flatpak
+function flatup {
+    echo "flatpak update"
+    flatpak update
+}
 
 # Aliases for git commands
 alias gits="git status"
