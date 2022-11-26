@@ -1,0 +1,4 @@
+# git config --global core.excludesFile ~/.gitignore
+# Files for Vim only: tags and swap files
+tags
+*.sw?

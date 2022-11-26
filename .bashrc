@@ -90,6 +90,7 @@ alias opnautiterm="$EDITOR ~/.config/nautiterm.yml"
 alias opvimrc="$EDITOR ~/.vimrc"
 alias opbashrc="$EDITOR ~/.bashrc"
 alias optmux="$EDITOR ~/.tmux.conf"
+alias opgitignore="$EDITOR ~/.gitignore"
 alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
 
 # Create directory and go there or
