@@ -19,6 +19,7 @@ set termguicolors                " enable 24-bit colors(some plugins need)
 if has("gui_running")
     set guioptions -=T           " hide toolbar in gvim
     set guioptions -=m           " hide menu in gvim
+    set guifont=JetBrainsMono\ 12
 endif
 
 " INDENT SETTINGS
