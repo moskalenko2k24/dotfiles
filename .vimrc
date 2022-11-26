@@ -75,6 +75,11 @@ inoremap <C-s> <Esc>:w<CR>a
 inoremap <C-q> <Esc>:q<CR>
 " Autocompletion on Ctrl-Space
 inoremap <C-Space> <C-p>
+" Moving with jkl
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-l> <Right>
+" inoremap <C-h> <Left>
 
 " IMPORTANT NORMAL MODE MAPPINGS
 " <Leader> key = ,
@@ -91,7 +96,11 @@ nnoremap <Leader>h :nohlsearch<CR>
 nnoremap <Leader>l i<Space><Esc>
 "    , + BS = add empty line
 nnoremap <Leader><BS> i<CR><Esc>
+"    , + r = add empty line
 nnoremap <Leader>r i<CR><Esc>
+" Ctrl + [ = jump to tag definition
+" Ctrl + [ = jump back
+nnoremap <C-[> <C-o>
 " Quickly open Vim config
 nnoremap <F2> :e ~/.vimrc<CR>
 nnoremap <F3> :e ~/.config/nvim/init.lua<CR>
@@ -122,14 +131,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
-" nnoremap 0 ^
-" nnoremap 00 0
+nnoremap 0 ^
+nnoremap 00 0
 " nnoremap <expr> 0 <sid>is_start_of_line() ? '0' : '^'
-
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
-" inoremap <C-h> <Left>
-inoremap <C-l> <Right>
 
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
@@ -140,14 +144,6 @@ autocmd BufNewFile *.js 0r ~/Templates/JavaScript/index.js
 autocmd BufNewFile *.html 0r ~/Templates/index.html
 
 autocmd BufRead,BufNewFile *.pas set tabstop=2 shiftwidth=2
-
-" Go to definition in js files using gd
-autocmd FileType javascript nnoremap gd m':keepjumps normal!gd<CR>/from<CR>5lgf<CR>:noh<CR>
-" autocmd FileType javascript nnoremap gd m':keepjumps normal!gd$Blgf<CR> :noh<CR>
-" Simpler way to it (but not perfect)
-" autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5lgf
-" Open file in new tab
-" autocmd FileType javascript nnoremap gd gd/from<CR>:noh<CR>5l<C-w>gf
 
 " STATUSLINE
 " MODE filename[modified] encoding[line ending], line:column percentage
