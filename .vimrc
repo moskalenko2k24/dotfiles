@@ -131,9 +131,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
-nnoremap 0 ^
-nnoremap 00 0
-" nnoremap <expr> 0 <sid>is_start_of_line() ? '0' : '^'
+" 0 = go to ^
+" or go to 0 (if we are at ^)
+" https://vi.stackexchange.com/questions/35057/double-press-override-for-0-key
+nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
