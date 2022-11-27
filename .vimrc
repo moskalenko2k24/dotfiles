@@ -99,9 +99,9 @@ nnoremap <Leader>l i<Space><Esc>
 nnoremap <Leader><BS> i<CR><Esc>
 "    , + r = add empty line
 nnoremap <Leader>r i<CR><Esc>
+" Ctrl + ] = jump to tag definition
 " Ctrl + [ = jump to tag definition
-" Ctrl + [ = jump back
-nnoremap <C-[> <C-o>
+nnoremap <C-[> <C-]>
 " Quickly open Vim config
 nnoremap <F2> :e ~/.vimrc<CR>
 nnoremap <F3> :e ~/.config/nvim/init.lua<CR>
@@ -295,6 +295,7 @@ nnoremap <Leader>m :MarkdownPreview<CR>
 
 " Formatting tables automatically
 " use '<Leader>tm' to enter table mode
+" https://github.com/dhruvasagar/vim-table-mode
 Plug 'dhruvasagar/vim-table-mode'
 
 " LSP
