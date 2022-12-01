@@ -83,6 +83,7 @@ alias cd-books="cd ~/Books/"
 alias cd-books-new="cd ~/BooksNew/"
 alias cd-giftbox="cd ~/Projects/Giftbox"
 alias cd-giftbox-client="cd ~/Projects/Giftbox/ClientApp/src"
+alias cd-react-fractal="cd ~/Projects/react-fractal"
 
 # Aliases for opening configs
 alias opxterm="$EDITOR ~/XTerm"
@@ -92,6 +93,11 @@ alias opbashrc="$EDITOR ~/.bashrc"
 alias optmux="$EDITOR ~/.tmux.conf"
 alias opgitignore="$EDITOR ~/.gitignore"
 alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
+
+# Find process by name
+function ps-find {
+    ps -aux | grep $1
+}
 
 # Create directory and go there or
 # Create yyyy-mm-dd directory (if no params)
