@@ -32,27 +32,29 @@ HISTTIMEFORMAT="%Y-%m-%d %T "
 export EDITOR="vimx"
 
 # Aliases for basic commands
-alias wh="which"                              # which
-alias cl="clear"                              # clear screen
-alias cls="clear"                             # clear screen
-alias nf="echo neofetch && neofetch"          # neofetch
-alias sf="echo screenfetch && screenfetch"    # screenfetch
-alias up="uptime -p"                          # show uptime(hours, minutes)
-alias ls="ls --color --g"                     # color ls with --group-directories-first
-alias ll="ls -lA"                             # show all files, one file per row
-alias lsa="ls -A"                             # show all files
-alias free="free -h"                          # memory usage, human readable
-alias ps-all="echo 'ps ax' && ps ax"          # show all processes
-alias kill9="kill -9"                         # kill process
-alias k9="kill -9"                            # kill process
-alias du="du -sh"                             # disk usage: summary + human readable
-alias cpr="cp -r"                             # copy directory
-alias mkdir="mkdir -p"                        # create nested directories
-alias nau="nautilus . &"                      # open Nautilus in current dir
-alias vim="vimx"                              # use vim with clipboard support
+alias wh="which"                                # which
+alias cl="clear"                                # clear screen
+alias cls="clear"                               # clear screen
+alias nf="echo neofetch && neofetch"            # neofetch
+alias sf="echo screenfetch && screenfetch"      # screenfetch
+alias get-weather="curl uk.wttr.in/Кривий%20Ріг?0"
+alias up="uptime -p"                            # show uptime(hours, minutes)
+alias ls="ls --color --g"                       # color ls with --group-directories-first
+alias ll="ls -lA"                               # show all files, one file per row
+alias lsa="ls -A"                               # show all files
+alias free="free -h"                            # memory usage, human readable
+alias ps-all="echo 'ps ax' && ps ax"            # show all processes
+alias kill9="kill -9"                           # kill process
+alias k9="kill -9"                              # kill process
+alias du="du -sh"                               # disk usage: summary + human readable
+alias cpr="cp -r"                               # copy directory
+alias mkdir="mkdir -p"                          # create nested directories
+alias nau="echo 'nautilus . &' && nautilus . &" # open Nautilus in current dir
+alias vim="vimx"                                # use vim with clipboard support
 alias reload-bashrc="echo 'source ~/.bashrc' && source ~/.bashrc" # reload .bashrc
-alias mr="make && make run"                   # make + run
-alias cmr="clear && make && make run"         # clear + make + run
+alias mr="echo 'make && make run' && make && make run"                   # make + run
+alias cmr="clear && echo 'make && make run' && make && make run"         # clear + make + run
+alias st="echo 'git status' && git status"
 
 # Aliases for update
 alias d-up="echo sudo dnf update --refresh && sudo dnf update --refresh"
@@ -90,6 +92,7 @@ alias opbashrc="$EDITOR ~/.bashrc"
 alias optmux="$EDITOR ~/.tmux.conf"
 alias opgitignore="$EDITOR ~/.gitignore"
 alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
+alias opfedorapackages="$EDITOR ~/NotesPrivate/Linux/fedora-packages.txt"
 
 # Find process by name
 function ps-find {
