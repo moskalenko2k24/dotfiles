@@ -4,51 +4,51 @@
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " MAIN SETTINGS
-syntax on                        " syntax highlighting
-set nocompatible                 " no compatible with Vi
-set number                       " show line numbers
-set hidden                       " enable closing buffers with unsaved changes
-set clipboard=unnamedplus        " use system clipboard (Linux)
-set encoding=utf-8               " default encoding
-set fileencodings=utf-8,cp1251   " automatically detected encodings
-set swapfile                     " enable saving swap files (backup if editor crashes)
-set directory=~/.vim/swapfiles// " path for swap files
-set termguicolors                " enable 24-bit colors(some plugins need)
+syntax on                         " syntax highlighting
+set nocompatible                  " no compatible with Vi
+set number                        " show line numbers
+set hidden                        " enable closing buffers with unsaved changes
+set clipboard=unnamedplus         " use system clipboard (Linux)
+set encoding=utf-8                " default encoding
+set fileencodings=utf-8,cp1251    " automatically detected encodings
+set swapfile                      " enable saving swap files (backup if editor crashes)
+set directory=~/.vim/swapfiles//  " path for swap files
+set termguicolors                 " enable 24-bit colors(some plugins need)
 
-" GUI SETTINGS
+" GVIM SETTINGS
 if has("gui_running")
-    set guioptions -=T           " hide toolbar in gvim
-    set guioptions -=m           " hide menu in gvim
-    set guifont=JetBrainsMono\ 12
+    set guioptions -=m            " hide menu
+    set guioptions -=T            " hide toolbar
+    set guifont=JetBrainsMono\ 12 " font and font size
 endif
 
 " INDENT SETTINGS
-set autoindent                   " autoindent
-set smartindent
-set expandtab                    " use spaces instead of tabs
-set tabstop=4                    " set   tab width to 4 spaces
-set shiftwidth=4                 " set shift width to 4 spaces
+set autoindent                    " autoindent
+set expandtab                     " use spaces instead of tabs
+set tabstop=4                     " set   tab width to 4 spaces
+set shiftwidth=4                  " set shift width to 4 spaces
 
 " SEARCH SETTINGS
-set hlsearch                     " highlight found text
-set incsearch                    " highlight found on typing
-set ignorecase                   " if a pattern contains an uppercase letter,
-set smartcase                    " search is case sensitive, otherwise, it is not
+set hlsearch                      " highlight found text
+set incsearch                     " highlight found on typing
+set ignorecase                    " if a pattern contains an uppercase letter,
+set smartcase                     " search is case sensitive, otherwise, it is not
 
 " SPLIT SETTINGS
-set splitright                   " new window on the right      (:vsplit file)
-set splitbelow                   " new window below the current (:split  file)
+set splitright                    " new window on the right      (:vsplit file)
+set splitbelow                    " new window below the current (:split  file)
 
 " OTHER SETTINGS
-set mouse=a                      " enable mouse(disable: mouse=)
-set belloff=all                  " disable bell sound
-set noshowmode                   " mode is shown in status manually
-set cursorline                   " highlight active line
-set laststatus=2                 " always show statusline
+set mouse=a                       " enable mouse(disable: mouse=)
+set belloff=all                   " disable bell sound
+set cursorline                    " highlight active line
+set laststatus=2                  " always show statusline
+set noshowmode                    " mode is shown in status manually
+set showcmd                       " show commands at bottom right corner
 
 " WRAP SETTINGS
-set wrap                         " show 1 long line as 2 or more lines
-set whichwrap=<,>,[,],h,l        " cycle lines (when press <Right> on last char, go to 1st char of next line)
+set wrap                          " show 1 long line as 2 or more lines
+set whichwrap=<,>,[,],h,l         " cycle lines (when press <Right> on last char, go to 1st char of next line)
 
 " CODE SYNTAX HIGHLIGHTING IN MARKDOWN
 " HTML, CSS, C, C++, C#, JavaScript, Python, Bash
@@ -62,9 +62,9 @@ let g:markdown_fenced_languages = [
 au BufWritePost  ~/.vimrc :source ~/.vimrc
 
 " GO TO NORMAL MODE MAPPINGS
-inoremap <C-i> <Tab>
-inoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>
+" inoremap <C-i> <Tab>
+" inoremap <Tab> <Esc>
+" vnoremap <Tab> <Esc>
 
 " IMPORTANT INSERT MODE MAPPINGS
 " Ctrl + z, s, v, f, q
@@ -91,14 +91,19 @@ nnoremap Y y$
 " Ctrl + s(ave), q(uit)
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
+" using o / O without switching to INSERT mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
 "    , + h = remove search highlighting
 nnoremap <Leader>h :nohlsearch<CR>
 "    , + l = add space without leaving normal mode
 nnoremap <Leader>l i<Space><Esc>
-"    , + BS = add empty line
-nnoremap <Leader><BS> i<CR><Esc>
-"    , + r = add empty line
-nnoremap <Leader>r i<CR><Esc>
+"    , + Enter = add empty line
+" nnoremap <Leader><BS> i<CR><Esc>
+" nnoremap <Leader>r i<CR><Esc>
+
+"    , + ; = add semicolon to the end of line
+nnoremap <Leader>; mPA;<Esc>`P:delmarks P<CR>
 " Quickly open Vim config
 nnoremap <F2> :e ~/.vimrc<CR>
 nnoremap <F3> :e ~/.config/nvim/init.lua<CR>
@@ -115,8 +120,8 @@ inoremap <Down> <Esc>gja
 nnoremap <Leader>s :split<CR>
 " , + v = make vertical split (with same file)
 nnoremap <Leader>v :vsplit<CR>
-" , + t = make tab (with same file)
-nnoremap <Leader>t :tabe %<CR>
+" , + t = make tab (with same file & same position)
+nnoremap <Leader>t :tab split<CR>
 " , + q = close tab / window
 nnoremap <Leader>q :q<CR>
 " Ctrl + h / l = go left / right window
@@ -125,6 +130,8 @@ nnoremap <C-h> <C-w>h
 " Ctrl + j / k = go down / up window
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
+" Tab = switch windows
+nnoremap <Tab> <C-w><C-w>
 " Ctrl + Left / Right = go prev / next tab
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
@@ -212,11 +219,6 @@ Plug 'tpope/vim-surround'
 " Showing marks
 Plug 'kshenoy/vim-signature'
 
-" Auto-closing tags
-" Plug 'alvan/vim-closetag'
-" let g:closetag_filenames = '*.html,*.jsx,*.tsx,*.js,*.ts'
-" let g:closetag_shortcut = '</'
-
 " Simple commenting
 " (un)comment - gcc
 Plug 'tyru/caw.vim'
@@ -240,10 +242,10 @@ Plug 'sickill/vim-pasta'
 " let g:netrw_liststyle = 3
 
 " Plugin which finds project root
-" Plug 'airblade/vim-rooter'
-" let g:rooter_manual_only = 0
-" let g:rooter_change_directory_for_non_project_files = ''
-" let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
+Plug 'airblade/vim-rooter'
+let g:rooter_manual_only = 0
+let g:rooter_change_directory_for_non_project_files = ''
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh']
 
 function! ListFiles()
     let status = system("git status")
@@ -295,10 +297,18 @@ nnoremap <Leader>m :MarkdownPreview<CR>
 " https://github.com/dhruvasagar/vim-table-mode
 Plug 'dhruvasagar/vim-table-mode'
 
-" LSP
+" coc.nvim LSP
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " nmap <Leader>rn <Plug>(coc-rename)
-" Plug 'OmniSharp/omnisharp-vim'
+
+" .NET LSP
+Plug 'OmniSharp/omnisharp-vim'
+let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_popup = 1
+let g:OmniSharp_selector_ui = 'fzf'
+autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<CR>
+autocmd FileType cs nnoremap <Leader>rn :OmniSharpRename<CR>
+autocmd CursorHold *.cs OmniSharpTypeLookup
 
 call plug#end()
 
