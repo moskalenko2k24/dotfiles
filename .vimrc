@@ -45,6 +45,7 @@ set cursorline                    " highlight active line
 set laststatus=2                  " always show statusline
 set noshowmode                    " mode is shown in status manually
 set showcmd                       " show commands at bottom right corner
+set wildignorecase                " ignore case in commands
 
 " WRAP SETTINGS
 set wrap                          " show 1 long line as 2 or more lines
@@ -55,16 +56,11 @@ set whichwrap=<,>,[,],h,l         " cycle lines (when press <Right> on last char
 let g:markdown_fenced_languages = [
             \ 'html', 'css',
             \ 'c', 'cpp', 'cs',
-            \ 'javascript', 'python', 'bash']
+            \ 'javascript', 'python', 'bash', 'sql']
 
 " HOT RELOAD OF .vimrc CONFIG
 " (load new config on save)
 au BufWritePost  ~/.vimrc :source ~/.vimrc
-
-" GO TO NORMAL MODE MAPPINGS
-" inoremap <C-i> <Tab>
-" inoremap <Tab> <Esc>
-" vnoremap <Tab> <Esc>
 
 " IMPORTANT INSERT MODE MAPPINGS
 " Ctrl + z, s, v, f, q
@@ -75,7 +71,7 @@ inoremap <C-f> <Esc>/
 inoremap <C-s> <Esc>:w<CR>a
 inoremap <C-q> <Esc>:q<CR>
 " Autocompletion on Ctrl-Space
-inoremap <C-Space> <C-p>
+inoremap <C-Space> <C-x><C-o>
 " Moving with jkl
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
@@ -101,6 +97,9 @@ nnoremap <Leader>l i<Space><Esc>
 "    , + Enter = add empty line
 " nnoremap <Leader><BS> i<CR><Esc>
 " nnoremap <Leader>r i<CR><Esc>
+" nnoremap <Leader>r :%s/<:cword>/
+" nnoremap ,r :%s/\V<c-r>=escape(expand('<lt>cword>'), '/\')<cr>//g<left><left>
+nnoremap <Leader>r *<Esc>:%s//
 
 "    , + ; = add semicolon to the end of line
 nnoremap <Leader>; mPA;<Esc>`P:delmarks P<CR>
@@ -110,6 +109,8 @@ nnoremap <F3> :e ~/.config/nvim/init.lua<CR>
 " on up / down move to visual, not logical line
 nnoremap k gk
 nnoremap j gj
+vnoremap k gk
+vnoremap j gj
 nnoremap <Up> gk
 nnoremap <Down> gj
 inoremap <Up> <Esc>gka
@@ -142,6 +143,14 @@ nnoremap <C-Right> gt
 nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
+
+" Show relative numbers
+" in visual mode only
+vnoremap <Esc> <Esc>:set number norelativenumber<CR>
+vnoremap <C-c> <Esc>:set number norelativenumber<CR>
+nnoremap <silent> v :set nonumber relativenumber<CR>v
+nnoremap <silent> V :set nonumber relativenumber<CR>V
+nnoremap <silent> <C-v> :<C-u>set nonumber relativenumber<CR><C-v>
 
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
@@ -239,7 +248,7 @@ Plug 'sickill/vim-pasta'
 " let g:nerdtree_tabs_open_on_console_startup = 0
 
 " Show as file tree
-" let g:netrw_liststyle = 3
+let g:netrw_liststyle = 3
 
 " Plugin which finds project root
 Plug 'airblade/vim-rooter'
@@ -285,6 +294,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Show colors(in CSS) like in VS Code
 " Golang must be installed, sudo dnf install golang
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla,colour_names'
 
 " Markdown
 " Preview in browser (requires yarn)
