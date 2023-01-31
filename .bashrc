@@ -5,6 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Private config
+source ~/.private.sh
+
 # Node Version Manager
 # (code was added automatically)
 # Load nvm & load nvm bash_completion
@@ -21,44 +24,55 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # PS1="\w\n$ "                           # custom prompt = "full path\n"
 PS1="[\u@\H \W]$ "                       # custom prompt = "[user@host dir]$ "
 
+function expals {
+    bash self-insert
+    bash alias-expand-line
+}
+
 # .inputrc
 bind 'set bell-style none'               # disable bell
 bind 'set completion-ignore-case on'     # ignore case for completion
+# bind '" ": "alias-expand-line\C-mself-insert"'
+# bind '" ": self-insert'
+# bind '" ": alias-expand-line'
+
 
 # Show date / time in history
 HISTTIMEFORMAT="%Y-%m-%d %T "
 
 # Use Vim as default editor
-export EDITOR="vimx"
+export EDITOR="nvim"
+alias vim="nvim"                              # use NeoVim
+# alias vim="vimx"                                # use vim with clipboard support
 
 # Aliases for basic commands
 alias wh="which"                                # which
 alias cl="clear"                                # clear screen
 alias cls="clear"                               # clear screen
-alias nf="echo neofetch && neofetch"            # neofetch
-alias sf="echo screenfetch && screenfetch"      # screenfetch
-alias get-weather="curl uk.wttr.in/Кривий%20Ріг?0"
+alias nf="neofetch"                             # neofetch
+alias sf="screenfetch"                          # screenfetch
+alias getweather="curl uk.wttr.in/Кривий%20Ріг?0"
 alias up="uptime -p"                            # show uptime(hours, minutes)
 alias ls="ls --color --g"                       # color ls with --group-directories-first
 alias ll="ls -lA"                               # show all files, one file per row
 alias lsa="ls -A"                               # show all files
 alias free="free -h"                            # memory usage, human readable
-alias ps-all="echo 'ps ax' && ps ax"            # show all processes
+alias ps-all="ps ax"                            # show all processes
 alias kill9="kill -9"                           # kill process
 alias k9="kill -9"                              # kill process
 alias du="du -sh"                               # disk usage: summary + human readable
 alias cpr="cp -r"                               # copy directory
 alias mkdir="mkdir -p"                          # create nested directories
-alias nau="echo 'nautilus . &' && nautilus . &" # open Nautilus in current dir
-alias vim="vimx"                                # use vim with clipboard support
-alias reload-bashrc="echo 'source ~/.bashrc' && source ~/.bashrc" # reload .bashrc
-alias mr="echo 'make && make run' && make && make run"                   # make + run
-alias cmr="clear && echo 'make && make run' && make && make run"         # clear + make + run
-alias st="echo 'git status' && git status"
+alias nau="nautilus . &"                        # open Nautilus in current dir
+alias reload-bashrc="source ~/.bashrc"          # reload .bashrc
+alias mr="make && make run"                     # make + run
+alias cmr="clear && make && make run"           # clear + make + run
+alias st="git status"
+alias ls-vimswap="ls ~/.vim/swapfiles/"
 
 # Aliases for update
-alias d-up="echo sudo dnf update --refresh && sudo dnf update --refresh"
-alias f-up="echo flatpak update && flatpak update"
+alias d-up="sudo dnf update --refresh"
+alias f-up="flatpak update"
 
 # Aliases for git commands
 alias gits="git status"
@@ -69,30 +83,11 @@ alias gitp="git push"
 # Own aliases for cd
 alias ..="cd .."
 alias ...="cd ../.."
-alias cd-music="cd ~/Music"
-alias cd-dotfiles="cd ~/dotfiles/"
-alias cd-downloads="cd ~/Downloads"
-alias cd-telegram-downloads="cd ~/Downloads/Telegram\ Desktop"
-alias cd-test-dir="cd ~/TestingDir/"
-alias cd-projects="cd ~/Projects"
-alias cd-labs="cd ~/Labs"
-alias cd-notes="cd ~/Notes"
-alias cd-notes-private="cd ~/NotesPrivate"
-alias cd-books="cd ~/Books/"
-alias cd-books-new="cd ~/BooksNew/"
-alias cd-giftbox="cd ~/Projects/Giftbox"
-alias cd-giftbox-client="cd ~/Projects/Giftbox/ClientApp/src"
-alias cd-react-fractal="cd ~/Projects/react-fractal"
 
-# Aliases for opening configs
-alias opxterm="$EDITOR ~/XTerm"
-alias opnautiterm="$EDITOR ~/.config/nautiterm.yml"
-alias opvimrc="$EDITOR ~/.vimrc"
-alias opbashrc="$EDITOR ~/.bashrc"
-alias optmux="$EDITOR ~/.tmux.conf"
-alias opgitignore="$EDITOR ~/.gitignore"
-alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
-alias opfedorapackages="$EDITOR ~/NotesPrivate/Linux/fedora-packages.txt"
+# Flip video horizontally
+function flip-video {
+    ffmpeg -i "$1" -vf hflip -c:a copy "$2"
+}
 
 # Find process by name
 function ps-find {
@@ -207,6 +202,7 @@ function run {
             ;;
         *.js) cmd="node $1" ;;
         *.py) cmd="python $1" ;;
+        *.cs) cmd="dotnet-exec $1" ;;
         *.java)
             cmd="javac ${file}" ;;
         *) echo "Unknown project type" ;;
