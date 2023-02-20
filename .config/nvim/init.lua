@@ -13,8 +13,6 @@ require("mappings");
 -- filename[modified] encoding[line ending], line:column percentage
 vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'
 
--- ENABLE THEME
-require('onedark').load()
-
 require('plugins')
 require('lsp_config')
+require('theme')

@@ -34,8 +34,7 @@ opt.splitbelow = true                -- new window below the current (:split  fi
 -- OTHER SETTINGS
 opt.mouse = 'a'                      -- enable mouse(disable: '')
 opt.belloff = 'all'                  -- disable bell sound
--- opt.showmode = false              -- mode is shown in status manually
-opt.showmode = true 
+opt.showmode = false                 -- mode is shown in status manually
 opt.cursorline = true                -- highlight active line
 opt.laststatus = 2                   -- always show statusline
 opt.showcmd = true                   -- show commands at bottom right corner
