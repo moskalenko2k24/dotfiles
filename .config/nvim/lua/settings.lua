@@ -1,6 +1,7 @@
 local opt = vim.opt     -- options
 local cmd = vim.cmd     -- execute Vim commands
 local global = vim.g
+local autocmd = vim.api.nvim_create_autocmd
 
 -- MAIN SETTINGS
 cmd 'syntax on'                      -- syntax highlighting
@@ -50,3 +51,15 @@ global.markdown_fenced_languages = {
     'c', 'cpp', 'cs',
     'javascript', 'python', 'bash'
 };
+
+-- RELATIVE NUMBERS VISUAL MODE ONLY
+autocmd('ModeChanged', {
+  pattern = {
+    '*:[vV\x16]*', '[vV\x16]*:*'
+  },
+  callback = function()
+    -- wo = window options
+    vim.wo.number = not vim.wo.number
+    vim.wo.relativenumber = not vim.wo.relativenumber
+  end,
+})
