@@ -66,3 +66,15 @@ autocmd('ModeChanged', {
 
 -- (TODO: SHOW MODE HERE) filename[modified] encoding[line ending], line:column percentage
 -- vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'
+--
+
+autocmd({ 'BufNew' , 'BufNewFile', 'BufRead' }, {
+  pattern = {
+    '*.html', '*.css', '*.json', '*.js', '*.ts', '*.lua', '*.pas'
+  },
+  callback = function()
+    vim.opt.shiftwidth = 2
+    vim.opt.softtabstop = 2
+    vim.opt.tabstop = 2
+  end,
+})
