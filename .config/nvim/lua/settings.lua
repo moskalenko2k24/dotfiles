@@ -63,3 +63,6 @@ autocmd('ModeChanged', {
     vim.wo.relativenumber = not vim.wo.relativenumber
   end,
 })
+
+-- (TODO: SHOW MODE HERE) filename[modified] encoding[line ending], line:column percentage
+-- vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'

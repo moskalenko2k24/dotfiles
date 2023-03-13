@@ -1,4 +1,4 @@
-local map = require("utils").map
+local map = require('utils').map
 
 -- Important normal mode mappings
 vim.g.mapleader = ',';                        -- <Leader> key = ,
@@ -6,13 +6,15 @@ map('n', ';', ':');                           -- ; =  : (typing : without shift)
 map('n', 'Y', 'y$');                          -- Y = y$ (copy till end of line)
 map('n', '<C-s>', ':w<CR>');                  -- Ctrl + s = save
 map('n', '<C-q>', ':q<CR>');                  -- Ctrl + q = quit
-map("n", "<Leader>h", ":nohlsearch<CR>");     -- , + h = remove search highlighting
+map('n', '<Leader>h', ':nohlsearch<CR>');     -- , + h = remove search highlighting
 map('n', '<Leader>l', 'i<Space><Esc>');       -- , + l = add space without leaving normal mode
 map('n', '<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
 -- , + ; = add semicolon to the end of line
+-- , + . = add dot to the end of line
+local appendDot = 'mPA.<Esc>`P:delmarks P<CR>';
 local appendSemicolon = 'mPA;<Esc>`P:delmarks P<CR>';
+map('n', '<Leader>.', appendDot, { silent = true });
 map('n', '<Leader>;', appendSemicolon, { silent = true });
--- map('n', 'C-i', '\x1b[105;5u');
 
 -- Go up / down visual lines
 -- (line with breaks looks like 2 or more line)

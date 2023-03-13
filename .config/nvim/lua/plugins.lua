@@ -4,7 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  print("Installing packer close and reopen Neovim...")
+  print('Installing packer close and reopen Neovim...')
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -16,7 +16,7 @@ vim.cmd([[
 ]])
 
 -- Use a protected call so we don't error out on first use
-local status_ok = pcall(require, "packer")
+local status_ok = pcall(require, 'packer')
 if not status_ok then
   return
 end
@@ -102,19 +102,37 @@ return require('packer').startup(function(use)
 
   -- Auto pairs
   use {
-      "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
+      'windwp/nvim-autopairs',
+      config = function() require('nvim-autopairs').setup {} end
   }
+
+  -- Easy Motion for NeoVim
+  use 'phaazon/hop.nvim'
+  local hop = require('hop')
+  hop.setup();
+  -- local directions = require('hop.hint').HintDirection
+  vim.keymap.set('', 'f', function()
+    hop.hint_char1({ direction = nil, current_line_only = false })
+  end, { remap = true })
+  --vim.keymap.set('', 'F', function()
+  --    hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+  --end, { remap = true })
+  --vim.keymap.set('', 't', function()
+  --    hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+  --end, { remap = true })
+  --vim.keymap.set('', 'T', function()
+  --    hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+  --end, { remap = true }).setup();
 
   -- Tabline
   use 'mkitt/tabline.vim'
 
   -- Vim surrond
   -- use({
-  --     "kylechui/nvim-surround",
-  --     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+  --     'kylechui/nvim-surround',
+  --     tag = '*', -- Use for stability; omit to use `main` branch for the latest features
   --     config = function()
-  --         require("nvim-surround").setup({
+  --         require('nvim-surround').setup({
   --             -- Configuration here, or leave empty to use defaults
   --         })
   --     end
@@ -124,7 +142,7 @@ return require('packer').startup(function(use)
   -- Comment plugin
   -- gcc = comment line
   -- gc = comment line in Visual mode
-  use "terrortylor/nvim-comment"
+  use 'terrortylor/nvim-comment'
   require('nvim_comment').setup()
 
   -- Showing marks visually
@@ -142,38 +160,38 @@ return require('packer').startup(function(use)
   vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
   vim.keymap.set('n', '<leader>b', builtin.buffers, {})
   vim.keymap.set('n', '<leader>/', builtin.live_grep, {})
-  local actions = require("telescope.actions")
-  require("telescope").setup{
+  local actions = require('telescope.actions')
+  require('telescope').setup{
       defaults = {
           mappings = {
               i = {
-                  ["<C-j>"] = actions.move_selection_next,
-                  ["<C-k>"] = actions.move_selection_previous
+                  ['<C-j>'] = actions.move_selection_next,
+                  ['<C-k>'] = actions.move_selection_previous
               },
           },
       }
 }
   -- Markdown previewer (in browser)
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({ 'iamcco/markdown-preview.nvim', run = 'cd app && npm install', setup = function() vim.g.mkdp_filetypes = { 'markdown' } end, ft = { 'markdown' }, })
 
   use 'dhruvasagar/vim-table-mode'
 
   -- LSP config & LSP manager
   use {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
   }
 
-  require("mason").setup()
-  require("mason-lspconfig").setup {
-      ensure_installed = { "omnisharp", "tsserver", "clangd" },
+  require('mason').setup()
+  require('mason-lspconfig').setup {
+      ensure_installed = { 'omnisharp', 'tsserver', 'clangd', 'pyright', 'jdtls' },
       automatic_installation = true
   }
 
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  require("cmp").setup {
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  require('cmp').setup {
       sources = {
           { name = 'nvim_lsp' }
       }
