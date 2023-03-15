@@ -1,3 +1,9 @@
+require('mason').setup()
+require('mason-lspconfig').setup {
+  ensure_installed = { 'omnisharp', 'tsserver', 'clangd', 'pyright', 'jdtls' },
+  automatic_installation = true
+}
+
 -- LSP
 local custom_attach = function(client, bufnr, elses)
     local opts = { buffer = bufnr, noremap = true, silent = true }
