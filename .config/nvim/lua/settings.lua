@@ -17,16 +17,18 @@ opt.swapfile = true                  -- enable saving swap files (backup if edit
 opt.termguicolors = true             -- enable 24-bit colors(some plugins need)
 
 -- INDENT SETTINGS
+local spaces = 4
 opt.autoindent = true                -- autoindent
 opt.expandtab = true                 -- use spaces instead of tabs
-opt.tabstop = 4                      -- set   tab width to 4 spaces
-opt.shiftwidth = 4                   -- set shift width to 4 spaces
+opt.tabstop = spaces                 -- set indent width
+opt.softtabstop = spaces             -- set tab width
+opt.shiftwidth = spaces              -- set shift width
 
 -- SEARCH SETTINGS
 opt.hlsearch = true                  -- highlight found text
 opt.incsearch = true                 -- highlight found on typing
-opt.ignorecase = true                -- if a pattern contains an uppercase letter,
-opt.smartcase = true                 -- search is case sensitive, otherwise, it is not
+opt.ignorecase = true                -- if a pattern contains an uppercase letter...
+opt.smartcase = true                 -- ...search is case sensitive, otherwise, it is not
 
 -- SPLIT SETTINGS
 opt.splitright = true                -- new window on the right      (:vsplit file)
@@ -73,8 +75,19 @@ autocmd({ 'BufNew' , 'BufNewFile', 'BufRead' }, {
     '*.html', '*.css', '*.json', '*.js', '*.ts', '*.lua', '*.pas'
   },
   callback = function()
-    vim.opt.shiftwidth = 2
-    vim.opt.softtabstop = 2
-    vim.opt.tabstop = 2
+    vim.opt.shiftwidth = spaces / 2
+    vim.opt.softtabstop = spaces / 2
+    vim.opt.tabstop = spaces / 2
+  end,
+})
+
+autocmd({ 'BufNew' , 'BufNewFile', 'BufRead' }, {
+  pattern = {
+    '*.txt', '*.md'
+  },
+  callback = function()
+    vim.opt.shiftwidth = 1
+    vim.opt.softtabstop = 1
+    vim.opt.tabstop = 1
   end,
 })

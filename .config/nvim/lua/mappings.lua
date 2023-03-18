@@ -1,6 +1,6 @@
 local map = require('utils').map
 
--- Important normal mode mappings
+-- IMPORTANT NORMAL MODE MAPPINGS
 vim.g.mapleader = ',';                        -- <Leader> key = ,
 map('n', ';', ':');                           -- ; =  : (typing : without shift)
 map('n', 'Y', 'y$');                          -- Y = y$ (copy till end of line)
@@ -16,7 +16,7 @@ local appendSemicolon = 'mPA;<Esc>`P:delmarks P<CR>';
 map('n', '<Leader>.', appendDot, { silent = true });
 map('n', '<Leader>;', appendSemicolon, { silent = true });
 
--- Go up / down visual lines
+-- GO UP / DOWN VISUAL LINES
 -- (line with breaks looks like 2 or more line)
 map('n', 'k', 'gk');                          -- k =   Up, normal mode
 map('n', 'j', 'gj');                          -- j = Down, normal mode
@@ -29,20 +29,20 @@ map('v', '<Down>', 'gj');                     -- Down, visual mode
 map('i', '<Up>', '<Esc>gka');                 -- Up, insert mode
 map('i', '<Down>', '<Esc>gja');               -- Down, insert mode
 
--- Quickly open configs
+-- QUICKLY OPEN CONFIGS
 -- F2 = NeoVim, F3 = Vim
 map('n', '<F2>', ':e ~/.config/nvim/lua/<CR>');
 map('n', '<F3>', ':e ~/.vimrc<CR>');
 map('n', '<F5>', ':luafile ~/.config/nvim/init.lua<CR>');
 
--- Important insert mode mappings
+-- IMPORTANT INSERT MODE MAPPINGS
 map('i', '<C-z>', '<Esc>ua');                 -- Ctrl + z = undo
 map('i', '<C-q>', '<Esc>:q<CR>');             -- Ctrl + q = quit
 map('i', '<C-s>', '<Esc>:w<CR>a');            -- Ctrl + s = save
 map('i', '<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
 map('i', '<C-f>', '<Esc>/');                  -- Ctrl + f = find
 
--- Work with tabs and windows
+-- WORK WITH TABS AND WINDOWS
 map('n', '<Leader>s', ':split<CR>');          -- , + s = make horizontal split (with same file)
 map('n', '<Leader>v', ':vsplit<CR>');         -- , + v = make vertical split (with same file)
 map('n', '<Leader>t', ':tab split<CR>');      -- , + t = make tab (with same file & same position)
@@ -57,7 +57,13 @@ map('n', '<C-Right>', 'gT');                  -- Ctrl + Right = go prev tab
 map('n', '<C-Tab>', 'gt');                    -- Ctrl + Left = go next tab
 map('n', '<C-S-Tab>', 'gT');                  -- Ctrl + Right = go prev tab
 
--- Enable C-hjkl in insert mode
+-- ENABLE C-hjkl IN INSERT MODE
 map('i', '<C-k>', '<Up>');
 map('i', '<C-j>', '<Down>');
 map('i', '<C-l>', '<Right>');
+
+-- MAPPINGS FOR VIMDIFF
+if vim.api.nvim_win_get_option(0, 'diff') then
+  map('n', '<Leader>q', ':qa<CR>');
+  map('n', '<C-q>', ':qa<CR>');
+end
