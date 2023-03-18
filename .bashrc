@@ -24,28 +24,20 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # PS1="\w\n$ "                           # custom prompt = "full path\n"
 PS1="[\u@\H \W]$ "                       # custom prompt = "[user@host dir]$ "
 
-function expals {
-    bash self-insert
-    bash alias-expand-line
-}
-
 # .inputrc
 bind 'set bell-style none'               # disable bell
 bind 'set completion-ignore-case on'     # ignore case for completion
-# bind '" ": "alias-expand-line\C-mself-insert"'
-# bind '" ": self-insert'
-# bind '" ": alias-expand-line'
-
 
 # Show date / time in history
 HISTTIMEFORMAT="%Y-%m-%d %T "
 
-# Use Vim as default editor
+# Use NeoVim as default editor
 export EDITOR="nvim"
-alias vim="nvim"                              # use NeoVim
-# alias vim="vimx"                                # use vim with clipboard support
+alias vim="nvim"
+alias vimdiff="nvim -d"
 
 # Aliases for basic commands
+alias py="python3"
 alias wh="which"                                # which
 alias cl="clear"                                # clear screen
 alias cls="clear"                               # clear screen
@@ -53,6 +45,7 @@ alias nf="neofetch"                             # neofetch
 alias sf="screenfetch"                          # screenfetch
 alias getweather="curl uk.wttr.in/Кривий%20Ріг?0"
 alias up="uptime -p"                            # show uptime(hours, minutes)
+alias  u="uptime -p"                            # show uptime(hours, minutes)
 alias ls="ls --color --g"                       # color ls with --group-directories-first
 alias ll="ls -lA"                               # show all files, one file per row
 alias lsa="ls -A"                               # show all files
@@ -93,6 +86,8 @@ function flip-video {
 function ps-find {
     ps ax | grep $1
 }
+
+alias find-viber-ps="ps ax | grep viber"
 
 # Find Flatpak app by name
 function fp-find {
@@ -218,3 +213,5 @@ function cr {
 }
 
 # cd && clear && echo 'My tmux sessions' && ls -1 *.sh
+
+export TERM=xterm-256color
