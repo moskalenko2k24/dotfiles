@@ -41,6 +41,7 @@ map('i', '<C-q>', '<Esc>:q<CR>');             -- Ctrl + q = quit
 map('i', '<C-s>', '<Esc>:w<CR>a');            -- Ctrl + s = save
 map('i', '<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
 map('i', '<C-f>', '<Esc>/');                  -- Ctrl + f = find
+map('i', '<C-d>', '<Delete>');                -- Ctrl + d = delete char
 
 -- WORK WITH TABS AND WINDOWS
 map('n', '<Leader>s', ':split<CR>');          -- , + s = make horizontal split (with same file)
