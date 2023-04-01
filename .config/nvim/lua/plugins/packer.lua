@@ -45,6 +45,15 @@ return require('packer').startup(function(use)
   -- Easy Motion for NeoVim
   use 'phaazon/hop.nvim';
 
+  -- Terminal in Vim
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("toggleterm").setup()
+    end
+  }
+
   -- Tabline
   use 'mkitt/tabline.vim';
 

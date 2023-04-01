@@ -43,7 +43,6 @@ alias cl="clear"                                # clear screen
 alias cls="clear"                               # clear screen
 alias nf="neofetch"                             # neofetch
 alias sf="screenfetch"                          # screenfetch
-alias getweather="curl uk.wttr.in/Кривий%20Ріг?0"
 alias up="uptime -p"                            # show uptime(hours, minutes)
 alias  u="uptime -p"                            # show uptime(hours, minutes)
 alias ls="ls --color --g"                       # color ls with --group-directories-first
