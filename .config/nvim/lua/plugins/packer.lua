@@ -102,8 +102,7 @@ return require('packer').startup(function(use)
 
   -- Pasting with indentation adjusted to destination context
   use 'sickill/vim-pasta';
-  -- https://editorconfig.org
-  use 'editorconfig/editorconfig-vim';
+
   -- Better %
   use { 'andymass/vim-matchup', event = 'VimEnter' };
   -- helps to end certain structures automatically

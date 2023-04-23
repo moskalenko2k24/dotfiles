@@ -1,13 +1,12 @@
+local g = vim.g         -- globals
 local opt = vim.opt     -- options
-local cmd = vim.cmd     -- execute Vim commands
-local global = vim.g
-local autocmd = vim.api.nvim_create_autocmd
+local utils = require('utils')
 
 -- MAIN SETTINGS
-cmd 'syntax on'                      -- syntax highlighting
+vim.cmd 'syntax on'                  -- syntax highlighting
 opt.compatible = false               -- no compatible with Vi
 opt.number = true                    -- show line numbers
-opt.relativenumber = false           -- (don't) show relative numbers
+opt.relativenumber = false           -- don't show relative numbers
 opt.hidden = true                    -- enable closing buffers with unsaved changes
 opt.clipboard = 'unnamedplus'        -- use system clipboard (Linux)
 opt.encoding = 'utf-8'               -- default encoding
@@ -17,12 +16,10 @@ opt.swapfile = true                  -- enable saving swap files (backup if edit
 opt.termguicolors = true             -- enable 24-bit colors(some plugins need)
 
 -- INDENT SETTINGS
-local spaces = 4
+utils.set_indent(4)                  -- indent = 4
 opt.autoindent = true                -- autoindent
 opt.expandtab = true                 -- use spaces instead of tabs
-opt.tabstop = spaces                 -- set indent width
-opt.softtabstop = spaces             -- set tab width
-opt.shiftwidth = spaces              -- set shift width
+g.editorconfig = true                -- EditorConfig support (NeoVim 0.9+)
 
 -- SEARCH SETTINGS
 opt.hlsearch = true                  -- highlight found text
@@ -48,14 +45,14 @@ opt.whichwrap = '<,>,[,],h,l'        -- cycle lines (when press <Right> on last 
 
 -- CODE SYNTAX HIGHLIGHTING IN MARKDOWN
 -- HTML, CSS, C, C++, C#, JavaScript, Python, Bash
-global.markdown_fenced_languages = {
+g.markdown_fenced_languages = {
     'html', 'css',
     'c', 'cpp', 'cs',
     'javascript', 'python', 'bash'
 };
 
 -- RELATIVE NUMBERS VISUAL MODE ONLY
-autocmd('ModeChanged', {
+utils.autocmd('ModeChanged', {
   pattern = {
     '*:[vV\x16]*', '[vV\x16]*:*'
   },
@@ -68,26 +65,13 @@ autocmd('ModeChanged', {
 
 -- (TODO: SHOW MODE HERE) filename[modified] encoding[line ending], line:column percentage
 -- vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'
---
 
-autocmd({ 'BufNew' , 'BufNewFile', 'BufRead' }, {
-  pattern = {
-    '*.html', '*.css', '*.json', '*.js', '*.ts', '*.lua', '*.pas'
-  },
-  callback = function()
-    vim.opt.shiftwidth = spaces / 2
-    vim.opt.softtabstop = spaces / 2
-    vim.opt.tabstop = spaces / 2
-  end,
-})
-
-autocmd({ 'BufNew' , 'BufNewFile', 'BufRead' }, {
-  pattern = {
-    '*.txt', '*.md'
-  },
-  callback = function()
-    vim.opt.shiftwidth = 1
-    vim.opt.softtabstop = 1
-    vim.opt.tabstop = 1
-  end,
-})
+local set_indent_for = utils.set_indent_for
+set_indent_for(1, {
+  '*.txt', '*.md'
+});
+set_indent_for(2, {
+  '*.lua', '*.pas',
+  '*.html', '*.css', '*.json',
+  '*.js', '*.jsx', '*.ts', '*.tsx'
+});
