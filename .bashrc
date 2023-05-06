@@ -39,6 +39,7 @@ alias vimdiff="nvim -d"
 # Aliases for basic commands
 alias py="python3"
 alias wh="which"                                # which
+alias c="clear"                                 # clear screen
 alias cl="clear"                                # clear screen
 alias cls="clear"                               # clear screen
 alias nf="neofetch"                             # neofetch
@@ -63,7 +64,7 @@ alias st="git status"
 alias ls-vimswap="ls ~/.vim/swapfiles/"
 
 # Aliases for update
-alias d-up="sudo dnf update --refresh"
+alias d-up="sudo dnf upgrade --refresh"
 alias f-up="flatpak update"
 
 # Aliases for git commands
@@ -122,22 +123,27 @@ function zip-dir {
     zip -r "${file}.zip" "${file}"
 }
 
-# Copy file path to clipboard
+# Copy file path to clipboard using xclip
 function cp-path {
     (echo -n "file://$(realpath $1)/") | xclip -sel clip
 }
 
-# Copy file to clipboard
+# Copy file to clipboard using xclip
 function cp-file {
     echo "file://$(readlink -f $1)" | xclip -sel clip -t text/uri-list
 }
 
-# Copy file to clipboard
+# Copy file path to clipboard using wl-copy
+# function cp-path {
+#     (echo -n "file://$(realpath $1)/") | wl-copy
+# }
+
+# Copy file to clipboard using wl-copy
 # function cp-file {
 #     echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
 # }
 
-# Create file with template
+# Create file from template
 function new-file {
     case "$1" in
         *.c) cp ~/Templates/C/main.c "$1" ;;
@@ -149,7 +155,7 @@ function new-file {
     esac
 }
 
-# Create project (directory) with template
+# Create project (directory) from template
 function new-project {
     declare -A templates
     templates=( ["c"]="C" ["cpp"]="C++" ["fpc"]="Free_Pascal" \
@@ -196,6 +202,10 @@ function run {
             ;;
         *.js) cmd="node $1" ;;
         *.py) cmd="python $1" ;;
+        *.hs)
+            cmd="ghc $1 && ./${out}"
+            rem="rm ${out} *.o *.hi"
+            ;;
         *.cs) cmd="dotnet-exec $1" ;;
         *.java)
             cmd="javac ${file}" ;;
