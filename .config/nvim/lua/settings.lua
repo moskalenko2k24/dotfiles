@@ -71,7 +71,7 @@ set_indent_for(1, {
   '*.txt', '*.md'
 });
 set_indent_for(2, {
-  '*.lua', '*.pas',
+  '*.hs', '*.lua', '*.pas',
   '*.html', '*.css', '*.json',
   '*.js', '*.jsx', '*.ts', '*.tsx'
 });
