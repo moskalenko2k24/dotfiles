@@ -1,14 +1,28 @@
+# some docs can be found there
+# https://github.com/pwmt/zathura/blob/develop/doc/configuration/map.rst
+
+# make window full screen
 set window-height 3000
 set window-width 3000
-
 set selection-clipboard clipboard
 
+# map +
 map [normal] = zoom in
 map [fullscreen] = zoom in
 
+# map f = fullscreen
+unmap f
 map [normal] f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 map [normal] а toggle_fullscreen
 map [fullscreen] а toggle_fullscreen
 
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+# map jk cyrillic
+map [normal] о scroll down
+map [fullscreen] о scroll down
+map [normal] л scroll up
+map [fullscreen] л scroll up
+
+# map q cyrillic
+map [normal] й quit
+map [fullscreen] й quit
