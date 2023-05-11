@@ -65,6 +65,7 @@ map('i', '<C-l>', '<Right>');
 
 -- MAPPINGS FOR VIMDIFF
 if vim.api.nvim_win_get_option(0, 'diff') then
+  map('n', 'q', ':qa<CR>');
   map('n', '<Leader>q', ':qa<CR>');
   map('n', '<C-q>', ':qa<CR>');
 end

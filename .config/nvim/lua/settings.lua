@@ -1,6 +1,8 @@
 local g = vim.g         -- globals
 local opt = vim.opt     -- options
 local utils = require('utils')
+local set_indent = utils.set_indent;
+local set_indent_for = utils.set_indent_for;
 
 -- MAIN SETTINGS
 vim.cmd 'syntax on'                  -- syntax highlighting
@@ -16,7 +18,7 @@ opt.swapfile = true                  -- enable saving swap files (backup if edit
 opt.termguicolors = true             -- enable 24-bit colors(some plugins need)
 
 -- INDENT SETTINGS
-utils.set_indent(4)                  -- indent = 4
+set_indent(4)                        -- indent = 4
 opt.autoindent = true                -- autoindent
 opt.expandtab = true                 -- use spaces instead of tabs
 g.editorconfig = true                -- EditorConfig support (NeoVim 0.9+)
@@ -66,7 +68,6 @@ utils.autocmd('ModeChanged', {
 -- (TODO: SHOW MODE HERE) filename[modified] encoding[line ending], line:column percentage
 -- vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'
 
-local set_indent_for = utils.set_indent_for
 set_indent_for(1, {
   '*.txt', '*.md'
 });

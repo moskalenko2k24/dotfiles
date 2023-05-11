@@ -1,33 +1,5 @@
 local cmp = require('cmp')
 
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
-}
-
 cmp.setup({
   snippet = {
     -- expand = function(args)
@@ -69,13 +41,13 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'treesitter' },
     { name = 'path' },
-    { name = 'luasnip' },
+    -- { name = 'luasnip' },
     { name = 'buffer' },
     -- { name = 'cmdline' },
     -- { name = 'neorg' },
@@ -84,15 +56,11 @@ cmp.setup({
 
   formatting = {
     format = function(entry, vim_item)
-      -- Kind icons
-      -- vim_item.kind =
-      --   string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-
       -- Source
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',
-        luasnip = '[LuaSnip]',
+        -- luasnip = '[LuaSnip]',
         treesitter = '[TS]',
       })[entry.source.name] or entry.source.name
 

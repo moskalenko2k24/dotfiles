@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
   }
 
   -- Tabline
-  use 'mkitt/tabline.vim';
+  -- use 'mkitt/tabline.vim';
 
   -- Change / add surrounding
   -- S) in visual, cs)] in normal
