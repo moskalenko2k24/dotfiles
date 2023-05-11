@@ -15,10 +15,12 @@ map [fullscreen] = zoom in
 unmap f
 map [normal] f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
+
+# map f = fullscreen, cyrillic
 map [normal] а toggle_fullscreen
 map [fullscreen] а toggle_fullscreen
 
-# map jk cyrillic
+# map j & k cyrillic
 map [normal] о scroll down
 map [fullscreen] о scroll down
 map [normal] л scroll up
@@ -27,3 +29,19 @@ map [fullscreen] л scroll up
 # map q cyrillic
 map [normal] й quit
 map [fullscreen] й quit
+
+# map n & N cyrillic
+map [normal] т search next
+map [fullscreen] т search next
+map [normal] Т search previous
+map [fullscreen] Т search previous
+
+# map / cyrillic
+map [normal] . focus_inputbar "/"
+map [fullscreen] . focus_inputbar "/"
+
+# map gg & G cyrillic
+map [normal] пп scroll top
+map [fullscreen] пп scroll top
+map [normal] П scroll bottom
+map [fullscreen] П scroll bottom
