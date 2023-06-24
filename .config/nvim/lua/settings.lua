@@ -48,9 +48,9 @@ opt.whichwrap = '<,>,[,],h,l'        -- cycle lines (when press <Right> on last 
 -- CODE SYNTAX HIGHLIGHTING IN MARKDOWN
 -- HTML, CSS, C, C++, C#, JavaScript, Python, Bash
 g.markdown_fenced_languages = {
-    'html', 'css',
-    'c', 'cpp', 'cs',
-    'javascript', 'python', 'bash'
+  'html', 'css',
+  'c', 'cpp', 'cs',
+  'javascript', 'python', 'bash'
 };
 
 -- RELATIVE NUMBERS VISUAL MODE ONLY
