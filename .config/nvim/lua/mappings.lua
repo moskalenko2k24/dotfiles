@@ -12,8 +12,10 @@ map('n', '<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
 -- , + ; = add semicolon to the end of line
 -- , + . = add dot to the end of line
 local appendDot = 'mPA.<Esc>`P:delmarks P<CR>';
+local appendComa = 'mPA,<Esc>`P:delmarks P<CR>';
 local appendSemicolon = 'mPA;<Esc>`P:delmarks P<CR>';
 map('n', '<Leader>.', appendDot, { silent = true });
+map('n', '<Leader>,', appendComa, { silent = true });
 map('n', '<Leader>;', appendSemicolon, { silent = true });
 
 -- GO UP / DOWN VISUAL LINES
