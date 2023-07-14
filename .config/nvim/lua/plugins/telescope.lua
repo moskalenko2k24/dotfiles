@@ -10,6 +10,8 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
+        -- C-u = clear all line
+        -- ['C-u'] = false,
         ['<C-j>'] = actions.move_selection_next,
         ['<C-k>'] = actions.move_selection_previous
       },

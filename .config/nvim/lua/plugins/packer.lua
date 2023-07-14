@@ -45,6 +45,9 @@ return require('packer').startup(function(use)
   -- Easy Motion for NeoVim
   use 'phaazon/hop.nvim';
 
+  -- Calendar (:Calendar or <Leader>cal)
+  use 'mattn/calendar-vim'
+
   -- Terminal in Vim
   use {
     "akinsho/toggleterm.nvim",
@@ -55,11 +58,20 @@ return require('packer').startup(function(use)
   }
 
   -- Tabline
-  -- use 'mkitt/tabline.vim';
+  use 'mkitt/tabline.vim';
 
   -- Change / add surrounding
   -- S) in visual, cs)] in normal
-  use 'tpope/vim-surround';
+  -- use 'tpope/vim-surround';
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
 
   -- Comment plugin
   use 'terrortylor/nvim-comment';
@@ -91,6 +103,15 @@ return require('packer').startup(function(use)
 
   use 'hrsh7th/nvim-cmp';
   use 'hrsh7th/cmp-nvim-lsp';
+
+  use {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  }
+  require 'luasnip'.config.setup({});
 
   use {
     'nvim-treesitter/nvim-treesitter',
