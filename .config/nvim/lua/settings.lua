@@ -15,7 +15,7 @@ opt.encoding = 'utf-8'               -- default encoding
 opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
 --opt.directory = '~/.vim/swapfiles//' -- path for swap files
-opt.termguicolors = true             -- enable 24-bit colors(some plugins need)
+--opt.termguicolors = true             -- enable 24-bit colors(some plugins need)
 
 -- INDENT SETTINGS
 set_indent(4)                        -- indent = 4
@@ -52,6 +52,11 @@ g.markdown_fenced_languages = {
   'c', 'cpp', 'cs',
   'javascript', 'python', 'bash'
 };
+
+ -- enable 24-bit colors(some plugins need)
+if vim.fn.has('termguicolors') then
+  opt.termguicolors = true
+end
 
 -- RELATIVE NUMBERS VISUAL MODE ONLY
 utils.autocmd('ModeChanged', {
