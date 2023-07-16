@@ -6,7 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Private config
-source ~/.private.sh
+. ~/.private.sh
 
 # Node Version Manager
 # (code was added automatically)
@@ -33,6 +33,7 @@ HISTTIMEFORMAT="%Y-%m-%d %T "
 
 # Use NeoVim as default editor
 export EDITOR="nvim"
+alias v="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 
@@ -47,10 +48,12 @@ alias sf="screenfetch"                          # screenfetch
 alias up="uptime -p"                            # show uptime(hours, minutes)
 alias  u="uptime -p"                            # show uptime(hours, minutes)
 alias ls="ls --color --g"                       # color ls with --group-directories-first
-alias ll="ls -lA"                               # show all files, one file per row
+alias l="ls -A"                                 # show all files
 alias lsa="ls -A"                               # show all files
+alias ll="ls -lA"                               # show all files, one file per row
 alias free="free -h"                            # memory usage, human readable
 alias ps-all="ps ax"                            # show all processes
+alias open="xdg-open"                           # open file with default application
 alias kill9="kill -9"                           # kill process
 alias k9="kill -9"                              # kill process
 alias du="du -sh"                               # disk usage: summary + human readable
@@ -108,7 +111,7 @@ function mkcd {
 
 # Go to dir with name yyyy-mm-dd
 function cd-date {
-    cd "$(date '+%Y-%m-%d')"
+    cd ~/Labs/"$(date '+%Y-%m-%d')"
 }
 
 # Print first line of --version
@@ -175,6 +178,9 @@ function new-project {
     elif [[ "$1" == "winapi" ]]
     then
         cp -r ~/Templates/WinAPI "$2"
+    elif [[ "$1" == "freeglut" ]]
+    then
+        cp -r ~/Templates/Freeglut/ "$2"
     else
         echo "Unknown project type"
     fi
