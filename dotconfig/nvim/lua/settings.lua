@@ -15,7 +15,6 @@ opt.encoding = 'utf-8'               -- default encoding
 opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
 --opt.directory = '~/.vim/swapfiles//' -- path for swap files
---opt.termguicolors = true             -- enable 24-bit colors(some plugins need)
 
 -- INDENT SETTINGS
 set_indent(4)                        -- indent = 4
@@ -53,7 +52,7 @@ g.markdown_fenced_languages = {
   'javascript', 'python', 'bash'
 };
 
- -- enable 24-bit colors(some plugins need)
+ -- ENABLE 24-BIT COLORS
 if vim.fn.has('termguicolors') then
   opt.termguicolors = true
 end
@@ -73,10 +72,12 @@ utils.autocmd('ModeChanged', {
 -- (TODO: SHOW MODE HERE) filename[modified] encoding[line ending], line:column percentage
 -- vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'
 
+-- SET INDENTS
 set_indent_for(1, {
   '*.txt', '*.md'
 });
 set_indent_for(2, {
+  '*.sh', '*.bashrc',
   '*.hs', '*.lua', '*.pas',
   '*.html', '*.css', '*.json',
   '*.js', '*.jsx', '*.ts', '*.tsx'
