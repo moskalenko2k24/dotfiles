@@ -2,7 +2,7 @@
 
 # Loading base config
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # Private config
@@ -82,149 +82,149 @@ alias ...="cd ../.."
 
 # Flip video horizontally
 function flip-video {
-    ffmpeg -i "$1" -vf hflip -c:a copy "$2"
+  ffmpeg -i "$1" -vf hflip -c:a copy "$2"
 }
 
 # Find process by name
 function ps-find {
-    ps ax | grep $1
+  ps ax | grep $1
 }
 
 alias find-viber-ps="ps ax | grep viber"
 
 # Find Flatpak app by name
 function fp-find {
-    flatpak list | grep $1
+  flatpak list | grep $1
 }
 
 # Create directory and go there or
 # Create yyyy-mm-dd directory (if no params)
 function mkcd {
-    newdir=$(date '+%Y-%m-%d')
-    if [ $# -eq 0 ]
-    then
-        mkdir -p "${newdir}" && cd "${newdir}"
-    else
-        mkdir -p -- "$1" && cd -P -- "$1"
-    fi
+  newdir=$(date '+%Y-%m-%d')
+  if [ $# -eq 0 ]
+  then
+    mkdir -p "${newdir}" && cd "${newdir}"
+  else
+    mkdir -p -- "$1" && cd -P -- "$1"
+  fi
 }
 
 # Go to dir with name yyyy-mm-dd
 function cd-date {
-    cd ~/Labs/"$(date '+%Y-%m-%d')"
+  cd ~/Labs/"$(date '+%Y-%m-%d')"
 }
 
 # Print first line of --version
 function ver {
-    $1 --version | head -1
+  $1 --version | head -1
 }
 
 # Add directory to zip
 function zip-dir {
-    file="$1"
-    [[ "${file}" == */ ]] && file="${file: : -1}"
-    zip -r "${file}.zip" "${file}"
+  file="$1"
+  [[ "${file}" == */ ]] && file="${file: : -1}"
+  zip -r "${file}.zip" "${file}"
 }
 
 # Copy file path to clipboard using xclip
 function cp-path {
-    (echo -n "file://$(realpath $1)/") | xclip -sel clip
+  (echo -n "file://$(realpath $1)/") | xclip -sel clip
 }
 
 # Copy file to clipboard using xclip
 function cp-file {
-    echo "file://$(readlink -f $1)" | xclip -sel clip -t text/uri-list
+  echo "file://$(readlink -f $1)" | xclip -sel clip -t text/uri-list
 }
 
 # Copy file path to clipboard using wl-copy
 # function cp-path {
-#     (echo -n "file://$(realpath $1)/") | wl-copy
+#   (echo -n "file://$(realpath $1)/") | wl-copy
 # }
 
 # Copy file to clipboard using wl-copy
 # function cp-file {
-#     echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
+#   echo "file://$(readlink -f $1)" | wl-copy --type text/uri-list
 # }
 
 # Create file from template
 function new-file {
-    case "$1" in
-        *.c) cp ~/Templates/C/main.c "$1" ;;
-        *.cpp) cp ~/Templates/C++/main.cpp "$1" ;;
-        *.pas) cp ~/Templates/Free_Pascal/program.pas "$1" ;;
-        *.js) cp ~/Templates/JavaScript/index.js "$1" ;;
-        *.py) cp ~/Templates/Python/main.py "$1" ;;
-        *) echo "Unknown project type" ;;
-    esac
+  case "$1" in
+    *.c) cp ~/Templates/C/main.c "$1" ;;
+    *.cpp) cp ~/Templates/C++/main.cpp "$1" ;;
+    *.pas) cp ~/Templates/Free_Pascal/program.pas "$1" ;;
+    *.js) cp ~/Templates/JavaScript/index.js "$1" ;;
+    *.py) cp ~/Templates/Python/main.py "$1" ;;
+    *) echo "Unknown project type" ;;
+  esac
 }
 
 # Create project (directory) from template
 function new-project {
-    declare -A templates
-    templates=( ["c"]="C" ["cpp"]="C++" ["fpc"]="Free_Pascal" \
-                ["java"]="Java" ["winapi"]="WinAPI" )
-    if [[ "$1" == "c" ]]
-    then
-        cp -r ~/Templates/C/ "$2"
-    elif [[ "$1" == "cpp" ]]
-    then
-        cp -r ~/Templates/C++/ "$2"
-    elif [[ "$1" == "fpc" ]]
-    then
-        cp -r ~/Templates/Free_Pascal "$2"
-    elif [[ "$1" == "java" ]]
-    then
-        cp -r ~/Templates/Java/ "$2"
-    elif [[ "$1" == "winapi" ]]
-    then
-        cp -r ~/Templates/WinAPI "$2"
-    elif [[ "$1" == "freeglut" ]]
-    then
-        cp -r ~/Templates/Freeglut/ "$2"
-    else
-        echo "Unknown project type"
-    fi
+  declare -A templates
+  templates=( ["c"]="C" ["cpp"]="C++" ["fpc"]="Free_Pascal" \
+              ["java"]="Java" ["winapi"]="WinAPI" )
+  if [[ "$1" == "c" ]]
+  then
+    cp -r ~/Templates/C/ "$2"
+  elif [[ "$1" == "cpp" ]]
+  then
+    cp -r ~/Templates/C++/ "$2"
+  elif [[ "$1" == "fpc" ]]
+  then
+    cp -r ~/Templates/Free_Pascal "$2"
+  elif [[ "$1" == "java" ]]
+  then
+    cp -r ~/Templates/Java/ "$2"
+  elif [[ "$1" == "winapi" ]]
+  then
+    cp -r ~/Templates/WinAPI "$2"
+  elif [[ "$1" == "freeglut" ]]
+  then
+    cp -r ~/Templates/Freeglut/ "$2"
+  else
+    echo "Unknown project type"
+  fi
 }
 
 # Run one-file project
 function run {
-    file=$1
-    out="${file%.*}"
-    # out=$(date +'%Y%m%d%H%M%S')
-    flags="-Wall -Wextra"
-    rem=""
-    case "$1" in
-        *.c)
-            cmd="gcc ${flags} -std=c11 ${file} -o ${out} -lm && ./${out}"
-            rem="rm ${out}"
-            ;;
-        *.cpp)
-            cmd="g++ ${flags} -std=c++17 ${file} -o ${out} -lm && ./${out}"
-            rem="rm ${out}"
-            ;;
-        *.pas)
-            cmd="fpc -l- -v0 ${file} && ./${out}"
-            rem="rm ${out} *.o"
-            ;;
-        *.js) cmd="node $1" ;;
-        *.py) cmd="python $1" ;;
-        *.hs)
-            cmd="ghc $1 && ./${out}"
-            rem="rm ${out} *.o *.hi"
-            ;;
-        *.cs) cmd="dotnet-exec $1" ;;
-        *.java)
-            cmd="javac ${file}" ;;
-        *) echo "Unknown project type" ;;
-    esac
-    echo $cmd
-    eval "${cmd};${rem}"
+  file=$1
+  out="${file%.*}"
+  # out=$(date +'%Y%m%d%H%M%S')
+  flags="-Wall -Wextra"
+  rem=""
+  case "$1" in
+    *.c)
+      cmd="gcc ${flags} -std=c11 ${file} -o ${out} -lm && ./${out}"
+      rem="rm ${out}"
+      ;;
+    *.cpp)
+      cmd="g++ ${flags} -std=c++17 ${file} -o ${out} -lm && ./${out}"
+      rem="rm ${out}"
+      ;;
+    *.pas)
+      cmd="fpc -l- -v0 ${file} && ./${out}"
+      rem="rm ${out} *.o"
+      ;;
+    *.js) cmd="node $1" ;;
+    *.py) cmd="python $1" ;;
+    *.hs)
+      cmd="ghc $1 && ./${out}"
+      rem="rm ${out} *.o *.hi"
+      ;;
+    *.cs) cmd="dotnet-exec $1" ;;
+    *.java)
+      cmd="javac ${file}" ;;
+    *) echo "Unknown project type" ;;
+  esac
+  echo $cmd
+  eval "${cmd};${rem}"
 }
 
 # Clear screen and
 # run one-file project
 function cr {
-    clear && run $1
+  clear && run $1
 }
 
 # cd && clear && echo 'My tmux sessions' && ls -1 *.sh
