@@ -1,7 +1,9 @@
 # some docs and info can be found there
+# https://wiki.archlinux.org/title/zathura
 # https://unix.stackexchange.com/questions/tagged/zathura
 # https://github.com/pwmt/zathura/blob/develop/doc/configuration/map.rst
 # https://unix.stackexchange.com/questions/572674/how-to-bind-a-command-to-the-symbol-in-zathura
+# https://github.com/ne9z/dotfiles-nixos/blob/main/.config/zathura/zathurarc
 
 # make window full screen
 set window-height 3000
@@ -46,3 +48,11 @@ map [normal] пп scroll top
 map [fullscreen] пп scroll top
 map [normal] П scroll bottom
 map [fullscreen] П scroll bottom
+
+# map ; to type : without shift
+map [normal] ; focus_inputbar ":"
+map [fullscreen] ; focus_inputbar ":"
+map [normal] ж focus_inputbar ":"
+map [fullscreen] ж focus_inputbar ":"
+map [normal] Ж focus_inputbar ":"
+map [fullscreen] Ж focus_inputbar ":"
