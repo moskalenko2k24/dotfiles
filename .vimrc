@@ -7,6 +7,7 @@
 syntax on                         " syntax highlighting
 set nocompatible                  " no compatible with Vi
 set number                        " show line numbers
+set norelativenumber              " don't show relative numbers
 set hidden                        " enable closing buffers with unsaved changes
 set clipboard=unnamedplus         " use system clipboard (Linux)
 set encoding=utf-8                " default encoding
@@ -95,6 +96,7 @@ nnoremap <Leader>h :nohlsearch<CR>
 "    , + l = add space without leaving normal mode
 nnoremap <Leader>l i<Space><Esc>
 "    , + Enter = add empty line
+nnoremap <Leader><CR> i<CR><Esc>
 " nnoremap <Leader><BS> i<CR><Esc>
 " nnoremap <Leader>r i<CR><Esc>
 " nnoremap <Leader>r :%s/<:cword>/
@@ -113,6 +115,8 @@ vnoremap k gk
 vnoremap j gj
 nnoremap <Up> gk
 nnoremap <Down> gj
+vnoremap <Up> gk
+vnoremap <Down> gj
 inoremap <Up> <Esc>gka
 inoremap <Down> <Esc>gja
 
@@ -137,6 +141,15 @@ nnoremap <Tab> <C-w><C-w>
 nnoremap <C-Left> gT
 nnoremap <C-Right> gt
 
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
+
+" MAPPINGS FOR VIMDIFF
+if &diff
+    nnoremap <Leader>q :qa<CR>
+    nnoremap <C-q> :qa<CR>
+endif
+
 " 0 = go to ^
 " or go to 0 (if we are at ^)
 " https://vi.stackexchange.com/questions/35057/double-press-override-for-0-key
@@ -144,14 +157,21 @@ nnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 xnoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 onoremap <expr> 0 virtcol('.') == indent('.')+1 ? '0' : '^'
 
-" Show relative numbers
-" in visual mode only
-vnoremap <Esc> <Esc>:set number norelativenumber<CR>
-vnoremap <C-c> <Esc>:set number norelativenumber<CR>
-nnoremap <silent> v :set nonumber relativenumber<CR>v
-nnoremap <silent> V :set nonumber relativenumber<CR>V
-nnoremap <silent> <C-v> :<C-u>set nonumber relativenumber<CR><C-v>
+" RELATIVE NUMBERS VISUAL MODE ONLY
+function ToggleNumbers()
+    set number!
+    set relativenumber!
+endfunction
+" https://vi.stackexchange.com/questions/38567/detecting-the-enter-and-leave-of-visual-mode-event
+augroup VisualEvent
+  autocmd!
+  " on visual mode enter
+  autocmd ModeChanged *:[vV\x16]* call ToggleNumbers()
+  " on visual mode leave
+  autocmd ModeChanged [vV\x16]*:* call ToggleNumbers()
+augroup END
 
+" TEMPLATES FOR ONE-FILE PROJECTS
 autocmd BufNewFile *.c 0r ~/Templates/C/main.c
 autocmd BufNewFile *.cpp 0r ~/Templates/C++/main.cpp
 autocmd BufNewFile *.pas 0r ~/Templates/Free_Pascal/program.pas
@@ -268,6 +288,7 @@ endfunction
 " File navigation plugin, Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
 " inoremap <C-p> <Esc>:call ListFiles()<CR>
 nnoremap <Leader>/ :Rg<CR>
 nnoremap <Leader>f :Files<CR>
@@ -290,6 +311,9 @@ Plug 'lervag/vimtex'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
+
+" Format code on save
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 " Show colors(in CSS) like in VS Code
 " Golang must be installed, sudo dnf install golang
@@ -317,8 +341,12 @@ let g:OmniSharp_server_use_net6 = 1
 let g:OmniSharp_popup = 1
 let g:OmniSharp_selector_ui = 'fzf'
 autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<CR>
+autocmd FileType cs nnoremap <F1> :OmniSharpDocumentation<CR>
 autocmd FileType cs nnoremap <Leader>rn :OmniSharpRename<CR>
 autocmd CursorHold *.cs OmniSharpTypeLookup
+" close documnetation window
+" when autocomplete is not needed
+autocmd CompleteDone * pclose
 
 call plug#end()
 
