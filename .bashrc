@@ -90,7 +90,7 @@ function ps-find {
   ps ax | grep $1
 }
 
-alias find-viber-ps="ps ax | grep viber"
+alias kill-viber="killall -9 Viber"
 
 # Find Flatpak app by name
 function fp-find {
