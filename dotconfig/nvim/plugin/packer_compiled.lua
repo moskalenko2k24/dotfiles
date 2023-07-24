@@ -152,6 +152,11 @@ _G.packer_plugins = {
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
   },
+  ["nvim-tetris"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/nvim-tetris",
+    url = "https://github.com/alec-gibson/nvim-tetris"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/nvim-treesitter",

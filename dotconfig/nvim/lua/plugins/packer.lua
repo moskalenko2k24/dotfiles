@@ -140,6 +140,8 @@ return require('packer').startup(function(use)
   -- helps to end certain structures automatically
   use 'tpope/vim-endwise';
 
+  use 'alec-gibson/nvim-tetris';
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
