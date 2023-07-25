@@ -37,7 +37,7 @@ XTerm*VT100.geometry: 100x24
 
 ! ## Set font and fontsize ##
 /* XTerm*faceName: Monospace */
-XTerm*faceName: JetBrainsMono
+XTerm*faceName: JetBrainsMono Nerd Font
 XTerm*faceSize: 12
 
 ! VT Font Menu: Unreadable
@@ -118,10 +118,6 @@ XTerm*color14 : #2aa1b3
 ! ! white
 XTerm*color7  : #d0cfcc
 XTerm*color15 : #d0cfcc
-
-URxvt*perl-ext-common: default,selection,matcher
-URxvt*urlLauncher: /usr/bin/firefox
-URxvt*matcher.button: 1
 
 ! Scroll when there is new input
 XTerm*scrollTtyOutput: true
