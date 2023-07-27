@@ -40,6 +40,10 @@ opt.cursorline = true                -- highlight active line
 opt.laststatus = 2                   -- always show statusline
 opt.showcmd = true                   -- show commands at bottom right corner
 
+opt.keymap = 'russian-jcukenwin'
+opt.iminsert = 0;
+opt.imsearch = 0;
+
 -- WRAP SETTINGS
 opt.wrap = true                      -- show 1 long line as 2 or more lines
 opt.whichwrap = '<,>,[,],h,l'        -- cycle lines (when press <Right> on last char, go to 1st char of next line)
