@@ -7,20 +7,21 @@ sudo dnf install git ctags tmux fzf ripgrep htop tldr mediainfo unar xclip wl-cl
 ```
 __git__ а куда без него ? \
 __ctags__ это теги, не факт что нужно (сейчас LSP использую) \
-__tmux__ для вкладок в терминале и скриптов открывающих окна :) \
-__fzf__ для поиска файлов \
-__ripgrep__ улучшенный grep (будет нужен в NeoVim) \
+[__tmux__](https://github.com/tmux/tmux) для вкладок в терминале и скриптов открывающих окна :) \
+[__fzf__](https://github.com/junegunn/fzf) для поиска файлов \
+[__ripgrep__](https://github.com/BurntSushi/ripgrep) улучшенный grep (будет нужен в NeoVim) \
 __htop__ чтоб смотреть процессы \
-__tldr__ аналог man, но в стиле коротких шпор \
-__unar__ лучший распаковщик, в 1 команду любые архивы \
+[__tldr__](https://github.com/tldr-pages/tldr-python-client) аналог man, но в стиле коротких шпор \
+[__unar__](https://theunarchiver.com/command-line) лучший распаковщик, в 1 команду любые архивы \
 __xclip__ работа с буфером обмена(скопировать текст или файл) \
 __wl-clipboard__ тоже самое, но для Wayland(нужно для NeoVim!) \
-__sox__ позволяет проиграть один файл командой `play`.
+[__sox__](https://sox.sourceforge.net) позволяет проиграть один аудиофайл командой `play`.
 
-### Консольные плееры
+### Консольные аудиоплееры
 
 Не факт, что буду ими пользоваться. \
-`moc` запускается командой `mocp`.
+`moc` запускается командой `mocp`. \
+Конфиг для `moc` у меня в этом репозитории(каталог .moc)
 
 ```bash
 sudo dnf install moc cmus
