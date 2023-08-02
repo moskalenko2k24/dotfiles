@@ -3,7 +3,7 @@
 ## Важнейшие CLI-утилиты
 
 ```bash
-sudo dnf install git ctags tmux fzf ripgrep htop tldr mediainfo unar xclip wl-clipboard
+sudo dnf install git ctags tmux fzf ripgrep htop tldr mediainfo unar xclip wl-clipboard sox
 ```
 __git__ а куда без него ? \
 __ctags__ это теги, не факт что нужно (сейчас LSP использую) \
@@ -14,12 +14,13 @@ __htop__ чтоб смотреть процессы \
 __tldr__ аналог man, но в стиле коротких шпор \
 __unar__ лучший распаковщик, в 1 команду любые архивы \
 __xclip__ работа с буфером обмена(скопировать текст или файл) \
-__wl-clipboard__ тоже самое, но для Wayland(нужно для NeoVim!)
+__wl-clipboard__ тоже самое, но для Wayland(нужно для NeoVim!) \
+__sox__ позволяет проиграть один файл командой `play`.
 
 ### Консольные плееры
 
-Не факт, что буду ими пользоваться.
-Первый плеер запускается через `mocp`.
+Не факт, что буду ими пользоваться. \
+`moc` запускается командой `mocp`.
 
 ```bash
 sudo dnf install moc cmus
@@ -71,7 +72,7 @@ sudo dnf install java-11-openjdk-devel java-latest-openjdk-devel
 
 Выбрать нужную версию Java, если установлено несколько:
 ```bash
-sudo alternatives --config java
+sudo update-alternatives --config java
 ```
 
 ### Другие
@@ -81,6 +82,15 @@ sudo dnf install golang lua
 
 ## Установка шрифтов JetBrainsMono Nerd Fonts
 
+Распаковать архив.
+```bash
+unar JetBrainsMonoNerdFonts.tar.xz
+```
+
+Все .ttf файлы скопировать в `~/.local/share/fonts/`
+```bash
+cp ./JetBrainsMonoNerdFonts/*.ttf ~/.local/share/fonts/
+```
 
 ## Терминалы
 
