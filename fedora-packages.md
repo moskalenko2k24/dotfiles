@@ -1,5 +1,7 @@
 # Настройка Fedora
 
+Из подключенных реп только RPM Fusion(Free, Nonfree)
+
 ## Важнейшие CLI-утилиты
 
 ```bash
@@ -130,7 +132,7 @@ sudo dnf install https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracryp
 ## Интернет
 
 ```bash
-sudo dnf install keepassxc tor firefox chromium telegram-desktop dino qbittorrent
+sudo dnf install keepassxc tor firefox chromium telegram-desktop dino discord qbittorrent
 ```
 __Dino__ для XMPP(Jabber)
 
