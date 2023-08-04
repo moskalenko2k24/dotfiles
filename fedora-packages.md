@@ -142,5 +142,9 @@ __Dino__ для XMPP(Jabber)
 Фото, видео, музыка, книги(pdf / djvu и.т.д).
 
 ```bash
-sudo dnf install qimgv vlc audacious zathura zathura-plugins-all
+sudo dnf install qimgv vlc audacious audacious-plugins audacious-plugins-freeworld-ffaudio zathura zathura-plugins-all
 ```
+
+Возможно пакет `audacious-plugins` не нужен, а возможно пакет ниже. \
+`audacious-plugins-freeworld-ffaudio` нужен для проигрывания .m4a \
+Возможно в настройках придется включить Settings -> Plugins -> Input -> FFmpeg Plugin
