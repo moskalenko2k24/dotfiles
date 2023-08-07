@@ -7,9 +7,9 @@ require('mason-lspconfig').setup {
 -- LSP
 local custom_attach = function(client, bufnr)
   -- Workaround for https://github.com/OmniSharp/omnisharp-roslyn/issues/2531
-  if client.name == "omnisharp" then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
+  -- if client.name == "omnisharp" then
+  --   client.server_capabilities.semanticTokensProvider = nil
+  -- end
   local opts = { buffer = bufnr, noremap = true, silent = true }
   local function buf_set_keymap(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, opts)
