@@ -14,7 +14,6 @@ opt.clipboard = 'unnamedplus'        -- use system clipboard (Linux)
 opt.encoding = 'utf-8'               -- default encoding
 opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
---opt.directory = '~/.vim/swapfiles//' -- path for swap files
 
 -- INDENT SETTINGS
 set_indent(4)                        -- indent = 4
@@ -85,4 +84,7 @@ set_indent_for(2, {
   '*.hs', '*.lua', '*.pas',
   '*.html', '*.css', '*.json',
   '*.js', '*.jsx', '*.ts', '*.tsx'
+});
+set_indent_for(4, {
+  '*.c', '*.cpp', '*.cs', '*.java'
 });
