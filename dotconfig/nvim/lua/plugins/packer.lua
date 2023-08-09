@@ -145,6 +145,9 @@ return require('packer').startup(function(use)
   -- show occurence / occurences count when search
   use 'google/vim-searchindex';
 
+  -- syntax highlighting for kitty.conf
+  use 'fladson/vim-kitty';
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
