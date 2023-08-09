@@ -63,6 +63,7 @@ alias nau="nautilus . &"                        # open Nautilus in current dir
 alias reload-bashrc="source ~/.bashrc"          # reload .bashrc
 alias mr="make && make run"                     # make + run
 alias cmr="clear && make && make run"           # clear + make + run
+alias icat="kitty icat"                         # show image in kitty
 alias st="git status"
 alias ls-vimswap="ls ~/.vim/swapfiles/"
 
