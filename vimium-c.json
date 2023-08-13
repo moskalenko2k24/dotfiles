@@ -1,0 +1,69 @@
+{
+	"name": "Vimium C",
+	"@time": "8/13/2023, 6:28:57 PM",
+	"time": 1691940537291,
+	"environment": {
+		"extension": "1.99.995",
+		"platform": "linux",
+		"firefox": 116
+	},
+	"exclusionRules": [
+		{
+			"passKeys": "j k l ",
+			"pattern": ":https://www.youtube.com/*?v=*"
+		},
+		{
+			"passKeys": "",
+			"pattern": "^https?://127\\.0\\.0\\.1:8080/"
+		},
+		{
+			"passKeys": "j k l m ",
+			"pattern": ":https://www.youtube.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://www.typing.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://wordle.belousov.one/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://slovko.zaxid.net/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":http://ritmoteka.ru/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://flyctl.sh/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://www.mathway.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://scratch.mit.edu/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://drive.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://www.musicca.com/"
+		}
+	],
+	"keyLayout": 1,
+	"keyMappings": [
+		"#!no-check",
+		"map <c-left> previousTab",
+		"map <c-right> nextTab",
+		""
+	],
+	"vimSync": true,
+	"ignoreKeyboardLayout": 2
+}
