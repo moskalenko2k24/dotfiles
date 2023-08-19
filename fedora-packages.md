@@ -83,6 +83,14 @@ sudo update-alternatives --config java
 sudo dnf install golang lua
 ```
 
+### Zeal
+```bash
+sudo dnf install zeal
+```
+
+Прога для чтения документации оффлайн.
+
+
 ## Установка шрифтов JetBrainsMono Nerd Fonts
 
 Распаковать архив.
