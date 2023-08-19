@@ -33,6 +33,7 @@ HISTTIMEFORMAT="%Y-%m-%d %T "
 
 # Use NeoVim as default editor
 export EDITOR="nvim"
+alias vimx="/bin/vim"
 alias v="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
