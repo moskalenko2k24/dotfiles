@@ -4,5 +4,7 @@ require('plugins.onedark')
 require('plugins.xkbswitch')
 require('plugins.telescope')
 require('plugins.treesitter')
-require('plugins.hop')
 require('plugins.nvim_comment')
+
+-- DISABLED PLUGINS
+-- require('plugins.hop')

@@ -43,7 +43,8 @@ return require('packer').startup(function(use)
   use 'jiangmiao/auto-pairs';
 
   -- Easy Motion for NeoVim
-  use 'phaazon/hop.nvim';
+  -- don't use know
+  -- use 'phaazon/hop.nvim';
 
   -- Calendar (:Calendar or <Leader>cal)
   use 'mattn/calendar-vim'
@@ -147,6 +148,12 @@ return require('packer').startup(function(use)
 
   -- syntax highlighting for kitty.conf
   use 'fladson/vim-kitty';
+
+  -- inlay hints for NeoVim 0.9
+  -- use 'simrat39/inlay-hints.nvim';
+  -- require("inlay-hints").setup();
+
+  use 'kevinhwang91/nvim-bqf';
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
