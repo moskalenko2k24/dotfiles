@@ -1,2 +1,4 @@
+# Useful links
+# https://github.com/jonsafari/mocp/blob/master/config.example.in
 mocdir = /home/andrey/.moc
 TiMidity_Config = /etc/timidity.cfg
