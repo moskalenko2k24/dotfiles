@@ -1,4 +1,6 @@
 # Useful links
+# http://moc.daper.net
+# https://bugzilla.redhat.com/show_bug.cgi?id=1471654
 # https://github.com/jonsafari/mocp/blob/master/config.example.in
 mocdir = /home/andrey/.moc
 TiMidity_Config = /etc/timidity.cfg
