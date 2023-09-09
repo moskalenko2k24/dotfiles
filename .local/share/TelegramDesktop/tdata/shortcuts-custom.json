@@ -5,19 +5,19 @@
 [
     {
       "command": "previous_chat",
-      "keys": "alt+k"
-    },
-    {
-      "command": "next_chat",
       "keys": "alt+j"
     },
     {
+      "command": "next_chat",
+      "keys": "alt+k"
+    },
+    {
         "command": "last_chat",
-        "keys": "alt+g"
+        "keys": "alt+shift+g"
     },
     {
         "command": "first_chat",
-        "keys": "alt+shift+g"
+        "keys": "alt+g"
     },
     {
         "command": "previous_folder",
