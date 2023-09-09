@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "8/13/2023, 6:28:57 PM",
-	"time": 1691940537291,
+	"@time": "9/9/2023, 4:31:58 PM",
+	"time": 1694266318587,
 	"environment": {
-		"extension": "1.99.995",
+		"extension": "1.99.994",
 		"platform": "linux",
-		"firefox": 116
+		"chromium": 116
 	},
 	"exclusionRules": [
 		{
@@ -55,6 +55,14 @@
 		{
 			"passKeys": "",
 			"pattern": ":https://www.musicca.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://ritmoteka.ru/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://metarhia.com/"
 		}
 	],
 	"keyLayout": 1,
@@ -62,6 +70,7 @@
 		"#!no-check",
 		"map <c-left> previousTab",
 		"map <c-right> nextTab",
+		"map gy previousTab",
 		""
 	],
 	"vimSync": true,
