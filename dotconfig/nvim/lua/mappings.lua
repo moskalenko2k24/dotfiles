@@ -54,11 +54,14 @@ map('n', '<C-l>', '<C-w>l');                  -- Ctrl + l = go right window
 map('n', '<C-h>', '<C-w>h');                  -- Ctrl + h = go left window
 map('n', '<C-j>', '<C-w>j');                  -- Ctrl + j = go down window
 map('n', '<C-k>', '<C-w>k');                  -- Ctrl + k = go up window
+-- https://superuser.com/questions/770068/in-vim-how-can-i-remap-tab-without-also-remapping-ctrli
+map('n', '<C-i>', '<C-i>');                   -- map Tab, but keep Ctrl + i working
 map('n', '<Tab>', '<C-w><C-w>');              -- Tab = switch windows
 map('n', '<C-Left>', 'gt');                   -- Ctrl + Left = go next tab
 map('n', '<C-Right>', 'gT');                  -- Ctrl + Right = go prev tab
 map('n', '<C-Tab>', 'gt');                    -- Ctrl + Left = go next tab
 map('n', '<C-S-Tab>', 'gT');                  -- Ctrl + Right = go prev tab
+map('n', 'gy', 'gT');                         -- gt = next, gy = previous tab
 
 -- ENABLE C-hjkl IN INSERT MODE
 map('i', '<C-k>', '<Up>');
