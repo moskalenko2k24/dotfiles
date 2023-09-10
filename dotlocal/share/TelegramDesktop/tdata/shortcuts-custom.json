@@ -5,11 +5,11 @@
 [
     {
       "command": "previous_chat",
-      "keys": "alt+j"
+      "keys": "alt+k"
     },
     {
       "command": "next_chat",
-      "keys": "alt+k"
+      "keys": "alt+j"
     },
     {
         "command": "last_chat",
