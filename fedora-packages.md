@@ -159,3 +159,13 @@ sudo dnf install qimgv vlc audacious audacious-plugins audacious-plugins-freewor
 Возможно пакет `audacious-plugins` не нужен, а возможно пакет ниже. \
 `audacious-plugins-freeworld-ffaudio` нужен для проигрывания .m4a \
 Возможно в настройках придется включить Settings -> Plugins -> Input -> FFmpeg Plugin
+
+## Работа с CD / DVD (опционально)
+```bash
+sudo dnf install brasero
+```
+
+## Запись видео
+```bash
+sudo dnf install obs-studio
+```
