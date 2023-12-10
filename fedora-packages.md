@@ -5,7 +5,7 @@
 ## Важнейшие CLI-утилиты
 
 ```bash
-sudo dnf install git ctags tmux fzf ripgrep htop tldr mediainfo unar xclip wl-clipboard sox
+sudo dnf install git ctags tmux fzf ripgrep htop bat tldr mediainfo unar xclip wl-clipboard sox
 ```
 __git__ а куда без него ? \
 __ctags__ это теги, не факт что нужно (сейчас LSP использую) \
@@ -13,6 +13,7 @@ __ctags__ это теги, не факт что нужно (сейчас LSP и�
 [__fzf__](https://github.com/junegunn/fzf) для поиска файлов \
 [__ripgrep__](https://github.com/BurntSushi/ripgrep) улучшенный grep (будет нужен в NeoVim) \
 __htop__ чтоб смотреть процессы \
+[__bat__](https://github.com/sharkdp/bat) улучшенный cat / less с подсветкой синтаксиса \
 [__tldr__](https://github.com/tldr-pages/tldr-python-client) аналог man, но в стиле коротких шпор \
 [__unar__](https://theunarchiver.com/command-line) лучший распаковщик, в 1 команду любые архивы \
 __xclip__ работа с буфером обмена(скопировать текст или файл) \
@@ -50,6 +51,15 @@ sudo dnf install gcc gcc-c++ gdb valgrind
 sudo dnf install qt-devel libX11-devel check check-devel boost boost-devel freeglut freeglut-devel
 ```
 
+### PostgreSQL
+Взято отсюда(https://www.postgresql.org/download/linux/redhat/)
+```bash
+sudo dnf install postgresql-server
+postgresql-setup --initdb
+systemctl enable postgresql.service
+systemctl start postgresql.service
+```
+
 ### Node.js
 ```bash
 sudo dnf install nodejs20 nodejs20-npm
@@ -79,8 +89,9 @@ sudo update-alternatives --config java
 ```
 
 ### Другие
+Go, Lua, Free Pascal
 ```bash
-sudo dnf install golang lua
+sudo dnf install golang lua fpc
 ```
 
 ### Zeal
