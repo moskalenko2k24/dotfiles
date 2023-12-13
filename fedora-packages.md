@@ -2,6 +2,14 @@
 
 Из подключенных реп только RPM Fusion(Free, Nonfree)
 
+## Удаление ненужного
+```bash
+sudo dnf remove loupe rhythmbox totem gnome-text-editor
+```
+Totem - GNOME Videos \
+Loupe - GNOME Images \
+Rhythmbox - музыкальный плеер
+
 ## Важнейшие CLI-утилиты
 
 ```bash
@@ -132,7 +140,7 @@ sudo dnf install xterm foot kitty
 ## Настройка Gnome
 
 ```bash
-sudo dnf install dconf dconf-editor gnome-tweaks gnome-extensions-app ffmpegthumbnailer
+sudo dnf install dconf dconf-editor gnome-tweaks gnome-extensions-app gnome-shell-extension-appindicator ffmpegthumbnailer
 ```
 __ffmpegthumbnailer__ вроде бы для того, чтобы миниатюры видео в Nautlius показывались правильно.
 
