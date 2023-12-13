@@ -28,6 +28,7 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap('n', '<Leader>rn', vim.lsp.buf.rename);
   buf_set_keymap('n', '[d', vim.diagnostic.goto_prev);
   buf_set_keymap('n', ']d', vim.diagnostic.goto_next);
+  buf_set_keymap('n', '<Leader>ca', vim.lsp.buf.code_action);
 end
 
 local setupObj = {
