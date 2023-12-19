@@ -97,9 +97,9 @@ sudo update-alternatives --config java
 ```
 
 ### Другие
-Go, Lua, Free Pascal
+Go, Lua, Haskell, Free Pascal
 ```bash
-sudo dnf install golang lua fpc
+sudo dnf install golang lua ghc fpc
 ```
 
 ### Zeal
