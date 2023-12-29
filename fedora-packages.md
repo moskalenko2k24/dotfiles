@@ -13,9 +13,10 @@ Rhythmbox - музыкальный плеер
 ## Важнейшие CLI-утилиты
 
 ```bash
-sudo dnf install git ctags tmux fzf ripgrep htop bat tldr mediainfo unar xclip wl-clipboard sox
+sudo dnf install git curl ctags tmux fzf ripgrep htop bat tldr mediainfo unar xclip wl-clipboard sox
 ```
 __git__ а куда без него ? \
+[__curl__](https://github.com/curl/curl) он есть обычно, но на всякий случай \
 __ctags__ это теги, не факт что нужно (сейчас LSP использую) \
 [__tmux__](https://github.com/tmux/tmux) для вкладок в терминале и скриптов открывающих окна :) \
 [__fzf__](https://github.com/junegunn/fzf) для поиска файлов \
