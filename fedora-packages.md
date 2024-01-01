@@ -13,7 +13,7 @@ Rhythmbox - музыкальный плеер
 ## Важнейшие CLI-утилиты
 
 ```bash
-sudo dnf install git curl ctags tmux fzf ripgrep htop bat tldr mediainfo unar xclip wl-clipboard sox
+sudo dnf install git curl ctags tmux fzf ripgrep htop bat tldr mediainfo unar xclip wl-clipboard sox speedtest-cli
 ```
 __git__ а куда без него ? \
 [__curl__](https://github.com/curl/curl) он есть обычно, но на всякий случай \
@@ -27,7 +27,8 @@ __htop__ чтоб смотреть процессы \
 [__unar__](https://theunarchiver.com/command-line) лучший распаковщик, в 1 команду любые архивы \
 __xclip__ работа с буфером обмена(скопировать текст или файл) \
 __wl-clipboard__ тоже самое, но для Wayland(нужно для NeoVim!) \
-[__sox__](https://sox.sourceforge.net) позволяет проиграть один аудиофайл командой `play`.
+[__sox__](https://sox.sourceforge.net) позволяет проиграть один аудиофайл командой `play` \
+[__speedtest-cli__](https://github.com/sivel/speedtest-cli) утилита для проверки скорости интернета
 
 ### Консольные аудиоплееры
 
