@@ -114,7 +114,7 @@ function mkcd {
 }
 
 # Go to dir with name yyyy-mm-dd
-function cd-date {
+function cddate {
   cd ~/Labs/"$(date '+%Y-%m-%d')"
 }
 
@@ -215,6 +215,10 @@ function run {
     *.hs)
       cmd="ghc $1 && ./${out}"
       rem="rm ${out} *.o *.hi"
+      ;;
+    *.rs)
+      cmd="rustc $1 && ./${out}"
+      rem="rm ${out}"
       ;;
     *.cs) cmd="dotnet-exec $1" ;;
     *.java)
