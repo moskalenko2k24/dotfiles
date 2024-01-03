@@ -53,7 +53,7 @@ __fastfetch__ хорош тем, что показывает больше инф
 
 ### C / C++
 ```bash
-sudo dnf install gcc gcc-c++ gdb valgrind
+sudo dnf install gcc gcc-c++ gdb valgrind cmake
 ```
 
 ### Библиотеки
