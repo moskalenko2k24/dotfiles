@@ -189,6 +189,11 @@ sudo dnf install qt5-qtimageformats qimgv vlc audacious audacious-plugins audaci
 sudo dnf install brasero
 ```
 
+## UML
+```bash
+sudo dnf install sourcetrail
+```
+
 ## Запись видео
 ```bash
 sudo dnf install obs-studio
