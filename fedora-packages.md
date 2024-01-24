@@ -62,7 +62,7 @@ sudo dnf install qt-devel libX11-devel check check-devel boost boost-devel freeg
 ```
 
 ### PostgreSQL
-Взято отсюда(https://www.postgresql.org/download/linux/redhat/)
+Взято [отсюда](https://www.postgresql.org/download/linux/redhat/)
 ```bash
 sudo dnf install postgresql-server
 postgresql-setup --initdb
