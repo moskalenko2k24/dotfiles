@@ -1,6 +1,4 @@
-# on Fedora use
-# sudo dnf install freeglut
-# to install library before compiling project
+# sudo dnf install freeglut freeglut-devel
 all:
 	g++ -Wall -Wextra -std=c++17 *.cpp -lGL -lglut -o main
 
