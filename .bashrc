@@ -83,6 +83,7 @@ alias gitp="git push"
 # Own aliases for cd
 alias ..="cd .."
 alias ...="cd ../.."
+alias cduserfonts="cd ~/.local/share/fonts/"
 
 # Flip video horizontally
 function flip-video {
@@ -164,29 +165,14 @@ function new-file {
 
 # Create project (directory) from template
 function new-project {
-  declare -A templates
-  templates=( ["c"]="C" ["cpp"]="C++" ["fpc"]="Free_Pascal" \
-              ["java"]="Java" ["winapi"]="WinAPI" )
-  if [[ "$1" == "c" ]]
-  then
-    cp -r ~/Templates/C/ "$2"
-  elif [[ "$1" == "cpp" ]]
-  then
-    cp -r ~/Templates/C++/ "$2"
-  elif [[ "$1" == "fpc" ]]
-  then
-    cp -r ~/Templates/Free_Pascal "$2"
-  elif [[ "$1" == "java" ]]
-  then
-    cp -r ~/Templates/Java/ "$2"
-  elif [[ "$1" == "winapi" ]]
-  then
-    cp -r ~/Templates/WinAPI "$2"
-  elif [[ "$1" == "freeglut" ]]
-  then
-    cp -r ~/Templates/Freeglut/ "$2"
+  templatePath="$(realpath ~/DevTemplates/$1)"
+  projectPath="$(realpath $2)"
+
+  if [ -d $templatePath ]; then
+    cp -r $templatePath $projectPath 
+    echo "OK! Project was created!"
   else
-    echo "Unknown project type"
+    echo "Error! Template not found: $1"
   fi
 }
 
