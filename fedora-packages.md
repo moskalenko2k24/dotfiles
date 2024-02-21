@@ -200,3 +200,8 @@ sudo dnf install sourcetrail
 ```bash
 sudo dnf install obs-studio
 ```
+
+## LaTeX
+```bash
+sudo dnf install texlive-scheme-full texstudio
+```
