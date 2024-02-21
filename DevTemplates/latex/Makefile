@@ -5,3 +5,6 @@ build:
 
 clean:
 	rm *.dvi *.ps *.aux *.log *.pdf
+
+run:
+	xdg-open test.pdf 
