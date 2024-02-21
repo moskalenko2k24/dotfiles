@@ -39,6 +39,10 @@ opt.cursorline = true                -- highlight active line
 opt.laststatus = 2                   -- always show statusline
 opt.showcmd = true                   -- show commands at bottom right corner
 
+-- MAKING SPACES VISIBLE AS INTERPUNCT
+-- opt.list = true
+-- opt.listchars = { space = '·' }
+
 opt.keymap = 'russian-jcukenwin'
 opt.iminsert = 0;
 opt.imsearch = 0;
