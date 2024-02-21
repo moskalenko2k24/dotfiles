@@ -1,3 +1,6 @@
+-- USEFUL LINKS
+-- https://neovim.io/doc/user/lua.html 
+
 -- TODO: HOT RELOAD OF init.lua
 -- au BufWritePost  ~/.vimrc :source ~/.vimrc
 
