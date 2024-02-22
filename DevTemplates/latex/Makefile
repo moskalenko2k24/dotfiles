@@ -1,3 +1,4 @@
+# sudo dnf install texlive-scheme-full
 all: build
 
 build:
