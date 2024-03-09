@@ -236,6 +236,11 @@ _G.packer_plugins = {
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/vim-signature",
     url = "https://github.com/kshenoy/vim-signature"
   },
+  ["vim-speeddating"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/vim-speeddating",
+    url = "https://github.com/tpope/vim-speeddating"
+  },
   ["vim-table-mode"] = {
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/vim-table-mode",

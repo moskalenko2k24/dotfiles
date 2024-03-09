@@ -10,9 +10,9 @@ end
 
 
 function M.set_indent(size)
-  vim.opt.tabstop = size      -- set indent width
-  vim.opt.softtabstop = size  -- set tab width
-  vim.opt.shiftwidth = size   -- set shift width
+  vim.opt_local.tabstop = size      -- set indent width
+  vim.opt_local.softtabstop = size  -- set tab width
+  vim.opt_local.shiftwidth = size   -- set shift width
 end
 
 M.autocmd = vim.api.nvim_create_autocmd

@@ -87,7 +87,7 @@ set_indent_for(2, {
   '*.sh', '*.bashrc',
   '*.hs', '*.lua', '*.pas',
   '*.html', '*.css', '*.json',
-  '*.js', '*.jsx', '*.ts', '*.tsx'
+  '*.js', '*.jsx', '*.ts', '*.tsx', '*.php'
 });
 set_indent_for(4, {
   '*.c', '*.cpp', '*.cs', '*.java'

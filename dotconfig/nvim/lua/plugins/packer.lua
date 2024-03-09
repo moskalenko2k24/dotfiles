@@ -156,6 +156,9 @@ return require('packer').startup(function(use)
 
   use 'kevinhwang91/nvim-bqf';
 
+  -- increment / decrement dates with <C-A> / <C-X>
+  use 'tpope/vim-speeddating';
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
