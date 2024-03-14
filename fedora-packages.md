@@ -48,7 +48,8 @@ unar JetBrainsMonoNerdFonts.tar.xz && mkdir -p ~/.local/share/fonts && cp -r ./J
 
 ### Терминалы
 
-Мои любмые это __kitty__, __foot__, __xterm__.
+Мои любмые это [__kitty__](https://sw.kovidgoyal.net/kitty/),
+[__foot__](https://codeberg.org/dnkl/foot), [__xterm__](https://invisible-island.net/xterm/).
 Все 3 терминала нормально работают с __Nerd Fonts__.
 Иногда ставлю все 3 сразу на всякий случай, но использую в основном `kitty`.
 В последних двух терминалах классный режим открытия ссылок,
