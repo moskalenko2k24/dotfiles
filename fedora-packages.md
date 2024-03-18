@@ -29,7 +29,7 @@ sudo dnf install git gh curl ctags tmux fzf ripgrep htop bat tldr mediainfo unar
   [__inxi__](https://smxi.org/docs/inxi.htm) утилита, с помощью которой можно узнать подробную информацию о системе и железе \
   [__fastfetch__](https://github.com/fastfetch-cli/fastfetch) _like [neofetch](https://github.com/dylanaraps/neofetch), but much faster_, может показать шрифт терминала \
   [__kitty__](https://sw.kovidgoyal.net/kitty/) мой любимый терминал \
-  [__CPU-X__](https://github.com/TheTumultuousUnicornOfDarkness/CPU-X) утилита с графическим интерфейсом, аналогичная CPU-Z на Windows, показывает подробную инфу о процессоре \
+  [__CPU-X__](https://github.com/TheTumultuousUnicornOfDarkness/CPU-X) утилита аналогичная CPU-Z на Windows, показывает подробную инфу о процессоре, GUI, но терминальную версию можно запустить с помощью команды `cpu-x --ncurses` \
   [__g3kb-switch__](https://github.com/lyokha/g3kb-switch) утилита для автоматического переключения языков в Vim(с помощью плагина xkb-switch), версия для Gnome \
   __lua neovim python3-neovim__ набор пакетов для установки NeoVim, Lua и так в комплекте, но ставлю его отдельно, чтоб сам Lua можно было поизучать \
   __gcc gcc-c++ gdb valgrind cmake__ базовый набор для __C / C++__: компиляторы, отладчик [GDB](https://sourceware.org/gdb/), утилита поиска ошибок работы с памятью [Valgrind](https://valgrind.org), [CMake](https://cmake.org) для сборки \
