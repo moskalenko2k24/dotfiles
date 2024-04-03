@@ -39,11 +39,23 @@ map('n', '<F5>', ':luafile ~/.config/nvim/init.lua<CR>');
 
 -- IMPORTANT INSERT MODE MAPPINGS
 map('i', '<C-z>', '<Esc>ua');                 -- Ctrl + z = undo
+map('i', '<C-я>', '<Esc>ua');                 -- Ctrl + z = undo, cyrillic
+
 map('i', '<C-q>', '<Esc>:q<CR>');             -- Ctrl + q = quit
-map('i', '<C-s>', '<Esc>:w<CR>a');            -- Ctrl + s = save
+map('i', '<C-й>', '<Esc>:q<CR>');             -- Ctrl + q = quit, cyrillic
+
+map('i', '<C-s>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
+map('i', '<C-ы>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
+map('i', '<C-і>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
+
 map('i', '<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
+map('i', '<C-м>', '<Esc>pa');                 -- Ctrl + v = paste, cyryllic
+
 map('i', '<C-f>', '<Esc>/');                  -- Ctrl + f = find
+map('i', '<C-а>', '<Esc>/');                  -- Ctrl + f = find, cyryllic
+
 map('i', '<C-d>', '<Delete>');                -- Ctrl + d = delete char
+map('i', '<C-в>', '<Delete>');                -- Ctrl + d = delete char, cyryllic
 
 -- WORK WITH TABS AND WINDOWS
 map('n', '<Leader>s', ':split<CR>');          -- , + s = make horizontal split (with same file)
