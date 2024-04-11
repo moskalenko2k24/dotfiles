@@ -16,7 +16,7 @@ opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
 
 -- INDENT SETTINGS
-set_indent(4)                        -- indent = 4
+-- TO DO ? Add default indent
 opt.autoindent = true                -- autoindent
 opt.expandtab = true                 -- use spaces instead of tabs
 g.editorconfig = true                -- EditorConfig support (NeoVim 0.9+)
@@ -65,7 +65,7 @@ if vim.fn.has('termguicolors') then
 end
 
 -- RELATIVE NUMBERS VISUAL MODE ONLY
-utils.autocmd('ModeChanged', {
+vim.api.nvim_create_autocmd('ModeChanged', {
   pattern = {
     '*:[vV\x16]*', '[vV\x16]*:*'
   },
@@ -79,7 +79,7 @@ utils.autocmd('ModeChanged', {
 -- (TODO: SHOW MODE HERE) filename[modified] encoding[line ending], line:column percentage
 -- vim.o.statusline = '%f%m %{&fileencoding?&fileencoding:&encoding}[%{&fileformat}] %= %l:%c %p%%'
 
--- SET INDENTS
+-- SETTING INDENTS
 set_indent_for(1, {
   '*.txt', '*.md'
 });
