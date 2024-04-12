@@ -16,7 +16,9 @@ opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
 
 -- INDENT SETTINGS
--- TO DO ? Add default indent
+opt.tabstop = 4                      -- default indent width
+opt.softtabstop = 4                  -- default tab width
+opt.shiftwidth = 4                   -- default shift width
 opt.autoindent = true                -- autoindent
 opt.expandtab = true                 -- use spaces instead of tabs
 g.editorconfig = true                -- EditorConfig support (NeoVim 0.9+)
