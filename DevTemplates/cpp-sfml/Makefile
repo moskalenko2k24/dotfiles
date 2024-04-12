@@ -1,4 +1,4 @@
-# sudo dnf install SFML SFML-devel
+# sudo dnf install gcc gcc-c++ SFML SFML-devel
 all:
 	g++ -Wall -Wextra -std=c++17 *.cpp -lsfml-graphics -lsfml-window -lsfml-system -o main
 

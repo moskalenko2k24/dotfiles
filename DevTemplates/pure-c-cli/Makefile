@@ -1,3 +1,4 @@
+# sudo dnf install gcc
 all:
 	gcc -Wall -Wextra -std=c11 *.c -o main
 

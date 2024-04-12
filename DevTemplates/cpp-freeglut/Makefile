@@ -1,4 +1,4 @@
-# sudo dnf install freeglut freeglut-devel
+# sudo dnf install gcc gcc-c++ freeglut freeglut-devel
 all:
 	g++ -Wall -Wextra -std=c++17 *.cpp -lGL -lglut -o main
 

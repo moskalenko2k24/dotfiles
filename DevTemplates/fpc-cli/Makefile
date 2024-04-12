@@ -1,3 +1,4 @@
+# sudo dnf install fpc
 all:
 	fpc -l- -v0 program.pas
 
