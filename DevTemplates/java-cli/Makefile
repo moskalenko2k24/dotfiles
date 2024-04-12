@@ -1,3 +1,4 @@
+# sudo dnf install java-latest-openjdk-devel
 all:
 	javac *.java
 
