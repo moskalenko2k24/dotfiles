@@ -81,10 +81,25 @@ alias gita="git add"
 alias gitc="git commit"
 alias gitp="git push"
 
-# Own aliases for cd
+# Aliases for cd
 alias ..="cd .."
 alias ...="cd ../.."
-alias cduserfonts="cd ~/.local/share/fonts/"
+alias cdfonts="cd ~/.local/share/fonts/"
+alias cdnautilus-ext="cd ~/.local/share/nautilus-python/extensions"
+
+# Aliases for opening configs
+alias optmux="$EDITOR ~/.tmux.conf"
+alias opbashrc="$EDITOR ~/.bashrc"
+alias opxterm="$EDITOR ~/XTerm"
+alias opfootini="$EDITOR ~/.config/foot/foot.ini"
+alias opkittyconf="$EDITOR ~/.config/kitty/kitty.conf"
+alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
+alias opnautiterm="$EDITOR ~/.config/nautiterm.yml"
+
+alias opvimrc="$EDITOR ~/.vimrc"
+alias opinitlua="$EDITOR ~/.config/nvim/init.lua"
+alias cdnvim-config="cd ~/.config/nvim/"
+alias cdswap-nvim="cd ~/.local/state/nvim/swap"
 
 # Flip video horizontally
 function flip-video {
