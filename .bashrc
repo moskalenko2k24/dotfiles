@@ -39,13 +39,13 @@ alias vim="nvim"
 alias vimdiff="nvim -d"
 
 # Aliases for basic commands
+alias tm="tmux"
 alias py="python3"
 alias wh="which"                                # which
 alias c="clear"                                 # clear screen
 alias cl="clear"                                # clear screen
 alias cls="clear"                               # clear screen
-alias nf="neofetch"                             # neofetch
-alias sf="screenfetch"                          # screenfetch
+alias ff="fastfetch"                            # fastfetch
 alias up="uptime -p"                            # show uptime(hours, minutes)
 alias  u="uptime -p"                            # show uptime(hours, minutes)
 alias ls="ls --color --g"                       # color ls with --group-directories-first
@@ -70,8 +70,8 @@ alias st="git status"
 alias ls-vimswap="ls ~/.vim/swapfiles/"
 
 # Replacing standard utilities
-alias cat="bat --paging=never"
-alias less="bat --paging=always"
+# alias cat="bat --paging=never"
+# alias less="bat --paging=always"
 
 # Aliases for update
 alias d-up="sudo dnf upgrade --refresh"
