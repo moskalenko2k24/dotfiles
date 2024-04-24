@@ -15,6 +15,11 @@ opt.encoding = 'utf-8'               -- default encoding
 opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
 
+-- FOLD SETTINGS
+opt.foldmethod = 'indent';           -- make fold automatically, using indents
+opt.foldlevel = 99;                  -- some magic to make all folds open by default
+opt.foldlevelstart = 99;
+
 -- INDENT SETTINGS
 opt.tabstop = 4                      -- default indent width
 opt.softtabstop = 4                  -- default tab width
