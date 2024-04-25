@@ -7,7 +7,7 @@
 	editor = nvim
 	excludesFile = /home/andrey/.gitignore
 [difftool]
-    prompt = true
+    prompt = false
 [diff]
 	tool = nvimdiff
 [difftool "nvimdiff"]
