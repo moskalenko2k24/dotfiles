@@ -9,4 +9,5 @@ require('mappings');
 require('plugins');
 require('lsp_config');
 require('cmp_config');
+require('snippets');
 require('theme');
