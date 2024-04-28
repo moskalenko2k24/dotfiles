@@ -1,14 +1,22 @@
+local servers = {
+  'omnisharp', -- C#
+  'tsserver',  -- JS / TS
+  'lua_ls',    -- Lua
+  'clangd',    -- C / C++
+  'pyright',   -- Python
+  'jdtls'      -- Java
+};
+
 require('neodev').setup();
-require('mason').setup()
+require('mason').setup();
 require('mason-lspconfig').setup {
-  ensure_installed = { 'omnisharp', 'tsserver', 'clangd', 'pyright', 'jdtls' },
+  ensure_installed = servers,
   automatic_installation = true
 }
 
--- LSP
 local custom_attach = function(client, bufnr)
   -- Workaround for https://github.com/OmniSharp/omnisharp-roslyn/issues/2531
-  -- if client.name == "omnisharp" then
+  -- if client.name == 'omnisharp' then
   --   client.server_capabilities.semanticTokensProvider = nil
   -- end
   local opts = { buffer = bufnr, noremap = true, silent = true }
@@ -32,23 +40,21 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap('n', '<Leader>ca', vim.lsp.buf.code_action);
 end
 
-local setupObj = {
+local lsp_settings = {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = custom_attach,
   settings = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-    },
-  },
-}
+        globals = { 'vim' },
+      }
+    }
+  }
+};
 
 -- After setting up mason-lspconfig you may set up servers via lspconfig
-require('lspconfig').omnisharp.setup(setupObj)
-require('lspconfig').tsserver.setup(setupObj)
-require('lspconfig').lua_ls.setup(setupObj)
-require('lspconfig').clangd.setup(setupObj)
-require('lspconfig').pyright.setup(setupObj)
-require('lspconfig').jdtls.setup(setupObj)
+local lspconfig = require('lspconfig');
+for _, server in pairs(servers) do
+  lspconfig[server].setup(lsp_settings);
+end
