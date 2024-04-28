@@ -88,10 +88,10 @@ vim.api.nvim_create_autocmd('ModeChanged', {
 
 -- SETTING INDENTS
 set_indent_for(1, {
-  '*.txt', '*.md'
+  '*.txt'
 });
 set_indent_for(2, {
-  '*.sh', '*.bashrc',
+  '*.md', '*.sh', '*.bashrc',
   '*.hs', '*.lua', '*.pas',
   '*.html', '*.css', '*.json',
   '*.js', '*.jsx', '*.ts', '*.tsx', '*.php'
