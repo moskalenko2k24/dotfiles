@@ -8,18 +8,9 @@ fi
 # Private config
 . ~/.private.sh
 
-# Node Version Manager
-# (code was added automatically)
-# Load nvm & load nvm bash_completion
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-export PATH="~/.local/bin:/opt/lampp/bin:$PATH"
-
 # flyctl => fly.io
 export FLYCTL_INSTALL="/home/andrey/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export PATH="$FLYCTL_INSTALL/bin:/opt/lampp/bin:$PATH"
 
 # PS1="\w\n$ "                           # custom prompt = "full path\n"
 PS1="[\u@\H \W]$ "                       # custom prompt = "[user@host dir]$ "
