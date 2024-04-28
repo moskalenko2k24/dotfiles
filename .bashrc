@@ -216,6 +216,7 @@ function run {
       ;;
     *.js) cmd="node $1" ;;
     *.py) cmd="python $1" ;;
+    *.lua) cmd="lua $1" ;;
     *.hs)
       cmd="ghc $1 && ./${out}"
       rem="rm ${out} *.o *.hi"
