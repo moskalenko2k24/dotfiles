@@ -31,6 +31,12 @@ ls.add_snippets('markdown', {
   })
 }, { type = 'autosnippets' });
 
+ls.add_snippets('markdown', {
+  s('ссылка', {
+    t('[ссылка]'), t('('), i(2, ''), t(')')
+  })
+}, { type = 'autosnippets' });
+
 -- Snippet for spoiler
 -- <details>
 --   <summary>$summary</summary>
