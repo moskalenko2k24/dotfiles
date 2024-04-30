@@ -160,8 +160,10 @@ return require('packer').startup(function(use)
   -- increment / decrement dates with <C-A> / <C-X>
   use 'tpope/vim-speeddating';
 
-  -- docs and completion for the nvim lua API
+  -- docs and completion for the NeoVim Lua API
   use 'folke/neodev.nvim';
+
+  use 'Abstract-IDE/abstract-autocmds';
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
