@@ -40,6 +40,7 @@ map('n', '<F5>', ':luafile ~/.config/nvim/init.lua<CR>');
 
 -- IMPORTANT INSERT MODE MAPPINGS
 map('i', '<C-ц>', '<C-w>');                   -- Ctrl + w, cyrillic
+map('i', '<C-з>', '<C-p>');                   -- Ctrl + p, cyryllic
 
 map('i', '<C-z>', '<Esc>ua');                 -- Ctrl + z = undo
 map('i', '<C-я>', '<Esc>ua');                 -- Ctrl + z = undo, cyrillic
