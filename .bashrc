@@ -1,12 +1,14 @@
 # .bashrc
 
-# Loading base config
+# Base config
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
 # Private config
-. ~/.private.sh
+if [ -f ~/.private.sh ]; then
+  . ~/.private.sh
+fi
 
 # flyctl => fly.io
 export FLYCTL_INSTALL="/home/andrey/.fly"
@@ -61,8 +63,8 @@ alias st="git status"
 alias ls-vimswap="ls ~/.vim/swapfiles/"
 
 # Replacing standard utilities
-# alias cat="bat --paging=never"
-# alias less="bat --paging=always"
+alias cat="bat --paging=never"
+alias less="bat --paging=always"
 
 # Aliases for update
 alias d-up="sudo dnf upgrade --refresh"
@@ -83,11 +85,15 @@ alias cdnautilus-ext="cd ~/.local/share/nautilus-python/extensions"
 # Aliases for opening configs
 alias optmux="$EDITOR ~/.tmux.conf"
 alias opbashrc="$EDITOR ~/.bashrc"
+alias opbashrcprivate="$EDITOR ~/.private.sh"
 alias opxterm="$EDITOR ~/XTerm"
 alias opfootini="$EDITOR ~/.config/foot/foot.ini"
 alias opkittyconf="$EDITOR ~/.config/kitty/kitty.conf"
 alias opzathurarc="$EDITOR ~/.config/zathura/zathurarc"
 alias opnautiterm="$EDITOR ~/.config/nautiterm.yml"
+alias opctags="$EDITOR ~/.ctags"
+alias opgitconfig="$EDITOR ~/.gitconfig"
+alias opgitignore="$EDITOR ~/.gitignore"
 
 alias opvimrc="$EDITOR ~/.vimrc"
 alias opinitlua="$EDITOR ~/.config/nvim/init.lua"
@@ -174,11 +180,11 @@ function new-file {
 
 # Create project (directory) from template
 function new-project {
-  templatePath="$(realpath ~/DevTemplates/$1)"
+  templatePath="$(realpath ~/dotfiles/DevTemplates/$1)"
   projectPath="$(realpath $2)"
 
   if [ -d $templatePath ]; then
-    cp -r $templatePath $projectPath 
+    cp -r $templatePath $projectPath
     echo "OK! Project was created!"
   else
     echo "Error! Template not found: $1"
