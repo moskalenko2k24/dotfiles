@@ -204,7 +204,7 @@ function run {
       rem="rm ${out}"
       ;;
     *.cpp)
-      cmd="g++ ${flags} -std=c++17 ${file} -o ${out} -lm && ./${out}"
+      cmd="g++ ${flags} -std=c++20 ${file} -o ${out} -lm && ./${out}"
       rem="rm ${out}"
       ;;
     *.pas)

@@ -1,6 +1,6 @@
 # sudo dnf install gcc gcc-c++
 all:
-	g++ -Wall -Wextra -std=c++17 *.cpp -o main
+	g++ -Wall -Wextra -std=c++20 *.cpp -o main
 
 build: all
 
