@@ -1,3 +1,5 @@
+-- take 'lspconfig server name' from this table
+-- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 local servers = {
   'omnisharp', -- C#
   'tsserver',  -- JS / TS
@@ -58,3 +60,19 @@ local lspconfig = require('lspconfig');
 for _, server in pairs(servers) do
   lspconfig[server].setup(lsp_settings);
 end
+
+-- function feedkeys(key, mode)
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true);
+-- end
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   callback = function()
+--     local bufnr = vim.fn.bufnr('%')
+--     vim.keymap.set('n', '<CR>', function()
+--       feedkeys('n', '<CR>');
+--       vim.api.nvim_command([[execute "normal! \<cr>"]])
+--       vim.api.nvim_command(bufnr .. 'bd')
+--     end, { buffer = bufnr })
+--   end,
+--   pattern = "qf",
+-- })
