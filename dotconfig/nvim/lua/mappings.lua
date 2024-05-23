@@ -8,6 +8,7 @@ map('n', '<C-s>', ':w<CR>');                  -- Ctrl + s = save
 map('n', '<C-q>', ':q<CR>');                  -- Ctrl + q = quit
 map('n', '<Leader>h', ':nohlsearch<CR>');     -- , + h = remove search highlighting
 map('n', '<Leader>l', 'i<Space><Esc>');       -- , + l = add space without leaving normal mode
+map('n', '<Leader>m', 'i<CR><Esc>');          -- , + m = add empty line
 map('n', '<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
 map('n', '<Space>', 'za');                    -- Space = open / close(toggle) fold
 -- , + ; = add semicolon to the end of line
