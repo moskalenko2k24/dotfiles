@@ -214,6 +214,7 @@ function run {
     *.js) cmd="node $1" ;;
     *.py) cmd="python $1" ;;
     *.lua) cmd="lua $1" ;;
+    *.java) cmd="java $1" ;;
     *.hs)
       cmd="ghc $1 && ./${out}"
       rem="rm ${out} *.o *.hi"
@@ -223,8 +224,6 @@ function run {
       rem="rm ${out}"
       ;;
     *.cs) cmd="dotnet-exec $1" ;;
-    *.java)
-      cmd="javac ${file}" ;;
     *) echo "Unknown project type" ;;
   esac
   echo $cmd
