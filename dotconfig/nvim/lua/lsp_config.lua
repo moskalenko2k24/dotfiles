@@ -28,12 +28,7 @@ local custom_attach = function(client, bufnr)
   };
   local function buf_set_keymap(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, opts)
-  end
-  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
-  -- vim.lsp.buf.inlay_hint(bufnr, true);
-  print('LSP started');
-  -- require('completion').on_attach(client)
-  -- require('diagnostic').on_attach(client)
+  end;
   if client.supports_method('textDocument/hover') then
     buf_set_keymap('n', 'K', vim.lsp.buf.hover);
   end
@@ -46,6 +41,8 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', vim.diagnostic.goto_prev);
   buf_set_keymap('n', ']d', vim.diagnostic.goto_next);
   buf_set_keymap('n', '<Leader>ca', vim.lsp.buf.code_action);
+  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
+  print('LSP started');
 end
 
 local lsp_settings = {
