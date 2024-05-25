@@ -1,3 +1,3 @@
 using System;
 
-Console.WriteLine("\nTemplate C# project\n");
+Console.WriteLine(value: "Hello, World");
