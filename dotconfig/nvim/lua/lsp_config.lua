@@ -21,10 +21,16 @@ local custom_attach = function(client, bufnr)
   -- if client.name == 'omnisharp' then
   --   client.server_capabilities.semanticTokensProvider = nil
   -- end
-  local opts = { buffer = bufnr, noremap = true, silent = true }
+  local opts = {
+    buffer = bufnr,
+    noremap = true,
+    silent = true
+  };
   local function buf_set_keymap(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
+  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
+  -- vim.lsp.buf.inlay_hint(bufnr, true);
   print('LSP started');
   -- require('completion').on_attach(client)
   -- require('diagnostic').on_attach(client)
