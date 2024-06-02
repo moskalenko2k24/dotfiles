@@ -6,7 +6,8 @@ local servers = {
   'lua_ls',    -- Lua
   'clangd',    -- C / C++
   'pyright',   -- Python
-  'jdtls'      -- Java
+  'jdtls',     -- Java
+  'gopls'
 };
 
 require('neodev').setup();
@@ -38,8 +39,8 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', vim.lsp.buf.definition);
   buf_set_keymap('n', 'gr', vim.lsp.buf.references);
   buf_set_keymap('n', '<Leader>rn', vim.lsp.buf.rename);
-  buf_set_keymap('n', '[d', vim.diagnostic.goto_prev);
-  buf_set_keymap('n', ']d', vim.diagnostic.goto_next);
+  -- buf_set_keymap('n', '[d', vim.diagnostic.goto_prev);
+  -- buf_set_keymap('n', ']d', vim.diagnostic.goto_next);
   buf_set_keymap('n', '<Leader>ca', vim.lsp.buf.code_action);
   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
   print('LSP started');
