@@ -1,19 +1,9 @@
--- take 'lspconfig server name' from this table
--- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-local servers = {
-  'omnisharp', -- C#
-  'tsserver',  -- JS / TS
-  'lua_ls',    -- Lua
-  'clangd',    -- C / C++
-  'pyright',   -- Python
-  'jdtls',     -- Java
-  'gopls'
-};
+local language_servers = require('languages').language_servers
 
 require('neodev').setup();
 require('mason').setup();
 require('mason-lspconfig').setup {
-  ensure_installed = servers,
+  ensure_installed = language_servers,
   automatic_installation = true
 }
 
@@ -61,7 +51,7 @@ local lsp_settings = {
 
 -- After setting up mason-lspconfig you may set up servers via lspconfig
 local lspconfig = require('lspconfig');
-for _, server in pairs(servers) do
+for _, server in pairs(language_servers) do
   lspconfig[server].setup(lsp_settings);
 end
 
