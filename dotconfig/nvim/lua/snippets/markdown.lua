@@ -21,6 +21,8 @@ end
 add_code_snippet('#js', 'javascript');
 add_code_snippet('#csharp', 'cs');
 add_code_snippet('#cpp', 'cpp');
+add_code_snippet('#sh', 'bash');
+add_code_snippet('#bash', 'bash');
 
 -- Snippet for link
 -- [$text]($link)
