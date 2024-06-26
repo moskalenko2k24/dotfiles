@@ -40,6 +40,7 @@ map('n', '<F3>', ':e ~/.vimrc<CR>');
 map('n', '<F5>', ':luafile ~/.config/nvim/init.lua<CR>');
 
 -- IMPORTANT INSERT MODE MAPPINGS
+map('i', '<C-BS>', '<C-w>');
 map('i', '<C-ц>', '<C-w>');                   -- Ctrl + w, cyrillic
 map('i', '<C-з>', '<C-p>');                   -- Ctrl + p, cyryllic
 
@@ -91,3 +92,12 @@ if vim.api.nvim_win_get_option(0, 'diff') then
   map('n', '<Leader>q', ':qa<CR>');
   map('n', '<C-q>', ':qa<CR>');
 end
+
+-- MAPPINGS FOR HELP WINDOWS
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'help',
+  callback = function(event)
+    -- vim.bo[event.buf].buflisted = false
+    vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+  end
+})
