@@ -12,8 +12,11 @@ opt.relativenumber = false           -- don't show relative numbers
 opt.hidden = true                    -- enable closing buffers with unsaved changes
 opt.clipboard = 'unnamedplus'        -- use system clipboard (Linux)
 opt.encoding = 'utf-8'               -- default encoding
-opt.fileencodings = 'utf-8,cp1251'   -- automatically detected encodings
+opt.fileencodings = { 'utf-8', 'cp1251', 'cp866' } -- automatically detected encodings
 opt.swapfile = true                  -- enable saving swap files (backup if editor crashes)
+
+opt.lazyredraw = true                -- for macro
+opt.fileformats = { 'unix', 'dos', 'mac' }
 
 -- FOLD SETTINGS
 opt.foldmethod = 'indent';           -- make fold automatically, using indents
