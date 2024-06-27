@@ -87,7 +87,7 @@ map('i', '<C-j>', '<Down>');
 map('i', '<C-l>', '<Right>');
 
 -- MAPPINGS FOR VIMDIFF
-if vim.api.nvim_win_get_option(0, 'diff') then
+if vim.api.nvim_get_option_value('diff', {}) then
   map('n', 'q', ':qa<CR>');
   map('n', '<Leader>q', ':qa<CR>');
   map('n', '<C-q>', ':qa<CR>');
@@ -98,6 +98,6 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'help',
   callback = function(event)
     -- vim.bo[event.buf].buflisted = false
-    vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+    vim.keymap.set('n', 'q', '<Cmd>close<CR>', { buffer = event.buf, silent = true })
   end
 })
