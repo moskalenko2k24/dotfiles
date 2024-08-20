@@ -200,34 +200,35 @@ function run {
   rem=""
   case "$1" in
     *.c)
-      cmd="gcc ${flags} -std=c11 ${file} -o ${out} -lm && ./${out}"
+      cmd="gcc ${flags} -std=c11 ${file} -o ${out} -lm && time ./${out}"
       rem="rm ${out}"
       ;;
     *.cpp)
-      cmd="g++ ${flags} -std=c++20 ${file} -o ${out} -lm && ./${out}"
+      cmd="g++ ${flags} -std=c++20 ${file} -o ${out} -lm && time ./${out}"
       rem="rm ${out}"
       ;;
     *.pas)
-      cmd="fpc -l- -v0 ${file} && ./${out}"
+      cmd="fpc -l- -v0 ${file} && time ./${out}"
       rem="rm ${out} *.o"
       ;;
-    *.js) cmd="node $1" ;;
-    *.py) cmd="python $1" ;;
-    *.lua) cmd="lua $1" ;;
-    *.java) cmd="java $1" ;;
+    *.js) cmd="time node $1" ;;
+    *.py) cmd="time python $1" ;;
+    *.cs) cmd="time dotnet-exec $1" ;;
+    *.lua) cmd="time lua $1" ;;
+    *.java) cmd="time java $1" ;;
     *.hs)
-      cmd="ghc $1 && ./${out}"
+      cmd="ghc $1 && time ./${out}"
       rem="rm ${out} *.o *.hi"
       ;;
     *.rs)
-      cmd="rustc $1 && ./${out}"
+      cmd="rustc $1 && time ./${out}"
       rem="rm ${out}"
       ;;
-    *.cs) cmd="dotnet-exec $1" ;;
     *) echo "Unknown project type" ;;
   esac
   echo $cmd
-  eval "${cmd};${rem}"
+  eval "${cmd}; ${rem}"
+  # eval "time (${cmd}; ${rem})"
 }
 
 # Clear screen and
