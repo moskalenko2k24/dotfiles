@@ -61,14 +61,6 @@ opt.imsearch = 0;
 opt.wrap = true                      -- show 1 long line as 2 or more lines
 opt.whichwrap = '<,>,[,],h,l'        -- cycle lines (when press <Right> on last char, go to 1st char of next line)
 
--- CODE SYNTAX HIGHLIGHTING IN MARKDOWN
--- HTML, CSS, C, C++, C#, JavaScript, Python, Bash
-g.markdown_fenced_languages = {
-  'html', 'css',
-  'c', 'cpp', 'cs',
-  'javascript', 'python', 'bash'
-};
-
  -- ENABLE 24-BIT COLORS
 if vim.fn.has('termguicolors') then
   opt.termguicolors = true
