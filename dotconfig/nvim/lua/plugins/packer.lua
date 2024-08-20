@@ -42,14 +42,15 @@ return require('packer').startup(function(use)
   -- Auto Pairs (auto insert brackets)
   use 'jiangmiao/auto-pairs';
 
-  -- Easy Motion for NeoVim
-  -- don't use know
+  -- EasyMotion for NeoVim, unused now
   -- use 'phaazon/hop.nvim';
 
-  -- Calendar (:Calendar or <Leader>cal)
+  -- Calendar
+  -- Use :Calendar or <Leader>cal
   use 'mattn/calendar-vim'
 
-  -- Terminal in Vim
+  -- Terminal
+  -- Use :ToggleTerm to show / hide terminal
   use {
     "akinsho/toggleterm.nvim",
     tag = '*',
@@ -114,7 +115,6 @@ return require('packer').startup(function(use)
     -- install jsregexp (optional!:).
     run = "make install_jsregexp"
   }
-  require 'luasnip'.config.setup({});
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -166,6 +166,19 @@ return require('packer').startup(function(use)
   use 'Abstract-IDE/abstract-autocmds';
 
   use 'dstein64/vim-startuptime';
+
+  -- shows CSS colors right in editor!
+  -- Warning: needs GoLang as dependency!
+  use {
+      'RRethy/vim-hexokinase',
+      run = 'make hexokinase',
+      setup = function()
+          vim.g.Hexokinase_highlighters = { 'virtual' }
+      end,
+  };
+
+  -- smart detection of current working (project) dir
+  use 'ahmedkhalf/project.nvim';
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
