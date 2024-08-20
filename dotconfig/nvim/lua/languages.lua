@@ -49,10 +49,20 @@ local languages = {
     language_server = nil,
     treesitters = { 'vim', 'vimdoc' }
   },
+  -- ['HTML'] = {
+  --   language_server = 'html',
+  --   treesitters = { }
+  -- },
+  ['Emmet'] = {
+    language_server = 'emmet_ls',
+    treesitters = { }
+  }
 }
 
 for _, items in pairs(languages) do
-  table.insert(M.language_servers, items.language_server)
+  if items.language_server ~= nil then
+    table.insert(M.language_servers, items.language_server)
+  end
   for _, treesitter in pairs(items.treesitters) do
     table.insert(M.treesitters, treesitter)
   end
