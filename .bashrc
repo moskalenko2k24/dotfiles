@@ -83,7 +83,7 @@ alias cdfonts="cd ~/.local/share/fonts/"
 alias cdnautilus-ext="cd ~/.local/share/nautilus-python/extensions"
 
 # Aliases for opening configs
-alias optmux="$EDITOR ~/.tmux.conf"
+alias optmuxconf="$EDITOR ~/.tmux.conf"
 alias opbashrc="$EDITOR ~/.bashrc"
 alias opbashrcprivate="$EDITOR ~/.private.sh"
 alias opxterm="$EDITOR ~/XTerm"
