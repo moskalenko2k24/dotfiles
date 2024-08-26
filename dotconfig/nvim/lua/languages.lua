@@ -56,6 +56,10 @@ local languages = {
   ['Emmet'] = {
     language_server = 'emmet_ls',
     treesitters = { }
+  },
+  ['LaTeX'] = {
+    language_server = nil,
+    treesitters = { 'latex' }
   }
 }
 
