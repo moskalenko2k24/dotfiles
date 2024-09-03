@@ -4,6 +4,7 @@
 # https://github.com/pwmt/zathura/blob/develop/doc/configuration/map.rst
 # https://unix.stackexchange.com/questions/572674/how-to-bind-a-command-to-the-symbol-in-zathura
 # https://github.com/ne9z/dotfiles-nixos/blob/main/.config/zathura/zathurarc
+# https://github.com/noctuid/dotfiles/blob/master/media/.config/zathura/zathurarc
 
 # make window full screen
 set window-height 3000
