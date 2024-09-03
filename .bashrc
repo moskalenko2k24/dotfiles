@@ -240,3 +240,8 @@ function cr {
 # cd && clear && echo 'My tmux sessions' && ls -1 *.sh
 
 export TERM=xterm-256color
+
+# Search with google / open browser
+function @google {
+    xdg-open "https://google.com/search?q=$*"
+}
