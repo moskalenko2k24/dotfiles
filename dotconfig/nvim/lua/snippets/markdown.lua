@@ -55,3 +55,24 @@ ls.add_snippets('markdown', {
     t({  '', '</details>' })
   })
 }, { type = 'snippets' });
+
+-- Snippets for headers
+
+ls.add_snippets('markdown', {
+  s('№№', {
+    t({ '##' })
+  })
+}, { type = 'autosnippets' });
+
+ls.add_snippets('markdown', {
+  s('#№', {
+    t({ '##' })
+  })
+}, { type = 'autosnippets' });
+
+
+ls.add_snippets('markdown', {
+  s('№#', {
+    t({ '##' })
+  })
+}, { type = 'autosnippets' });
