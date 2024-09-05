@@ -26,5 +26,13 @@
     {
         "command": "next_folder",
         "keys": "ctrl+shift+j"
+    },
+    {
+        "command": "account1",
+        "keys": "ctrl+1"
+    },
+    {
+        "command": "account2",
+        "keys": "ctrl+2"
     }
 ]
