@@ -99,6 +99,7 @@ alias opvimrc="$EDITOR ~/.vimrc"
 alias opinitlua="$EDITOR ~/.config/nvim/init.lua"
 alias cdnvim-config="cd ~/.config/nvim/"
 alias cdswap-nvim="cd ~/.local/state/nvim/swap"
+alias cdtelegramconfig="cd ~/.local/share/TelegramDesktop/tdata"
 
 # Flip video horizontally
 function flip-video {
