@@ -35,7 +35,7 @@ ls.add_snippets('markdown', {
 
 ls.add_snippets('markdown', {
   s('ссылка', {
-    t('[ссылка]'), t('('), i(2, ''), t(')')
+    t('[ссылка]'), t('('), i(1, ''), t(')')
   })
 }, { type = 'autosnippets' });
 
