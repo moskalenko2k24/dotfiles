@@ -13,7 +13,8 @@ map('n', '<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
 map('n', '<Space>', 'za');                    -- Space = open / close(toggle) fold
 -- , + [,;.\] = add [,;.\] to end of line
 local append = function (char)
-  return 'mPA' .. char .. '<Esc>`P:delmarks P<CR>';
+  return 'mP' .. 'A' .. char ..
+         '<Esc>' .. '`P' .. ':delmarks P<CR>';
 end
 map('n', '<Leader>.', append('.'), { silent = true });
 map('n', '<Leader>,', append(','), { silent = true });
