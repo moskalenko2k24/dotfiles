@@ -11,14 +11,14 @@ map('n', '<Leader>l', 'i<Space><Esc>');       -- , + l = add space without leavi
 map('n', '<Leader>m', 'i<CR><Esc>');          -- , + m = add empty line
 map('n', '<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
 map('n', '<Space>', 'za');                    -- Space = open / close(toggle) fold
--- , + ; = add semicolon to the end of line
--- , + . = add dot to the end of line
-local appendDot = 'mPA.<Esc>`P:delmarks P<CR>';
-local appendComa = 'mPA,<Esc>`P:delmarks P<CR>';
-local appendSemicolon = 'mPA;<Esc>`P:delmarks P<CR>';
-map('n', '<Leader>.', appendDot, { silent = true });
-map('n', '<Leader>,', appendComa, { silent = true });
-map('n', '<Leader>;', appendSemicolon, { silent = true });
+-- , + [,;.\] = add [,;.\] to end of line
+local append = function (char)
+  return 'mPA' .. char .. '<Esc>`P:delmarks P<CR>';
+end
+map('n', '<Leader>.', append('.'), { silent = true });
+map('n', '<Leader>,', append(','), { silent = true });
+map('n', '<Leader>;', append(';'), { silent = true });
+map('n', '<Leader>\\', append(' \\'), { silent = true });
 
 -- GO UP / DOWN VISUAL LINES
 -- (line with breaks looks like 2 or more line)
