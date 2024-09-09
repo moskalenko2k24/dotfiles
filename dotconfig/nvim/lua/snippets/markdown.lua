@@ -57,6 +57,8 @@ ls.add_snippets('markdown', {
 }, { type = 'snippets' });
 
 -- Snippets for headers
+-- to change cyrillic (Shift + 3) № with #
+-- №№ -> ##, №№№ -> ###, etc
 
 ls.add_snippets('markdown', {
   s('№№', {
