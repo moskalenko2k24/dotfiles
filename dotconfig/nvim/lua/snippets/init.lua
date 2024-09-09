@@ -8,3 +8,4 @@ ls.config.set_config({
 });
 
 require('snippets.markdown');
+require('snippets.markdown_latex');
