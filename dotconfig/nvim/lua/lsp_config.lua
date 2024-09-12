@@ -12,26 +12,24 @@ local custom_attach = function(client, bufnr)
   -- if client.name == 'omnisharp' then
   --   client.server_capabilities.semanticTokensProvider = nil
   -- end
-  local opts = {
-    buffer = bufnr,
-    noremap = true,
-    silent = true
-  };
-  local function buf_set_keymap(mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, opts)
+  local function buf_set_keymap(lhs, rhs)
+    vim.keymap.set('n', lhs, rhs, {
+      buffer = bufnr, noremap = true, silent = true
+    });
   end;
+
   if client.supports_method('textDocument/hover') then
-    buf_set_keymap('n', 'K', vim.lsp.buf.hover);
+    buf_set_keymap('K', vim.lsp.buf.hover);
   end
   if client.supports_method('textDocument/declaration') then
-    buf_set_keymap('n', 'gD', vim.lsp.buf.declaration);
+    buf_set_keymap('gD', vim.lsp.buf.declaration);
   end
-  buf_set_keymap('n', 'gd', vim.lsp.buf.definition);
-  buf_set_keymap('n', 'gr', vim.lsp.buf.references);
-  buf_set_keymap('n', '<Leader>rn', vim.lsp.buf.rename);
-  -- buf_set_keymap('n', '[d', vim.diagnostic.goto_prev);
-  -- buf_set_keymap('n', ']d', vim.diagnostic.goto_next);
-  buf_set_keymap('n', '<Leader>ca', vim.lsp.buf.code_action);
+  buf_set_keymap('gd', vim.lsp.buf.definition);
+  buf_set_keymap('gr', vim.lsp.buf.references);
+  buf_set_keymap('<Leader>rn', vim.lsp.buf.rename);
+  buf_set_keymap('[d', vim.diagnostic.goto_prev);
+  buf_set_keymap(']d', vim.diagnostic.goto_next);
+  buf_set_keymap('<Leader>ca', vim.lsp.buf.code_action);
   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
   print('LSP started');
 end
