@@ -58,6 +58,7 @@ imap('<C-BS>', '<C-w>');                  -- doesn't work :(
 imap('<C-к>',  '<C-r>');                  -- Ctrl + r, cyrillic
 imap('<C-ц>', '<C-w>');                   -- Ctrl + w, cyrillic
 imap('<C-з>', '<C-p>');                   -- Ctrl + p, cyryllic
+imap('<C-г>', '<C-u>');                   -- Ctrl + u, cyryllic
 
 imap('<C-z>', '<Esc>ua');                 -- Ctrl + z = undo
 imap('<C-я>', '<Esc>ua');                 -- Ctrl + z = undo, cyrillic
