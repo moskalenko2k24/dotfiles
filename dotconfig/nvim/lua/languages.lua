@@ -26,7 +26,7 @@ local languages = {
     treesitters = { 'python' }
   },
   ['JS / TS'] = {
-    language_server = 'tsserver',
+    language_server = 'ts_ls',
     treesitters = { 'javascript', 'typescript' }
   },
   ['Go'] = {
