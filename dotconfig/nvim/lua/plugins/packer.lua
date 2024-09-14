@@ -96,6 +96,8 @@ return require('packer').startup(function(use)
 
   use 'dhruvasagar/vim-table-mode';
 
+  -- use 'MeanderingProgrammer/render-markdown.nvim';
+
   -- LSP config & LSP manager
   use {
     'williamboman/mason.nvim',

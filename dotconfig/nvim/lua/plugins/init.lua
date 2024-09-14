@@ -8,4 +8,5 @@ require('plugins.abstract_autocmds');
 require('plugins.project_nvim');
 
 -- DISABLED PLUGINS
+-- require('plugins.render_markdown');
 -- require('plugins.hop')
