@@ -43,7 +43,7 @@ local languages = {
   },
   ['Markdown'] = {
     language_server = nil,
-    treesitters = { 'markdown', 'markdown_inline' }
+    treesitters = { 'markdown', 'markdown_inline', 'html' }
   },
   ['Vim'] =  {
     language_server = nil,
