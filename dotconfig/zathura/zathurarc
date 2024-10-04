@@ -1,10 +1,23 @@
-# some docs and info can be found there
+# DOCS AND TUTORIALS
 # https://wiki.archlinux.org/title/zathura
-# https://unix.stackexchange.com/questions/tagged/zathura
+# https://pwmt.org/projects/zathura/documentation
+# https://www.systutorials.com/docs/linux/man/5-zathurarc
 # https://github.com/pwmt/zathura/blob/develop/doc/configuration/map.rst
+# https://www.youtube.com/watch?v=V_Iz4zdyRM4
+
+# USEFUL QUESTIONS & ANSWERS
+# https://unix.stackexchange.com/questions/tagged/zathura
 # https://unix.stackexchange.com/questions/572674/how-to-bind-a-command-to-the-symbol-in-zathura
+# https://unix.stackexchange.com/questions/339487/how-to-enable-copy-to-clipboard-with-zathura-pdf-poppler
+# https://unix.stackexchange.com/questions/417595/can-zathura-show-pdf-bookmarks-generated-by-other-pdf-programs
+
+# CONFIG EXAMPLES
 # https://github.com/ne9z/dotfiles-nixos/blob/main/.config/zathura/zathurarc
 # https://github.com/noctuid/dotfiles/blob/master/media/.config/zathura/zathurarc
+# https://github.com/YingboMa/config/blob/master/zathurarc
+
+
+# MY CONFIG STARTS HERE
 
 # make window full screen
 set window-height 3000
