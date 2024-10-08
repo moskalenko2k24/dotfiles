@@ -22,6 +22,7 @@ nmap('<Leader>h', ':nohlsearch<CR>');     -- , + h = remove search highlighting
 nmap('<Leader>l', 'i<Space><Esc>');       -- , + l = add space without leaving normal mode
 nmap('<Leader>m', 'i<CR><Esc>');          -- , + m = add empty line
 nmap('<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
+nmap('<Leader>z', ':stop<CR>');           -- , + z = suspend (fg to return to NeoVim)
 nmap('<Space>', 'za');                    -- Space = open / close(toggle) fold
 
 local append = function (char)
