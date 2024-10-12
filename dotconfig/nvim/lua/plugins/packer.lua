@@ -105,6 +105,8 @@ return require('packer').startup(function(use)
     'neovim/nvim-lspconfig',
   };
 
+  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim';
+
   use 'hrsh7th/nvim-cmp';
   use 'hrsh7th/cmp-buffer';
   use 'saadparwaiz1/cmp_luasnip';

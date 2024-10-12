@@ -6,6 +6,22 @@ require('mason-lspconfig').setup {
   ensure_installed = language_servers,
   automatic_installation = true
 }
+require('lsp_lines').setup();
+-- Disable virtual_text since it's redundant due to lsp_lines.
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
+vim.keymap.set('n', '<Leader>L',
+  function ()
+    require('lsp_lines').toggle();
+    local virtual_text = vim.diagnostic.config().virtual_text
+    vim.diagnostic.config({
+      virtual_text = not virtual_text
+    });
+  end,
+  { desc = 'Toggle lsp_lines' }
+);
 
 local custom_attach = function(client, bufnr)
   -- Workaround for https://github.com/OmniSharp/omnisharp-roslyn/issues/2531
