@@ -37,7 +37,7 @@ ls.add_snippets('markdown', {
   s('ссылка', {
     t('[ссылка]'), t('('), i(1, ''), t(')')
   })
-}, { type = 'autosnippets' });
+}, { type = 'snippets' });
 
 -- Snippet for spoiler
 -- <details>
