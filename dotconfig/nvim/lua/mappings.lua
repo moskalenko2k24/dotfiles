@@ -71,8 +71,9 @@ imap('<C-s>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
 imap('<C-ы>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
 imap('<C-і>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
 
-imap('<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
-imap('<C-м>', '<Esc>pa');                 -- Ctrl + v = paste, cyryllic
+-- imap('<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
+-- imap('<C-м>', '<Esc>pa');                 -- Ctrl + v = paste, cyryllic
+-- <BS>
 
 imap('<C-f>', '<Esc>/');                  -- Ctrl + f = find
 imap('<C-а>', '<Esc>/');                  -- Ctrl + f = find, cyryllic
@@ -98,10 +99,19 @@ nmap('<C-Tab>', 'gt');                    -- Ctrl + Left = go next tab
 nmap('<C-S-Tab>', 'gT');                  -- Ctrl + Right = go prev tab
 nmap('gy', 'gT');                         -- gt = next, gy = previous tab
 
+
+-- imap('<C-b>', '<C-h>');
+-- imap('<C-и>', '<C-h>');
+
 -- ENABLE C-hjkl IN INSERT MODE
+imap('<C-h>', '<Left>');
+imap('<C-р>', '<Left>');
 imap('<C-k>', '<Up>');
+imap('<C-л>', '<Up>');
 imap('<C-j>', '<Down>');
+imap('<C-о>', '<Down>');
 imap('<C-l>', '<Right>');
+imap('<C-д>', '<Right>');
 
 -- MAPPINGS FOR VIMDIFF
 if vim.api.nvim_get_option_value('diff', {}) then
