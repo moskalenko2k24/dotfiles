@@ -40,7 +40,8 @@ return require('packer').startup(function(use)
   };
 
   -- Auto Pairs (auto insert brackets)
-  use 'jiangmiao/auto-pairs';
+  -- use 'jiangmiao/auto-pairs';
+  use 'windwp/nvim-autopairs';
 
   -- EasyMotion for NeoVim, unused now
   -- use 'phaazon/hop.nvim';

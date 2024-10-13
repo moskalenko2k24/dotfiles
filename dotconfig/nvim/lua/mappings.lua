@@ -100,10 +100,8 @@ nmap('<C-S-Tab>', 'gT');                  -- Ctrl + Right = go prev tab
 nmap('gy', 'gT');                         -- gt = next, gy = previous tab
 
 
--- imap('<C-b>', '<C-h>');
--- imap('<C-и>', '<C-h>');
 
--- ENABLE C-hjkl IN INSERT MODE
+-- ENABLE C-hjkl IN INSERT MODE, C-b AS BACKSPACE
 imap('<C-h>', '<Left>');
 imap('<C-р>', '<Left>');
 imap('<C-k>', '<Up>');
@@ -112,6 +110,8 @@ imap('<C-j>', '<Down>');
 imap('<C-о>', '<Down>');
 imap('<C-l>', '<Right>');
 imap('<C-д>', '<Right>');
+imap('<C-b>', '<BS>');
+imap('<C-и>', '<BS>');
 
 -- MAPPINGS FOR VIMDIFF
 if vim.api.nvim_get_option_value('diff', {}) then
