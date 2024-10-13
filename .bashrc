@@ -61,6 +61,7 @@ alias cmr="clear && make && make run"           # clear + make + run
 alias icat="kitty icat"                         # show image in kitty
 alias st="git status"
 alias ls-vimswap="ls ~/.vim/swapfiles/"
+alias r="run"
 
 # Replacing standard utilities
 alias cat="bat --paging=never"
