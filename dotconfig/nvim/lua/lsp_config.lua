@@ -12,17 +12,6 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
-vim.keymap.set('n', '<Leader>L',
-  function ()
-    require('lsp_lines').toggle();
-    local virtual_text = vim.diagnostic.config().virtual_text
-    vim.diagnostic.config({
-      virtual_text = not virtual_text
-    });
-  end,
-  { desc = 'Toggle lsp_lines' }
-);
-
 local custom_attach = function(client, bufnr)
   -- Workaround for https://github.com/OmniSharp/omnisharp-roslyn/issues/2531
   -- if client.name == 'omnisharp' then
