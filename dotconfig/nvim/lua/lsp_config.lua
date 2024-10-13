@@ -46,6 +46,21 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap('[d', vim.diagnostic.goto_prev);
   buf_set_keymap(']d', vim.diagnostic.goto_next);
   buf_set_keymap('<Leader>ca', vim.lsp.buf.code_action);
+  -- Toggle inlay hints
+  buf_set_keymap('<Leader>I',
+    function ()
+      local inlay_hints_enabled =  vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr });
+      vim.lsp.inlay_hint.enable(not inlay_hints_enabled, { bufnr = bufnr });
+    end
+  );
+  -- Toggle LSP lines (errors on multiple lines)
+  buf_set_keymap('<Leader>L',
+    function ()
+      require('lsp_lines').toggle();
+      local virtual_text = vim.diagnostic.config().virtual_text
+      vim.diagnostic.config({ virtual_text = not virtual_text });
+    end
+  );
   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
   print('LSP started');
 end
