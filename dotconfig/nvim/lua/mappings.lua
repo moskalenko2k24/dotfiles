@@ -71,9 +71,8 @@ imap('<C-s>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
 imap('<C-ы>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
 imap('<C-і>', '<Esc>:w<CR>a');            -- Ctrl + s = save, cyrillic
 
--- imap('<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
--- imap('<C-м>', '<Esc>pa');                 -- Ctrl + v = paste, cyryllic
--- <BS>
+imap('<C-v>', '<Esc>pa');                 -- Ctrl + v = paste
+imap('<C-м>', '<Esc>pa');                 -- Ctrl + v = paste, cyryllic
 
 imap('<C-f>', '<Esc>/');                  -- Ctrl + f = find
 imap('<C-а>', '<Esc>/');                  -- Ctrl + f = find, cyryllic
