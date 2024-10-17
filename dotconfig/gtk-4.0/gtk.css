@@ -1,0 +1,4 @@
+/* https://askubuntu.com/questions/1159544/how-do-i-remove-rounded-borders-from-windows-in-ubuntu-18-04-with-gnome-shell */
+decoration, window, window.backgroud, window.titlebar, * {
+  border-radius: 0px;
+}
