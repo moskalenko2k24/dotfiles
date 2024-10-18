@@ -10,6 +10,11 @@ if [ -f ~/.private.sh ]; then
   . ~/.private.sh
 fi
 
+prompt_marker() {
+    printf '\e]133;A\e\\'
+}
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }prompt_marker
+
 # flyctl => fly.io
 export FLYCTL_INSTALL="/home/andrey/.fly"
 export PATH="$FLYCTL_INSTALL/bin:/opt/lampp/bin:$PATH"
@@ -35,14 +40,11 @@ alias vimdiff="nvim -d"
 alias tm="tmux"
 alias py="python3"
 alias wh="which"                                # which
-alias c="clear"                                 # clear screen
 alias cl="clear"                                # clear screen
 alias cls="clear"                               # clear screen
 alias ff="fastfetch"                            # fastfetch
 alias up="uptime -p"                            # show uptime(hours, minutes)
-alias  u="uptime -p"                            # show uptime(hours, minutes)
 alias ls="ls --color --g"                       # color ls with --group-directories-first
-alias l="ls -A"                                 # show all files
 alias lsa="ls -A"                               # show all files
 alias ll="ls -lA"                               # show all files, one file per line
 alias l1="ls -1"                                # show all files, one file per line (short)
@@ -61,15 +63,24 @@ alias cmr="clear && make && make run"           # clear + make + run
 alias icat="kitty icat"                         # show image in kitty
 alias st="git status"
 alias ls-vimswap="ls ~/.vim/swapfiles/"
+
+# One-letter aliases
+alias t="tmux"
+alias c="clear"
+alias l="ls -A"
+alias u="uptime -p"
 alias r="run"
+alias f="fastfetch"
+alias n="nautilus . &"
+alias q="exit"
 
 # Replacing standard utilities
 alias cat="bat --paging=never"
 alias less="bat --paging=always"
 
 # Aliases for update
-alias d-up="sudo dnf upgrade --refresh"
-alias f-up="flatpak update"
+alias fup="flatpak update"
+alias dup="sudo dnf upgrade --refresh"
 
 # Aliases for git commands
 alias gits="git status"
