@@ -29,10 +29,14 @@
     },
     {
         "command": "account1",
-        "keys": "ctrl+1"
+        "keys": "ctrl+shift+1"
     },
     {
         "command": "account2",
-        "keys": "ctrl+2"
+        "keys": "ctrl+shift+2"
+    },
+    {
+      "command": "media_viewer_video_fullscreen",
+        "keys": "alt+f"
     }
 ]
