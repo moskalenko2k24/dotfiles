@@ -95,6 +95,8 @@ return require('packer').startup(function(use)
     ft = { 'markdown' }
   };
 
+  use 'brianhuster/live-preview.nvim';
+
   use 'dhruvasagar/vim-table-mode';
 
   -- use 'MeanderingProgrammer/render-markdown.nvim';
