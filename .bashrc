@@ -226,6 +226,11 @@ function run {
       rem="rm ${out} *.o"
       ;;
     *.js) cmd="time node $1" ;;
+    *.ts)
+      out="__${out}.js"
+      cmd="tsc ${file} --outfile ${out} && time node ${out}"
+      rem="rm ${out}"
+      ;;
     *.py) cmd="time python $1" ;;
     *.cs) cmd="time dotnet-exec $1" ;;
     *.lua) cmd="time lua $1" ;;
