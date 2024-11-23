@@ -108,12 +108,10 @@ alias opctags="$EDITOR ~/.ctags"
 alias opgitconfig="$EDITOR ~/.gitconfig"
 alias opgitignore="$EDITOR ~/.gitignore"
 
-alias opvimrc="$EDITOR ~/.vimrc"
-alias opinitlua="$EDITOR ~/.config/nvim/init.lua"
-alias cdnvim-config="cd ~/.config/nvim/"
-alias cdswap-nvim="cd ~/.local/state/nvim/swap"
-alias cdtdata="cd ~/.local/share/TelegramDesktop/tdata"
-alias cdtelegramconf="cd ~/.local/share/TelegramDesktop/tdata"
+alias cdnvimconf="cd ~/.config/nvim/"
+alias cdnvimswap="cd ~/.local/state/nvim/swap"
+alias cdtgconf="cd ~/.local/share/TelegramDesktop/tdata"
+alias cdgtkconf="cd /home/andrey/.config/gtk-4.0"
 
 # Flip video horizontally
 function flip-video {
@@ -207,6 +205,7 @@ function new-project {
 }
 
 # Run one-file project
+# TO DO: refactor, change output filename + use flag for time
 function run {
   file=$1
   out="${file%.*}"
@@ -239,6 +238,9 @@ function run {
     *.hs)
       cmd="ghc $1 && time ./${out}"
       rem="rm ${out} *.o *.hi"
+      ;;
+    *.go)
+      cmd="time go run $1"
       ;;
     *.rs)
       cmd="rustc $1 && time ./${out}"
