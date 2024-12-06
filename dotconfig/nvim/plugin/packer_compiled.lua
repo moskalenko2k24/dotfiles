@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/abstract-autocmds",
     url = "https://github.com/Abstract-IDE/abstract-autocmds"
   },
+  ["atlas.vim"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/atlas.vim",
+    url = "https://github.com/huyvohcmc/atlas.vim"
+  },
   ["calendar-vim"] = {
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/calendar-vim",
@@ -98,6 +103,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     loaded = true,
@@ -150,6 +160,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
+  },
+  nvim = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/nvim",
+    url = "https://github.com/catppuccin/nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -227,11 +242,21 @@ _G.packer_plugins = {
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["theme-picker.nvim"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/theme-picker.nvim",
+    url = "https://github.com/panghu-huang/theme-picker.nvim"
+  },
   ["toggleterm.nvim"] = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0" },
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-endwise"] = {
     loaded = true,
@@ -291,6 +316,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/andrey/.local/share/nvim/site/pack/packer/start/vim-xkbswitch",
     url = "https://github.com/lyokha/vim-xkbswitch"
+  },
+  ["vscode.nvim"] = {
+    loaded = true,
+    path = "/home/andrey/.local/share/nvim/site/pack/packer/start/vscode.nvim",
+    url = "https://github.com/Mofiqul/vscode.nvim"
   }
 }
 
@@ -306,14 +336,14 @@ time([[Setup for vim-hexokinase]], false)
 time([[packadd for vim-hexokinase]], true)
 vim.cmd [[packadd vim-hexokinase]]
 time([[packadd for vim-hexokinase]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads

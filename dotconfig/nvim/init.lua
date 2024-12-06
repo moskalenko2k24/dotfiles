@@ -11,4 +11,4 @@ require('treesitter');
 require('lsp_config');
 require('cmp_config');
 require('snippets');
-require('theme');
+require('themes');

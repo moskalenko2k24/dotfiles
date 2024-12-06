@@ -27,9 +27,6 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim';
 
-  -- One dark theme
-  use 'navarasu/onedark.nvim';
-
   -- Automatically switch to English in normal mode
   use 'lyokha/vim-xkbswitch';
 
@@ -114,6 +111,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer';
   use 'saadparwaiz1/cmp_luasnip';
   use 'hrsh7th/cmp-nvim-lsp';
+  use 'hrsh7th/cmp-path';
 
   use {
     "L3MON4D3/LuaSnip",
@@ -186,6 +184,16 @@ return require('packer').startup(function(use)
 
   -- smart detection of current working (project) dir
   use 'ahmedkhalf/project.nvim';
+
+  -- color scheme pickers
+  -- use 'zaldih/themery.nvim';
+  use 'panghu-huang/theme-picker.nvim';
+  -- color schemes
+  use 'huyvohcmc/atlas.vim';
+  use 'navarasu/onedark.nvim';
+  use 'folke/tokyonight.nvim';
+  use 'catppuccin/nvim';
+  use 'Mofiqul/vscode.nvim';
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
