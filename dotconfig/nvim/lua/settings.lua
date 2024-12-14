@@ -51,7 +51,8 @@ opt.showcmd = true                   -- show commands at bottom right corner
 
 -- MAKING SPACES VISIBLE AS INTERPUNCT
 -- opt.list = true
--- opt.listchars = { space = '·' }
+-- opt.listchars = { space = '·' }   -- show all spaces as '·'
+-- opt.listchars = { lead = '·' }    -- show only leading spaces as '·'
 
 opt.keymap = 'russian-jcukenwin'
 opt.iminsert = 0;
