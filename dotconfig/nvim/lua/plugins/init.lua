@@ -5,7 +5,7 @@ require('plugins.xkbswitch');
 require('plugins.telescope');
 require('plugins.nvim_comment');
 require('plugins.abstract_autocmds');
-require('plugins.project_nvim');
+-- require('plugins.project_nvim');
 require('plugins.nvim_autopairs');
 require('plugins.live_preview');
 -- require('plugins.themery_nvim');

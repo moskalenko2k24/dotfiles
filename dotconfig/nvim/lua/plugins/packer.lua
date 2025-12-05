@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim';
 
   -- Automatically switch to English in normal mode
-  use 'lyokha/vim-xkbswitch';
+  -- use 'lyokha/vim-xkbswitch';
 
   -- Status line
   use {
@@ -183,7 +183,8 @@ return require('packer').startup(function(use)
   };
 
   -- smart detection of current working (project) dir
-  use 'ahmedkhalf/project.nvim';
+  -- TO DO: find alternative
+  -- use 'ahmedkhalf/project.nvim';
 
   -- color scheme pickers
   -- use 'zaldih/themery.nvim';
