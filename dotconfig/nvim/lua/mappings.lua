@@ -15,14 +15,34 @@ vmap('<Leader>y', '"ty:tabedit<CR>"tp');  -- open selected text in new tab
 
 -- IMPORTANT NORMAL MODE MAPPINGS
 nmap(';', ':');                           -- ; =  : (typing : without shift)
+nmap('ж', ':');                           -- ; =  : (typing : without shift), cyrillic
+
+
 nmap('Y', 'y$');                          -- Y = y$ (copy till end of line)
+nmap('Н', 'y$');                          -- Y = y$ (copy till end of line), cyrillic
+
 nmap('<C-s>', ':w<CR>');                  -- Ctrl + s = save
+nmap('<C-ы>', ':w<CR>');                  -- Ctrl + s = save, cyrillic
+nmap('<C-і>', ':w<CR>');                  -- Ctrl + s = save, cyrillic
+
 nmap('<C-q>', ':q<CR>');                  -- Ctrl + q = quit
+nmap('<C-й>', ':q<CR>');                  -- Ctrl + q = quit, cyrillic
+
 nmap('<Leader>h', ':nohlsearch<CR>');     -- , + h = remove search highlighting
+nmap('бр', ':nohlsearch<CR>');            -- , + h = remove search highlighting, cyrillic
+
 nmap('<Leader>l', 'i<Space><Esc>');       -- , + l = add space without leaving normal mode
+nmap('бд', 'i<Space><Esc>');              -- , + l = add space without leaving normal mode, cyrillic
+
 nmap('<Leader>m', 'i<CR><Esc>');          -- , + m = add empty line
+nmap('бь', 'i<CR><Esc>');                 -- , + m = add empty line, cyrillic
+
 nmap('<Leader><Enter>', 'i<CR><Esc>');    -- , + Enter = add empty line
+nmap('б<Enter>', 'i<CR><Esc>');           -- , + Enter = add empty line, cyrillic
+
 nmap('<Leader>z', ':stop<CR>');           -- , + z = suspend (fg to return to NeoVim)
+nmap('бя', ':stop<CR>');                  -- , + z = suspend (fg to return to NeoVim), cyrillic
+
 nmap('<Space>', 'za');                    -- Space = open / close(toggle) fold
 
 local append = function (char)
@@ -30,17 +50,31 @@ local append = function (char)
          'A' .. char .. '<Esc>' ..        -- append character (insert mode), go normal mode
          '`P' .. ':delmarks P<CR>';       -- go to remembered position, remove mark
 end
+
 nmap('<Leader>.', append('.'));           -- , + . = append .
 nmap('<Leader>,', append(','));           -- , + , = append ,
 nmap('<Leader>;', append(';'));           -- , + ; = append ;
 nmap('<Leader>\\', append(' \\'));        -- , + \ = append \
 
+nmap('б.', append('.'));                  -- , + . = append .
+nmap('б,', append(','));                  -- , + , = append ,
+nmap('б;', append(';'));                  -- , + ; = append ;
+nmap('б\\', append(' \\'));               -- , + \ = append \
+
 -- GO UP / DOWN VISUAL LINES
 -- (line with breaks looks like 2 or more line)
 nmap('k', 'gk');                          -- k =   Up, normal mode
+nmap('л', 'gk');                          -- k =   Up, normal mode, cyrillic
+
 nmap('j', 'gj');                          -- j = Down, normal mode
+nmap('о', 'gj');                          -- j = Down, normal mode, cyrillic
+
 vmap('k', 'gk');                          -- k =   Up, visual mode
+vmap('л', 'gk');                          -- k =   Up, visual mode, cyrillic
+
 vmap('j', 'gj');                          -- j = Down, visual mode
+vmap('о', 'gj');                          -- j = Down, visual mode, cyrillic
+
 nmap('<Up>', 'gk');                       -- Up, normal mode
 nmap('<Down>', 'gj');                     -- Down, normal mode
 vmap('<Up>', 'gk');                       -- Up, visual mode
@@ -82,9 +116,18 @@ imap('<C-в>', '<Delete>');                -- Ctrl + d = delete char, cyryllic
 
 -- WORK WITH TABS AND WINDOWS
 nmap('<Leader>s', ':split<CR>');          -- , + s = make horizontal split (with same file)
+nmap('<Leader>ы', ':split<CR>');          -- , + s = make horizontal split (with same file)
+nmap('<Leader>і', ':split<CR>');          -- , + s = make horizontal split (with same file)
+
 nmap('<Leader>v', ':vsplit<CR>');         -- , + v = make vertical split (with same file)
+nmap('<Leader>м', ':vsplit<CR>');         -- , + v = make vertical split (with same file)
+
 nmap('<Leader>t', ':tab split<CR>');      -- , + t = make tab (with same file & same position)
+nmap('<Leader>е', ':tab split<CR>');      -- , + t = make tab (with same file & same position)
+
 nmap('<Leader>q', ':q<CR>');              -- , + q = close tab / window
+nmap('<Leader>й', ':q<CR>');              -- , + q = close tab / window
+
 nmap('<C-l>', '<C-w>l');                  -- Ctrl + l = go right window
 nmap('<C-h>', '<C-w>h');                  -- Ctrl + h = go left window
 nmap('<C-j>', '<C-w>j');                  -- Ctrl + j = go down window
@@ -97,7 +140,6 @@ nmap('<C-Right>', 'gT');                  -- Ctrl + Right = go prev tab
 nmap('<C-Tab>', 'gt');                    -- Ctrl + Left = go next tab
 nmap('<C-S-Tab>', 'gT');                  -- Ctrl + Right = go prev tab
 nmap('gy', 'gT');                         -- gt = next, gy = previous tab
-
 
 
 -- ENABLE C-hjkl IN INSERT MODE, C-b AS BACKSPACE
@@ -115,8 +157,11 @@ imap('<C-и>', '<BS>');
 -- MAPPINGS FOR VIMDIFF
 if vim.api.nvim_get_option_value('diff', {}) then
   nmap('q', ':qa<CR>');
+  nmap('й', ':qa<CR>');
   nmap('<Leader>q', ':qa<CR>');
+  nmap('бй', ':qa<CR>');
   nmap('<C-q>', ':qa<CR>');
+  nmap('<C-й>', ':qa<CR>');
 end
 
 -- MAPPINGS FOR HELP WINDOWS
@@ -125,5 +170,6 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(event)
     -- vim.bo[event.buf].buflisted = false
     nmap('q', '<Cmd>close<CR>', { buffer = event.buf, silent = true })
+    nmap('й', '<Cmd>close<CR>', { buffer = event.buf, silent = true })
   end
 })
