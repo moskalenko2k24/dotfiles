@@ -108,6 +108,8 @@ alias opctags="$EDITOR ~/.ctags"
 alias opgitconfig="$EDITOR ~/.gitconfig"
 alias opgitignore="$EDITOR ~/.gitignore"
 
+alias cdn="cd ~/Notes"
+alias cdnp="cd ~/NotesPrivate"
 alias cdnvimconf="cd ~/.config/nvim/"
 alias cdnvimswap="cd ~/.local/state/nvim/swap"
 alias cdtgconf="cd ~/.local/share/TelegramDesktop/tdata"
@@ -218,7 +220,7 @@ function run {
       rem="rm ${out}"
       ;;
     *.cpp)
-      cmd="g++ ${flags} -std=c++20 ${file} -o ${out} -lm && time ./${out}"
+      cmd="g++ ${flags} -std=c++23 ${file} -o ${out} -lm && time ./${out}"
       rem="rm ${out}"
       ;;
     *.pas)
@@ -266,4 +268,28 @@ export TERM=xterm-256color
 # Search with google / open browser
 function @google {
     xdg-open "https://google.com/search?q=$*"
+}
+
+function commit {
+  git commit -m "$(date '+%Y-%m-%d %H:%M:%S')"
+}
+
+function push-all {
+  git add . && git commit -m "$(date '+%Y-%m-%d %H:%M:%S')" && git push
+}
+
+function cpdotfiles {
+  cp ~/.bashrc ~/dotfiles/
+  cp ~/.gitconfig ~/dotfiles/
+  cp ~/.gitignore ~/dotfiles/
+  cp ~/.tmux.conf ~/dotfiles/
+  cp ~/.vimrc ~/dotfiles/
+  cp ~/XTerm ~/dotfiles/
+  cp -r ~/.config/foot ~/dotfiles/dotconfig/
+  cp -r ~/.config/nvim ~/dotfiles/dotconfig/
+  cp -r ~/.config/zathura ~/dotfiles/dotconfig/
+  cp -r ~/.config/kitty ~/dotfiles/dotconfig/
+  cp ~/.config/nautiterm.yml ~/dotfiles/dotconfig/
+  cp ~/.moc/config ~/dotfiles/.moc/config
+  cp -r ~/.local/share/TelegramDesktop/tdata/shortcuts-custom.json ~/dotfiles/dotlocal/share/TelegramDesktop/tdata
 }
