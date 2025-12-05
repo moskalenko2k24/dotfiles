@@ -50,7 +50,7 @@ local custom_attach = function(client, bufnr)
       vim.diagnostic.config({ virtual_text = not virtual_text });
     end
   );
-  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr });
+  vim.lsp.inlay_hint.enable(false, { bufnr = bufnr });
   print('LSP started');
 end
 
@@ -67,10 +67,10 @@ local lsp_settings = {
   }
 };
 
--- After setting up mason-lspconfig you may set up servers via lspconfig
-local lspconfig = require('lspconfig');
+-- After setting up mason-lspconfig you may set up servers via lsp.config
 for _, server in pairs(language_servers) do
-  lspconfig[server].setup(lsp_settings);
+  vim.lsp.config(server, lsp_settings)
+  -- require('lspconfig')[server].setup(lsp_settings);
 end
 
 -- function feedkeys(key, mode)
